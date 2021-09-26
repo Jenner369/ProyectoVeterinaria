@@ -21,7 +21,7 @@ public class DAO_Cliente {
     public DAO_Cliente() throws SQLException, IOException {
         this.cn = new cnx();
     }
-    //procediminetos 
+    //procediminetos almacenados
     public void RegistrarCliente (String nombre1, String apellido_p1, String apellido_m1, String usuario1 ,String password1, String imagen1) throws SQLException {
         try {
             String sql = "call veterinaria.Registrar_Cliente(?, ?, ?, ?, ?, ?,?);";
