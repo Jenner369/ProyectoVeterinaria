@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Beans;
 
-/**
- *
- * @author jedur
- */
 public class Beans_DetalleCita {
     private int Id;
     private int Id_Cita;
