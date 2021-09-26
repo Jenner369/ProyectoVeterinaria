@@ -1,20 +1,12 @@
 package Beans;
 
 public class Beans_DetalleCita {
-    private int Id;
+
     private int Id_Cita;
     private int Id_Servicio;
     private int Id_Mascota;
     private String descripcion;
     private double submonto;
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int Id) {
-        this.Id = Id;
-    }
 
     public int getId_Cita() {
         return Id_Cita;
