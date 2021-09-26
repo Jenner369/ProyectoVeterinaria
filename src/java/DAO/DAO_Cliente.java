@@ -2,7 +2,6 @@
 package DAO;
 
 import Beans.Beans_Cliente;
-import Beans.Beans_Mascota;
 import Config.cnx;
 import java.io.IOException;
 import java.sql.CallableStatement;
