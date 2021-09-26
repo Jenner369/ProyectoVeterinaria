@@ -26,7 +26,6 @@ public class DAO_Mascota {
             String sql = "call veterinaria.registrar_mascota(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
-            //Datos para el facultad
             cs.setString(1, nombre1);
             cs.setString(2, raza1);
             cs.setString(3, sexo1);
