@@ -8,8 +8,8 @@ package Beans;
 public class Beans_Cliente {
     int ID;
     String nombre ;
-    String apellido_p; 
-    String apellido_m;  
+    String apellidoP; 
+    String apellidoM;  
     String usuario ;
     String password ; 
     String imagen ;
@@ -30,21 +30,23 @@ public class Beans_Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido_p() {
-        return apellido_p;
+    public String getApellidoP() {
+        return apellidoP;
     }
 
-    public void setApellido_p(String apellido_p) {
-        this.apellido_p = apellido_p;
+    public void setApellidoP(String apellidoP) {
+        this.apellidoP = apellidoP;
     }
 
-    public String getApellido_m() {
-        return apellido_m;
+    public String getApellidoM() {
+        return apellidoM;
     }
 
-    public void setApellido_m(String apellido_m) {
-        this.apellido_m = apellido_m;
+    public void setApellidoM(String apellidoM) {
+        this.apellidoM = apellidoM;
     }
+
+    
 
     public String getUsuario() {
         return usuario;
