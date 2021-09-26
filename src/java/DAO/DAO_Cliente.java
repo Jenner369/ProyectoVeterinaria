@@ -24,7 +24,7 @@ public class DAO_Cliente {
     //procediminetos 
     public void RegistrarCliente (String nombre1, String apellido_p1, String apellido_m1, String usuario1 ,String password1, String imagen1) throws SQLException {
         try {
-            String sql = "call veterinaria.registrar_mascota(?, ?, ?, ?, ?, ?,?);";
+            String sql = "call veterinaria.Registrar_Cliente(?, ?, ?, ?, ?, ?,?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
             cs.setString(2, nombre1);
@@ -111,7 +111,7 @@ public class DAO_Cliente {
      
     public void ActualizarCliente(int ID1, String nombre1, String apellido_p1, String apellido_p2, String usuario1,String password1,String imagen1) throws SQLException {
         try {
-            String sql = "call veterinaria.actualizar_mascota(?, ?, ?, ?, ?, ?, ?);";
+            String sql = "call veterinaria.Actualizar_Cliente(?, ?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
             cs.setInt(1, ID1);
