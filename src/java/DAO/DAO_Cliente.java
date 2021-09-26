@@ -108,7 +108,7 @@ public class DAO_Cliente {
             throw e;
         }
     }
-     
+    // 
     public void ActualizarCliente(int ID1, String nombre1, String apellido_p1, String apellido_p2, String usuario1,String password1,String imagen1) throws SQLException {
         try {
             String sql = "call veterinaria.Actualizar_Cliente(?, ?, ?, ?, ?, ?, ?);";
