@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!--NAV es el MENU-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Veterinaria Zeus</a>
@@ -78,30 +79,50 @@
         </div>
     </nav>
 
+    <!--Presentación de la pagina-->
     <div class="text-dark text-center py-xxl-5" id="firstSection">
 
-        <div class="container py-xxl-5">
-            <header class="mb-xxl-5">
-                <h1 class="display-1 font-weight-bolder">Veterinaria Zeus</h1>
-                <h3 class="display-4 font-weight-bolder">Confia en la mejor veterinaria de la región</h3>
-                <p class="lead">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas fugiat nobis, corrupti
-                    voluptatem.
-                </p>
-            </header>
+        <div class="container">
+            <div class="text-center text-light rounded-2 bg-secondary bg-opacity-75 p-5">
+                <p class="display-1 font-weight-bolder">Veterinaria Zeus</p>
+                <p class="display-6 font-weight-bolder">La mejor veterinaria de la región</p>
 
-            <div class="row">
-                <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
-                    <svg width="5rem" height="5rem" viewBox="0 0 16 16" class="bi bi-alarm-fill" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z" />
-                    </svg>
-                    <h5 class="mt-4">Combine Images</h5>
-                    <p>Take separate Snagit images and combine them into one, organized.</p>
+                <div class="container py-xxl-5">
+                    <header class="mb-xxl-5">
+                        <p class="display-6 font-weight-bolder px-xxl-5">
+                            Razones por las cuales venir a atiender a tu pequeño amigo a nuestra veterinaria
+                        </p>
+                    </header>
 
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                            <i class="display-1 bi bi-cash"></i>
+                            <p class="display-6">Economico</p>
+                            <h5>Podemos ayudarte con el costo</h5>
+
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                            <i class="display-1 bi bi-lightning-charge-fill"></i>
+                            <p class="display-6">Rapido</p>
+                            <h5>Tenemos un tiempo promedio para todo</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                            <i class="display-1 bi bi-heart-fill"></i>
+                            <p class="display-6">Seguro</p>
+                            <h5>Tenemos una certificacion para tener contacto con los animales</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                            <i class="display-1 bi bi-award-fill"></i>
+                            <p class="display-6">Eficaz</p>
+                            <h5>Todos nuestros clientes terminan felices</h5>
+                        </div>
+                    </div>
                 </div>
+
+                <p class="text-end"><a class="btn btn-lg btn-success" href="#">Reservar una cita</a></p>
             </div>
         </div>
+
     </div>
     <!--
         Margin
@@ -115,15 +136,11 @@
             Padding bottom: pb-value
             Paddig left: ps-value.
             Where the range for the value is 0 to 5
+            Padding eje y: py-value
+            Padding eje x: px-value
         -->
 
-
-
-
-
-
-
-
+    <!--Seccion sobre Servicios en un Carrusel-->
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
@@ -176,74 +193,47 @@
         </button>
     </div>
 
+    <!--Seccion negra sobre ¿Quienes Somos?-->
     <section id="caracteristicas-producto" class="bg-dark bg-gradient text-white text-center py-5">
+
         <div class="container py-3">
+
             <header class="mb-5">
                 <h1 class="display-4 font-weight-bolder">Confia en Veterinaria Zeus</h1>
-                <p class="lead">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas fugiat nobis, corrupti
-                    voluptatem.
-                </p>
             </header>
 
             <div class="row">
-                <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
 
-                    <svg width="5rem" height="5rem" viewBox="0 0 16 16" class="bi bi-alarm-fill" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z" />
-                    </svg>
+                <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                    <!--icon <i> -->
                     <h5 class="mt-4">Combine Images</h5>
                     <p>Take separate Snagit images and combine them into one, organized.</p>
-
                 </div>
 
                 <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
-
-                    <svg width="5rem" height="5rem" viewBox="0 0 16 16" class="bi bi-collection-play"
-                        fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M14.5 13.5h-13A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5zm-13 1A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
-                        <path fill-rule="evenodd"
-                            d="M6.258 6.563a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z" />
-                    </svg>
-
+                    <!--icon <i> -->
                     <h5 class="mt-4">Favorites</h5>
                     <p>Keep all of your most valuable tools together in one spot.</p>
-
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
 
-                    <svg width="5rem" height="5rem" viewBox="0 0 16 16" class="bi bi-basket" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
-                    </svg>
+                <div class="col-12 col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                    <!--icon <i> -->
                     <h5 class="mt-4">Stamp Search</h5>
                     <p>Quickly search through nearly 2,000 pre-mades stamps.</p>
-
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3">
 
-                    <svg width="5rem" height="5rem" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                        <path fill-rule="evenodd"
-                            d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z" />
-                    </svg>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <!--icon <i> -->
                     <h5 class="mt-4">Simplify Tool</h5>
                     <p>Convert your standard screenshots into simplified.</p>
-
                 </div>
-
-
 
             </div>
 
         </div>
 
     </section>
+
 </body>
 <script src="Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="Utiles/Frameworks/jquery/jquery.min.js"></script>
