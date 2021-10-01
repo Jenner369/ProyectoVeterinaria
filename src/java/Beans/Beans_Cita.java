@@ -3,7 +3,8 @@ package Beans;
 public class Beans_Cita {
 
     private int ID;
-    private String FECHA;
+    private String ENTRADA;
+    private String SALIDA;
     private double MONTO;
     private int CLIENTE_ID;
     private int VETERINARIO_ID;
@@ -16,12 +17,20 @@ public class Beans_Cita {
         this.ID = ID;
     }
 
-    public String getFECHA() {
-        return FECHA;
+    public String getENTRADA() {
+        return ENTRADA;
     }
 
-    public void setFECHA(String FECHA) {
-        this.FECHA = FECHA;
+    public void setENTRADA(String ENTRADA) {
+        this.ENTRADA = ENTRADA;
+    }
+
+    public String getSALIDA() {
+        return SALIDA;
+    }
+
+    public void setSALIDA(String SALIDA) {
+        this.SALIDA = SALIDA;
     }
 
     public double getMONTO() {
@@ -47,5 +56,5 @@ public class Beans_Cita {
     public void setVETERINARIO_ID(int VETERINARIO_ID) {
         this.VETERINARIO_ID = VETERINARIO_ID;
     }
-
+    
 }
