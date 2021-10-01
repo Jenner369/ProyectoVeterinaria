@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DAO_Cita {
+
     cnx cn;
     Connection con;
     Beans_Cita b;
@@ -18,10 +19,28 @@ public class DAO_Cita {
     public DAO_Cita() throws SQLException, IOException {
         this.cn = new cnx();
     }
-    
-    public void InsertarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int CLIENTE_ID, int VETERINARIO_ID) throws SQLException {
+
+    public void InsertarCita(String ENTRADA, String SALIDA, double MONTO, int CLIENTE_ID, int VETERINARIO_ID) throws SQLException {
         try {
             String sql = "call veterinaria.insertar_cita(?, ?, ?, ?, ?);";
+            con = cn.getConexion();
+            cs = con.prepareCall(sql);
+            cs.setString(1, ENTRADA);
+            cs.setString(2, SALIDA);
+            cs.setDouble(3, MONTO);
+            cs.setInt(4, CLIENTE_ID);
+            cs.setInt(5, VETERINARIO_ID);
+            cs.execute();
+            cs.close();
+            con.close();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int CLIENTE_ID, int VETERINARIO_ID) throws SQLException {
+        try {
+            String sql = "call veterinaria.modificar_cita(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
             cs.setInt(1, ID);
