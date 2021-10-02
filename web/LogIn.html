@@ -1,70 +1,79 @@
-<%-- Document : LogIn Created on : 24/09/2021, 12:20:19 AM Author : USER --%>
+<!--%-- Document : LogIn Created on : 24/09/2021, 12:20:19 AM Author : USER --%-->
+<!--<%@page contentType="text/html" pageEncoding="UTF-8" %>-->
+<html lang="en">
 
-    <%@page contentType="text/html" pageEncoding="UTF-8" %>
-        <html lang="en">
+<head>
+    <title>Login 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Utiles/Css/LogIn.css">
+</head>
 
-        <head>
-            <title>Login 10</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="stylesheet" href="Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
-            <link rel="stylesheet" href="Utiles/Css/LogIn.css">
-        </head>
+<body>
 
-        <body class="img js-fullheight"">
-            
-            <section class="ftco-section">
-                <div class="container">
+    <section class="ftco-section">
+        <div class="container mt-5 mt-md-5 mt-lg-5 text-white">
+            <div class="row justify-content-center">
+
+                <div class="col-md-6 col-lg-4 bg bg-white bg-opacity-25 rounded-3 p-5">
+                    <!--Titulo-->
                     <div class="row justify-content-center">
-                        <div class="col-md-6 text-center mb-5">
-                            <h2 class="heading-section">Login #10</h2>
+                        <div class="text-center p-3">
+                            <h2 class="display-5 heading-section">Inicio de Sesión</h2>
                         </div>
                     </div>
+                    <!--Botones-->
+                    <div class="row justify-content-center p-3">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                checked>
+                            <label class="btn btn-outline-success" for="btnradio1">Cliente</label>
+
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-light" for="btnradio2">Veterinario</label>
+
+                        </div>
+                    </div>
+                    <!--Formulario-->
                     <div class="row justify-content-center">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="login-wrap p-0">
-                                <h3 class="mb-4 text-center">Have an account?</h3>
-                                <form action="#" class="signin-form">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Username" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="password-field" type="password" class="form-control"
-                                            placeholder="Password" required>
-                                        <span toggle="#password-field"
-                                            class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-primary submit px-3">Sign
-                                            In</button>
-                                    </div>
-                                    <div class="form-group d-md-flex">
-                                        <div class="w-50">
-                                            <label class="checkbox-wrap checkbox-primary">Remember Me
-                                                <input type="checkbox" checked>
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div class="w-50 text-md-right">
-                                            <a href="#" style="color: #fff">Forgot Password</a>
-                                        </div>
-                                    </div>
-                                </form>
-                                <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-                                <div class="social d-flex text-center">
-                                    <a href="#" class="px-2 py-2 mr-md-1 rounded"><span
-                                            class="ion-logo-facebook mr-2"></span> Facebook</a>
-                                    <a href="#" class="px-2 py-2 ml-md-1 rounded"><span
-                                            class="ion-logo-twitter mr-2"></span> Twitter</a>
+
+                        <h4 class="text-center">¿Ya tienes una cuenta?</h4>
+
+                        <form action="#" class="signin-form">
+
+                            <div class="form-group py-4">
+                                <input type="text" class="form-control" placeholder="Usuario" required>
+                            </div>
+
+                            <div class="form-group pb-4">
+                                <input id="password" type="password" class="form-control"
+                                    placeholder="Contrase&ntilde;a" required>
+                            </div>
+
+                            <div class="form-group pb-3">
+                                <div class="btn-group col-12 px-5" role="group">
+                                    <button type="submit" class="form-control btn btn-success submit">Iniciar</button>
+                                    <button type="button" class="form-control btn btn-light"><a class="text-decoration-none text-dark" href="Cliente/Registro.jsp">Registro</a></button>
+                                </div>
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <div class="text-center">
+                                    <h6><a class="text-dark text-decoration-none"href="Cliente/CambiarClave.jsp">Recuperar Contrase&ntilde;a</a></h6>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-        </body>
-        <script src="Utiles/Frameworks/bootstrap/js/bootstrap.min.js"></script>
-        <script src="Utiles/Frameworks/jquery/jquery.min.js"></script>
+</body>
+<script src="Utiles/Frameworks/bootstrap/js/bootstrap.min.js"></script>
+<script src="Utiles/Frameworks/jquery/jquery.min.js"></script>
 
-        </html>
+</html>
