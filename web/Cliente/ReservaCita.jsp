@@ -25,7 +25,7 @@
                         <div class="mb-3">
                         <label class="form-label"> Fecha de Entrada</label>
                         <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
-                         </div>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
