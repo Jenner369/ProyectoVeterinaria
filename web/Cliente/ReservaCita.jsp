@@ -17,7 +17,7 @@
             <h2 style="margin-top: 2%">Reservar Cita!</h2><br/>
             <form name="formulariocita" >
                 <div class="mb-3">
-                    <label class="form-label"> Id Cliente</label>
+                    <label class="form-label">Id Cliente</label>
                     <input type="text" name="idCliente" class="form-control" placeholder="Id Cliente" required="">
                 </div>
                 <div class="row">
