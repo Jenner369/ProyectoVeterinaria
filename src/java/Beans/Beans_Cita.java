@@ -6,8 +6,17 @@ public class Beans_Cita {
     private String ENTRADA;
     private String SALIDA;
     private double MONTO;
+    private String DESCRIPCION;
     private int CLIENTE_ID;
     private int VETERINARIO_ID;
+
+    public String getDESCRIPCION() {
+        return DESCRIPCION;
+    }
+
+    public void setDESCRIPCION(String DESCRIPCION) {
+        this.DESCRIPCION = DESCRIPCION;
+    }
 
     public int getID() {
         return ID;
