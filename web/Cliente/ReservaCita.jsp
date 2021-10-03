@@ -49,7 +49,7 @@
                         <label class="form-label"> ID Veterinario</label>
                         <input type="text" name ="idVeterinario" class="form-control" placeholder="Id Veterinario" aria-label="Id Veterinario" required="">
                         </div>                       
-                    </div>   
+                    </div>    
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
