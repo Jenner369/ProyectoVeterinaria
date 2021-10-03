@@ -57,7 +57,7 @@
                         <input type="checkbox" class="form-check-input" name="acuerdoprivacidad" checked>    
                     </div>
                 </div>
-                <button class="btn btn-primary" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
+                <button class="btn btn-success" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
      
             </form>
             
