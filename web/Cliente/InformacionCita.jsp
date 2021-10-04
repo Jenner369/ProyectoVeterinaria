@@ -14,19 +14,19 @@
     </head>
     <body>
         <div class="container card  col-sm-6" style="width: 45%;margin: 5% 24% 5% 24%">
-            <h2 style="margin-top: 2%"> Infromación de la Cita</h2><br/>
+            <h2 style="margin-top: 2%"> Información de la Cita</h2><br/>
             <form name="formulariocita" >               
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Fecha de Entrada</label>
-                            <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                            <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada" readonly>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Hora de Entrada</label>
-                            <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
+                            <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada" readonly>                         
                         </div>                    
                     </div>
                 </div>
@@ -34,13 +34,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Fecha de Salida</label>
-                            <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                            <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada" readonly>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Hora de Salida</label>
-                            <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida">                         
+                            <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida" readonly>                         
                         </div>                    
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                     <div class="col">
                         <div class="mb-3"><label class="form-label">Mascota</label>
                             <div class="input-group">
-                                <input type="text" class="form-control"  required="">                               
+                                <input type="text" class="form-control"   readonly>                               
                             </div>
                         </div>                        
                     </div> 
@@ -56,7 +56,7 @@
                         <div class="mb-3"><label class="form-label">Monto Total</label>
                             <div class="input-group">
                                 <span class="input-group-text">S/.</span>
-                                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
+                                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" readonly>
                             </div>
                         </div>                        
                     </div>  
