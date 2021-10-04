@@ -7,10 +7,10 @@ import java.sql.SQLException;
 public class cnx {
 
     private String USERNAME = "root";
-    private String PASSWORD = "Sistemas...2020";
+    private String PASSWORD = "root";
     private String HOST = "localhost";
     private String PORT = "3306";
-    private String DATABASE = "veterinaria";
+    private String DATABASE = "practica";
     private String CLASSNAME = "com.mysql.cj.jdbc.Driver";
     private String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?serverTimezone=UTC";
 

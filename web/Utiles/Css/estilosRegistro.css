@@ -1,0 +1,31 @@
+body {
+    scroll-behavior: smooth;
+    background: #818a81;
+}
+body div h3{
+    color:#ffffff;
+}
+
+.register-bg{
+    background-image: url("../Images/cat1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.container{
+    max-width: 80%;
+    padding: 25px 25px;
+    margin-top: 50px; 
+    font-size: 17px;
+}
+
+.nombre{
+    bottom: 10px;
+}
+
+@media (max-width: 1200px){
+    .register-bg{
+        min-height: 80vh;
+    }
+}
