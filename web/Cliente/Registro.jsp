@@ -10,65 +10,63 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro cliente</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <link href="../Utiles/Css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div>
-            <table id="tablap">
-                <tr>
-                    <td id="imagen">
-                        <img src="../Utiles/Images/imagen_registro1.png" alt=""/>
-                    </td>
-                    <td id="cliente">
-                        <h1 align="center">VETERINARIA</h1>
+        <section>
+            <div class="row no-gutters">
+                <div class="col-xl-6 col-lg-14 register-bg">
+                    <div class="position-absolute nombre p-4">
+                        <h3 class="font-weight-bold text-light display-6">Veterinaria Zeus</h3>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 d-flex">
+                    <div class="container align-self-senter">
                         <br>
-                        <hr>
-                        <div id="registro" align="center">
-                            <form id="formulario">
-                                <table id="formulario">
-                                    <tr>
-                                        <td colspan="2" align="center">
-                                            <img src="../Utiles/Images/usuario2.png" alt=""/>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Nombre</td>
-                                        <td><input type="text" name="Nombre" id="Nombre"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Apellido Paterno</td>
-                                        <td><input type="text" name="ApellidoP" id="ApellidoP"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Apellido Materno</td>
-                                        <td><input type="text" name="ApellidoM" id="ApellidoM"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Usuario</td>
-                                        <td><input type="text" name="Usuario" id="Usuario"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Contraseña</td>
-                                        <td><input type="password" name="Contraseña" id="Contraseña"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2" align="center" id="controles">
-                                            <input type="submit" name="Registrarse" id="Registrarse" value="Registrarse">
-                                            <input type="reset" name="Cancelar" id="Cancelar" value="Cancelar">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+                        <h3 align="center" class="display-6">Registrate gratis</h3>
+                        <br>
+                        <form class="row g-3">
+                            <div class="form-group">
+                                <label for="inputEmail4" class="form-label">Usuario</label>
+                              <input type="email" class="form-control" id="inputEmail4" placeholder="Ejm. Clara09">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword4" class="form-label">Contraseña</label>
+                              <input type="password" class="form-control" id="inputPassword4">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="form-label">Nombre</label>
+                              <input type="text" class="form-control" id="inputName" placeholder="Ejm. Clara Celeste">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLastName" class="form-label">Apellidos</label>
+                              <input type="text" class="form-control" id="inputLastName" placeholder="Ejm. Chavez Cotrina">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputGenero" class="form-label">Género</label>
+                              <select id="inputGenero" class="form-select">
+                                <option selected>Femenino</option>
+                                <option>Masculino</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                <label class="form-check-label" for="gridCheck">
+                                  Acepto términos y condiciones de la empresa
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-success submit">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     </body>
 </html>
