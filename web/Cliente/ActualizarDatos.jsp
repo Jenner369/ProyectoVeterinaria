@@ -35,10 +35,6 @@
                                     <input type="email" class="form-control" id="inputEmail4">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword4" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPassword4">
-                                </div>
-                                <div class="form-group">
                                     <label for="inputName" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="inputName">
                                 </div>
@@ -52,14 +48,6 @@
                                         <option selected>Femenino</option>
                                         <option>Masculino</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Acepto términos y condiciones de la empresa
-                                        </label>
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="form-control btn btn-success submit">Guardar cambios</button>
