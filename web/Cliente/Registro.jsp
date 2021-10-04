@@ -14,7 +14,8 @@
         <link href="../Utiles/Css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <nav></nav>
+        <nav>
+        </nav>
         <section>
             <div class="row no-gutters">
                 <div class="col-xl-6 col-lg-14 register-bg">
@@ -30,34 +31,34 @@
                         <form class="row g-3">
                             <div class="form-group">
                                 <label for="inputEmail4" class="form-label">Usuario</label>
-                              <input type="email" class="form-control" id="inputEmail4" placeholder="Ejm. Clara09">
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Ejm. Clara09">
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword4" class="form-label">Contraseña</label>
-                              <input type="password" class="form-control" id="inputPassword4">
+                                <input type="password" class="form-control" id="inputPassword4">
                             </div>
                             <div class="form-group">
                                 <label for="inputName" class="form-label">Nombre</label>
-                              <input type="text" class="form-control" id="inputName" placeholder="Ejm. Clara Celeste">
+                                <input type="text" class="form-control" id="inputName" placeholder="Ejm. Clara Celeste">
                             </div>
                             <div class="form-group">
                                 <label for="inputLastName" class="form-label">Apellidos</label>
-                              <input type="text" class="form-control" id="inputLastName" placeholder="Ejm. Chavez Cotrina">
+                                <input type="text" class="form-control" id="inputLastName" placeholder="Ejm. Chavez Cotrina">
                             </div>
                             <div class="form-group">
                                 <label for="inputGenero" class="form-label">Género</label>
-                              <select id="inputGenero" class="form-select">
-                                <option selected>Femenino</option>
-                                <option>Masculino</option>
-                              </select>
+                                <select id="inputGenero" class="form-select">
+                                    <option selected>Femenino</option>
+                                    <option>Masculino</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                  Acepto términos y condiciones de la empresa
-                                </label>
-                              </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Acepto términos y condiciones de la empresa
+                                    </label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-success submit">Registrar</button>
@@ -67,7 +68,8 @@
                 </div>
             </div>
         </section>
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-        <script src="../Utiles/Js/loadMenuCliente.js"></script>
+        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="../Utiles/Js/loadMenuCliente.js" type="text/javascript"></script>
     </body>
 </html>
