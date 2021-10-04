@@ -1,7 +1,7 @@
 <%-- 
-    Document   : ReservaCita
-    Created on : 24/09/2021, 12:22:18 AM
-    Author     : USER
+    Document   : InformacionCita
+    Created on : 03/10/2021, 08:44:03 PM
+    Author     : Cristina Céspedes
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,24 +9,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        <title>Reservar Cita</title>       
-    </head> 
+        <title>Información Cita</title>
+        <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    </head>
     <body>
         <div class="container card  col-sm-6" style="width: 45%;margin: 5% 24% 5% 24%">
-            <h2 style="margin-top: 2%">Reservar Cita!</h2><br/>
+            <h2 style="margin-top: 2%"> Información de la Cita</h2><br/>
             <form name="formulariocita" >               
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Fecha de Entrada</label>
-                            <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                            <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada" readonly>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Hora de Entrada</label>
-                            <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
+                            <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada" readonly>                         
                         </div>                    
                     </div>
                 </div>
@@ -34,35 +34,21 @@
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Fecha de Salida</label>
-                            <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                            <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada" readonly>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label"> Hora de Salida</label>
-                            <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida">                         
+                            <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida" readonly>                         
                         </div>                    
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">                    
-                        <div class="mb-3"><label class="form-label">  Servicio</label>
-                            <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect04" aria-label="Seleccione Servicio">
-                                    <option selected> ...</option>
-                                    <option value="1">Consulta Medica</option>
-                                    <option value="2"> Baño & Peluqueria</option>
-                                    <option value="3">Vacunas & Desparacitación</option>
-                                    <option value="3">Cirugía</option>
-                                </select>
-                                <button class="btn btn-outline btn-success" type="submit">Agregar</button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col">
                         <div class="mb-3"><label class="form-label">Mascota</label>
                             <div class="input-group">
-                                <input type="text" class="form-control"  required="">                               
+                                <input type="text" class="form-control"   readonly>                               
                             </div>
                         </div>                        
                     </div> 
@@ -70,7 +56,7 @@
                         <div class="mb-3"><label class="form-label">Monto Total</label>
                             <div class="input-group">
                                 <span class="input-group-text">S/.</span>
-                                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
+                                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" readonly>
                             </div>
                         </div>                        
                     </div>  
@@ -96,17 +82,7 @@
                         </tr>                       
                     </tbody>
                 </table>
-
-                <div class="mb-3">
-                    <div class="form-check">
-                        <label class="form-check-lable">Estoy de acuerdo con terminos y condiciones de privacidad</label>
-                        <input type="checkbox" class="form-check-input" name="acuerdoprivacidad" checked>    
-                    </div>
-                </div>
-                <button class="btn btn-success" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
-
             </form>
-
         </div>
     </body>
 </html>
