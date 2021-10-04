@@ -62,7 +62,7 @@
 
                             <div class="form-group">
                                 <div class="text-center">
-                                    <h6><a class="text-dark text-decoration-none"href="Cliente/CambiarClave.jsp">Recuperar Contrase&ntilde;a</a></h6>
+                                    <h6><a class="text-dark text-decoration-none" href="Cliente/CambiarClave.jsp">Recuperar Contrase&ntilde;a</a></h6>
                                 </div>
                             </div>
                         </form>
