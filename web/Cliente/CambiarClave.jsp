@@ -4,7 +4,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Eliminar cuenta</title>
+        <title>Cambiar contraseña</title>
         <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../Utiles/Css/estiloCambioClave.css" rel="stylesheet" type="text/css" />
     </head>
