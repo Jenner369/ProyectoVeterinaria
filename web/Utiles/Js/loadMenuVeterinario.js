@@ -1,5 +1,5 @@
 function loadNavBarMenu() {
-    $('nav').load('Veterinario/navbarMenuVeterinario.jsp')
+    $('nav').load('../Veterinario/navbarMenuVeterinario.jsp')
 }
 
 $(document).ready( function() {

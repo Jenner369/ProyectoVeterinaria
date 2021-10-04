@@ -18,7 +18,7 @@
                        aria-expanded="false">Reserva</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown01">
                         <li><a class="dropdown-item" href="">Reservar Cita</a></li>
-                        <li><a class="dropdown-item" href="">Ver Horarios</a></li>
+                        <li><a class="dropdown-item" href="VerCalendario.jsp">Ver Horarios</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
