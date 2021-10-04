@@ -50,7 +50,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
                         <li><a class="dropdown-item" href="LogIn.html">Ingresar</a></li>
-                        <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                        <li><a class="dropdown-item" href="Cliente/Registro.jsp">Registrarse</a></li>
                     </ul>
                 </li>
             </ul>
