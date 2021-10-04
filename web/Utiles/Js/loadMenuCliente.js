@@ -2,6 +2,6 @@ function loadNavBarMenu() {
     $('nav').load('../Cliente/navbarMenuCliente.jsp')
 }
 
-$(document).ready(function () {
+$(document).ready( function() {
     loadNavBarMenu()
 })
