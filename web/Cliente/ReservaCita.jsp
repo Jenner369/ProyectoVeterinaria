@@ -13,44 +13,90 @@
         <title>Reservar Cita</title>       
     </head>
     <body>
-        <div class="container card  col-sm-6" style="width: 50%;margin: 5% 25% 5% 25%">
+        <div class="container card  col-sm-6" style="width: 45%;margin: 5% 24% 5% 24%">
             <h2 style="margin-top: 2%">Reservar Cita!</h2><br/>
-            <form name="formulariocita" >
-                <div class="mb-3">
-                    <label class="form-label">Id Cliente</label>
-                    <input type="text" name="idCliente" class="form-control" placeholder="Id Cliente" required="">
-                </div>
+            <form name="formulariocita" >               
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                        <label class="form-label"> Fecha de Entrada</label>
-                        <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                            <label class="form-label"> Fecha de Entrada</label>
+                            <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                         <label class="form-label"> Fecha de Salida</label>
-                        <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Salida">
-                         </div>
+                            <label class="form-label"> Hora de Entrada</label>
+                            <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
+                        </div>                    
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="mb-3"><label class="form-label">Monto</label>
-                            <div class="input-group">
-                              <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
-                              <span class="input-group-text">$</span>
-                              <span class="input-group-text">0.00</span>
-                            </div>
-                        </div>                        
+                        <div class="mb-3">
+                            <label class="form-label"> Fecha de Salida</label>
+                            <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                        </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                        <label class="form-label"> ID Veterinario</label>
-                        <input type="text" name ="idVeterinario" class="form-control" placeholder="Id Veterinario" aria-label="Id Veterinario" required="">
-                        </div>                       
-                    </div>    
+                            <label class="form-label"> Hora de Salida</label>
+                            <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida">                         
+                        </div>                    
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col">                    
+                        <div class="mb-3"><label class="form-label">  Servicio</label>
+                            <div class="input-group">
+                                <select class="form-select" id="inputGroupSelect04" aria-label="Seleccione Servicio">
+                                    <option selected> ...</option>
+                                    <option value="1">Consulta Medica</option>
+                                    <option value="2"> Baño & Peluqueria</option>
+                                    <option value="3">Vacunas & Desparacitación</option>
+                                    <option value="3">Cirugía</option>
+                                </select>
+                                <button class="btn btn-outline btn-success" type="submit">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label">Mascota</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control"  required="">                               
+                            </div>
+                        </div>                        
+                    </div> 
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label">Monto Total</label>
+                            <div class="input-group">
+                                <span class="input-group-text">S/.</span>
+                                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
+                            </div>
+                        </div>                        
+                    </div>  
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Servicio</th>
+                            <th scope="col"> Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td></td>
+                            <td></td>
+                        </tr>                       
+                    </tbody>
+                </table>
+
                 <div class="mb-3">
                     <div class="form-check">
                         <label class="form-check-lable">Estoy de acuerdo con terminos y condiciones de privacidad</label>
@@ -58,9 +104,9 @@
                     </div>
                 </div>
                 <button class="btn btn-success" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
-     
+
             </form>
-            
+
         </div>
     </body>
 </html>
