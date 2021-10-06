@@ -1,0 +1,17 @@
+body {
+    scroll-behavior: smooth;
+    background-image: url("https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+    background-size: cover; 
+    background-position: center center;
+    background-attachment: fixed;
+    color:white;
+}
+.form-group{
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    
+}
+.container-fluid{
+    margin: 13% 0 13% 0;
+}
