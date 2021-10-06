@@ -18,34 +18,29 @@ document.addEventListener('DOMContentLoaded', async function () {
         eventClick: function (info) {
             $("#modalEjemplo").modal('show');
             $("#ModalTitle").text(info.event.title);
-            $("#ModalDescription").text(info.event.description);            
-            $("#ModalStart").text("Inicio: "+formatDate(info.event.start));
-            $("#ModalEnd").text("Fin: "+formatDate(info.event.end));
+            $("#ModalDescription").text(info.event.description);
+            $("#ModalStart").text("Inicio: " + formatDate(info.event.start));
+            $("#ModalEnd").text("Fin: " + formatDate(info.event.end));
+            $("#updateButton").attr('onclick', "redirect('modificar'," + info.event.id + ")");
+            $("#deleteButton").attr('onclick', "redirect('eliminar'," + info.event.id + ")");
         },
         eventMouseEnter: function (info) {
-           $(info.el).addClass("bg-secondary");
+            $(info.el).addClass("bg-danger");
+            $(info.el).addClass("border border-danger");
+            $(info.el).css('cursor','pointer');
+            
         },
         eventMouseLeave: function (info) {
-           $(info.el).removeClass("bg-secondary");
-         
+            $(info.el).removeClass("bg-danger");
+            $(info.el).removeClass("border border-danger");
+            $(info.el).css('cursor','none');
         },
         customButtons: {
             Nuevo: {
                 text: "Agregar",
                 click: function () {
-                    alert("Paso");
-                }
-            },
-            Modificar: {
-                text: "Modificar",
-                click: function () {
-                    alert("Paso");
-                }
-            },
-            Eliminar: {
-                text: "Eliminar",
-                click: function () {
-                    alert("Paso");
+                    let url = 'Cliente/ReservaCita.jsp';
+                    $(window).attr('location', url);
                 }
             }
         }
@@ -70,7 +65,7 @@ function getDataCalendar() {
                             "description": desc,
                             "start": start,
                             "end": end,
-                            "id": id,
+                            "id": id
                         });
                     });
                 }
@@ -81,5 +76,17 @@ function getDataCalendar() {
     });
 }
 function formatDate(date) {
-  return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear() + " " +  ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2) + ":" + ('0' + date.getSeconds()).slice(-2) + ' ' + (date.getHours() < 12 ? 'AM' : 'PM');
+    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear() + " " + ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2) + ":" + ('0' + date.getSeconds()).slice(-2) + ' ' + (date.getHours() < 12 ? 'AM' : 'PM');
+}
+
+function redirect(tipo, idCita) {
+    if (tipo === 'modificar') {
+        let url = 'Cliente/ModificarCita.jsp';
+        url = url + '?idCita=' + idCita;
+        $(window).attr('location', url);
+    } else if (tipo === 'eliminar') {
+        let url = 'Cliente/EliminarCita.jsp';
+        url = url + '?idCita=' + idCita;
+        $(window).attr('location', url);
+    }
 }
