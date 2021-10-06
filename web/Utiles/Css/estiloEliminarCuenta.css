@@ -1,15 +1,8 @@
 body {
     scroll-behavior: smooth;
-    background-image: url("../Images/mascotas.jpg");
+    background-image: url("../Images/fondoeliminar1.jpg");
     background-size: cover; 
-    color:#000;
-}
-body div h3{
-    color:#000;
-}
-
-.container{
-    max-width: 100%;
-    padding: 25px 25px;
-    font-size: 18px;
+    background-position: center center;
+    background-attachment: fixed;
+    color:white;
 }

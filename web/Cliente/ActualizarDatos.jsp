@@ -21,7 +21,7 @@
                 <div class="row no-gutters">
                     <div class="col-xl-6 col-lg-14 register-bg">
                         <div class="position-absolute nombre p-4">
-                            <h3 class="font-weight-bold text-light display-6">Veterinaria Zeus</h3>
+                            
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 d-flex">
