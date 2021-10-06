@@ -32,7 +32,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
                                aria-expanded="false">Reserva</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                                <li><a class="dropdown-item" href="">Reservar Cita</a></li>
+                                <li><a class="dropdown-item" href="Servlet_Menu?enlace=reserva">Reservar Cita</a></li>
                                 <li><a class="dropdown-item" href="VerCalendario.jsp">Ver Horarios</a></li>
                             </ul>
                         </li>
@@ -64,8 +64,8 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                                <li><a class="dropdown-item" href="LogIn.html">Ingresar</a></li>
-                                <li><a class="dropdown-item" href="Cliente/Registro.jsp">Registrarse</a></li>
+                                <li><a class="dropdown-item" href="Servlet_Menu?enlace=login">Ingresar</a></li>
+                                <li><a class="dropdown-item" href="Servlet_Menu?enlace=register">Registrarse</a></li>
                             </ul>
                         </li>
                     </ul>

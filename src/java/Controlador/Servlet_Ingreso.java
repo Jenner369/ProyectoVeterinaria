@@ -104,7 +104,7 @@ public class Servlet_Ingreso extends HttpServlet {
                 misession.setAttribute("id", lCliente.getID());
                 misession.setAttribute("tipo", tipo);
 
-                RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
+                RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Cliente?enlace=menu");
                 destinos.forward(request, response);
 
             } catch (SQLException ex) {
@@ -122,7 +122,7 @@ public class Servlet_Ingreso extends HttpServlet {
                 misession.setAttribute("id", lVeterinario.getId());
                 misession.setAttribute("tipo", tipo);
 
-                RequestDispatcher destinos = request.getRequestDispatcher("Veterinario/MenuVeterinario.jsp");
+                RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Veterinario?enlace=menu");
                 destinos.forward(request, response);
 
             } catch (SQLException ex) {
