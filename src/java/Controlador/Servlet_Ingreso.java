@@ -5,8 +5,18 @@
  */
 package Controlador;
 
+import Beans.Beans_Cliente;
+import Beans.Beans_Veterinario;
+import DAO.DAO_Cliente;
+import DAO.DAO_Veterinario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +29,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author jedur
  */
-@WebServlet(name = "Servlet_Menu", urlPatterns = {"/Servlet_Menu"})
-public class Servlet_Menu extends HttpServlet {
+@WebServlet(name = "Servlet_Ingreso", urlPatterns = {"/Servlet_Ingreso"})
+public class Servlet_Ingreso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +49,10 @@ public class Servlet_Menu extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Menu</title>");
+            out.println("<title>Servlet Servlet_Ingreso</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet_Menu at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Servlet_Ingreso at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,25 +70,7 @@ public class Servlet_Menu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String opt = request.getParameter("enlace");
-        if (opt == null || opt.isEmpty()) {
-            RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("servicios")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("ReservaCita.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("salir")) {
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("user",null);
-            sesion.setAttribute("pass",null);
-            sesion.setAttribute("id",null);
-            sesion.setAttribute("tipo",null);
-            RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
-            destinos.forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -93,6 +85,51 @@ public class Servlet_Menu extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        String user;
+        String pass;
+        String tipo;
+        user = request.getParameter("user");
+        pass = request.getParameter("pass");
+        tipo = request.getParameter("tipo");
+
+        if (tipo.equals("cliente")) {
+            try {
+                Beans_Cliente lCliente = new Beans_Cliente();
+                DAO_Cliente o = new DAO_Cliente();
+                lCliente = o.BuscarCliente_porUserPass(user, pass);
+
+                HttpSession misession = request.getSession(true);
+                misession.setAttribute("user", lCliente.getUsuario());
+                misession.setAttribute("pass", lCliente.getPassword());
+                misession.setAttribute("id", lCliente.getID());
+                misession.setAttribute("tipo", tipo);
+
+                RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
+                destinos.forward(request, response);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Servlet_Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (tipo.equals("veterinario")) {
+            try {
+                Beans_Veterinario lVeterinario = new Beans_Veterinario();
+                DAO_Veterinario o = new DAO_Veterinario();
+                lVeterinario = o.BuscarUsuario(user, pass);
+
+                HttpSession misession = request.getSession(true);
+                misession.setAttribute("user", lVeterinario.getUsuario());
+                misession.setAttribute("pass", lVeterinario.getPassword());
+                misession.setAttribute("id", lVeterinario.getId());
+                misession.setAttribute("tipo", tipo);
+
+                RequestDispatcher destinos = request.getRequestDispatcher("Veterinario/MenuVeterinario.jsp");
+                destinos.forward(request, response);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Servlet_Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
     /**

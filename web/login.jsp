@@ -1,4 +1,12 @@
 <!--%-- Document : LogIn Created on : 24/09/2021, 12:20:19 AM Author : USER --%-->
+
+<%
+
+
+
+
+%>
+
 <!--<%@page contentType="text/html" pageEncoding="UTF-8" %>-->
 <html lang="en">
 
@@ -41,14 +49,14 @@
 
                         <h4 class="text-center">¿Ya tienes una cuenta?</h4>
 
-                        <form action="#" class="signin-form">
+                        <form action="Servlet_Ingreso" method="POST" class="signin-form">
 
                             <div class="form-group py-4">
-                                <input type="text" class="form-control" placeholder="Usuario" required>
+                                <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" required>
                             </div>
 
                             <div class="form-group pb-4">
-                                <input id="password" type="password" class="form-control"
+                                <input id="pass" name="pass" type="password" class="form-control"
                                     placeholder="Contrase&ntilde;a" required>
                             </div>
 
