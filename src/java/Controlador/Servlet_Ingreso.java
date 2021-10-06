@@ -91,21 +91,26 @@ public class Servlet_Ingreso extends HttpServlet {
         user = request.getParameter("user");
         pass = request.getParameter("pass");
         tipo = request.getParameter("tipo");
-
         if (tipo.equals("cliente")) {
             try {
                 Beans_Cliente lCliente = new Beans_Cliente();
                 DAO_Cliente o = new DAO_Cliente();
                 lCliente = o.BuscarCliente_porUserPass(user, pass);
+                if (lCliente.getUsuario() != null) {
+                    HttpSession misession = request.getSession(true);
+                    misession.setAttribute("user", lCliente.getUsuario());
+                    misession.setAttribute("pass", lCliente.getPassword());
+                    misession.setAttribute("id", lCliente.getID());
+                    misession.setAttribute("tipo", tipo);
 
-                HttpSession misession = request.getSession(true);
-                misession.setAttribute("user", lCliente.getUsuario());
-                misession.setAttribute("pass", lCliente.getPassword());
-                misession.setAttribute("id", lCliente.getID());
-                misession.setAttribute("tipo", tipo);
-
-                RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Cliente?enlace=menu");
-                destinos.forward(request, response);
+                    RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Cliente?enlace=menu");
+                    destinos.forward(request, response);
+                } else {
+                    System.out.println("XD");
+                    RequestDispatcher destinos = request.getRequestDispatcher("login.jsp");
+                    destinos.forward(request, response);
+                    return;
+                }
 
             } catch (SQLException ex) {
                 Logger.getLogger(Servlet_Ingreso.class.getName()).log(Level.SEVERE, null, ex);

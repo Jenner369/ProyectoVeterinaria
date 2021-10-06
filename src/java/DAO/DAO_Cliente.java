@@ -108,16 +108,18 @@ public class DAO_Cliente {
             cs.setString(2, pass);
             rs = cs.executeQuery();
             //SOLO SE ESPERA UNO
-            rs.next();
-            b = new Beans_Cliente();
-            b.setID(rs.getInt(1));
-            b.setNombre(rs.getString(2));
-            b.setApellidoP(rs.getString(3));
-            b.setApellidoM(rs.getString(4));
-            b.setUsuario(rs.getString(5));
-            b.setPassword(rs.getString(6));
-            b.setImagen(rs.getString(7));
 
+            while (rs.next()) {
+                b = new Beans_Cliente();
+                b.setID(rs.getInt(1));
+                b.setNombre(rs.getString(2));
+                b.setApellidoP(rs.getString(3));
+                b.setApellidoM(rs.getString(4));
+                b.setUsuario(rs.getString(5));
+                b.setPassword(rs.getString(6));
+                b.setImagen(rs.getString(7));
+                break;
+            }
             rs.close();
             cs.close();
             con.close();

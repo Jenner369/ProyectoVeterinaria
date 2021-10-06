@@ -45,7 +45,7 @@
                             <form action="Servlet_Ingreso" method="POST" class="signin-form">
 
                                 <div class="form-group py-4">
-                                    <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Usuario" required>
+                                    <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" required>
                                 </div>
 
                                 <div class="form-group pb-4">
@@ -60,12 +60,13 @@
                                     </div>
 
                                 </div>
-
+                                  
                                 <div class="form-group">
                                     <div class="text-center">
                                         <h6><a class="text-dark text-decoration-none" href="Cliente/CambiarClave.jsp">Recuperar Contrase&ntilde;a</a></h6>
                                     </div>
                                 </div>
+                                <input type="hidden" id="tipo" name="tipo" value="cliente" style="display: none;">
                             </form>
                         </div>
                     </div>

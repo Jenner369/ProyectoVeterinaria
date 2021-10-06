@@ -62,7 +62,7 @@ public class Servlet_Menu extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String opt = request.getParameter("enlace");
-        
+        System.out.println("XDDD");
         if (opt == null || opt.isEmpty()) {
             RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
             destinos.forward(request, response);
@@ -80,12 +80,11 @@ public class Servlet_Menu extends HttpServlet {
             destinos.forward(request, response);
         }
         if (opt.equals("salir")) {
-            
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("user",null);
-            sesion.setAttribute("pass",null);
-            sesion.setAttribute("id",null);
-            sesion.setAttribute("tipo",null);
+            sesion.setAttribute("user", null);
+            sesion.setAttribute("pass", null);
+            sesion.setAttribute("id", null);
+            sesion.setAttribute("tipo", null);
             RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
             destinos.forward(request, response);
         }
@@ -102,7 +101,6 @@ public class Servlet_Menu extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
     }
 
     /**
