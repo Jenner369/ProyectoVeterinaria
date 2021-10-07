@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <% 
     int cita =Integer.parseInt(request.getParameter("IdCita"));
-%>
+%> 
 
 <html>
     <head>
