@@ -272,6 +272,4 @@
     <script src="Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="Utiles/Frameworks/jquery/jquery.min.js"></script>
     <script src="Utiles/Js/clickServices.js"></script>
-    <script src="Utiles/Js/loadMenu.js"></script>
-
 </html>
