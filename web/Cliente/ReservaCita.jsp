@@ -1,8 +1,3 @@
-<%-- 
-    Document   : ReservaCita
-    Created on : 24/09/2021, 12:22:18 AM
-    Author     : USER
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,7 +25,7 @@
                             <br>
                             <h3 align="center" class="display-6">Reservar Cita</h3>
                             <br>
-                            <form class="g-3" style="width: 100%">
+                            <form action="Servlet_Cita" method="POST" class="g-3" style="width: 100%">
                                 <div class="row">
                                     <div class="col">
                                         <label class="form-label"> Fecha de Entrada</label>
@@ -112,6 +107,7 @@
                                 <div class="form-group">
                                     <button class="btn btn-success" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
                                 </div>
+                                <input type="hidden" id="opcion" name="opcion" value="agregar" style="display: none;">
                             </form>
                         </div>
                     </div>

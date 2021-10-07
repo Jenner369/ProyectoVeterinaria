@@ -7,7 +7,6 @@ package Controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jedur
  */
-@WebServlet(name = "Servlet_Cliente", urlPatterns = {"/Servlet_Cliente"})
-public class Servlet_Cliente extends HttpServlet {
+@WebServlet(name = "Servlet_Mascota", urlPatterns = {"/Servlet_Mascota"})
+public class Servlet_Mascota extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class Servlet_Cliente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Cliente</title>");
+            out.println("<title>Servlet Servlet_Mascota</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet_Cliente at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Servlet_Mascota at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,36 +58,7 @@ public class Servlet_Cliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String opt = request.getParameter("enlace");
-        String url = "";
-        if (opt == null || opt.isEmpty()) {
-            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Menu");
-            destinos.forward(request, response);
-        }
-        switch (opt) {
-            case "menu":
-                url = "Cliente/MenuCliente.jsp";
-                break;
-            case "reserva":
-                url = "Cliente/ReservaCita.jsp";
-                break;
-            case "calendario":
-                url = "Cliente/VerCalendarioCliente.jsp";
-                break;
-            case "mascota":
-                url = "Cliente/VerMascota.jsp";
-                break;
-            case "servicio":
-                url = "Cliente/Servicios.jsp";
-                break;
-            default:
-                url = "Servlet_Menu?enlace=login";
-                break;
-        }
-
-        RequestDispatcher destinos = request.getRequestDispatcher(url);
-        destinos.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
