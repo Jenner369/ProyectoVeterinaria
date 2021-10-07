@@ -32,7 +32,7 @@
                     <td></td>
                     <td>
 
-                        <a href=""><i class="bi bi-pencil-square h4" class="enlace"></i></a>
+                        <a onclick="$('#modaleditar').modal('show');"><i class="bi bi-pencil-square h4" class="enlace"></i></a>
                         <a href=""><i class="bi bi-trash h4" class="enlace"></i></a>
                         <a href=""><i class="bi bi-image h4" class="enlace"></i></a>
 
@@ -41,10 +41,28 @@
                 </tr>
             </table>
             <div>
-                <button onclick="$("#modalEjemplo").modal('show');">Prueba</button>
+                <button onclick="$('#modalEjemplo').modal('show');">Prueba</button>
             </div>
             <div class="form-group">
                 <button type="submit" class=" btn btn-success submit">Registrar</button>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" id="modaleditar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                           aqui form
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </div>
             </div>
         </div>
 

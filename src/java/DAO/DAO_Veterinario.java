@@ -36,16 +36,16 @@ public class DAO_Veterinario {
             cs.setString(2, c);
             rs = cs.executeQuery();
             while (rs.next()) {
-                b = new Beans_Veterinario();
-                b.setId(rs.getInt(1));
-                b.setNombre(rs.getString(2));
-                b.setApellido_p(rs.getString(3));
-                b.setApellido_m(rs.getString(4));
-                b.setUsuario(rs.getString(5));
-                b.setPassword(rs.getString(6));
-                b.setDni(rs.getString(7));
-                b.setImagen(rs.getString(8));
-                lista.add(b);
+               
+                bVeterinario.setId(rs.getInt(1));
+                bVeterinario.setNombre(rs.getString(2));
+                bVeterinario.setApellido_p(rs.getString(3));
+                bVeterinario.setApellido_m(rs.getString(4));
+                bVeterinario.setUsuario(rs.getString(5));
+                bVeterinario.setPassword(rs.getString(6));
+                bVeterinario.setDni(rs.getString(7));
+                bVeterinario.setImagen(rs.getString(8));
+                
             }
             rs.close();
             cs.close();
@@ -53,7 +53,7 @@ public class DAO_Veterinario {
         } catch (SQLException e) {
             throw e;
         }
-        return lista;
+        return bVeterinario;
     }
 
     public boolean registrar_veterinario(String nombre, String apellido_p, String apellido_m,
