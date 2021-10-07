@@ -24,8 +24,10 @@ public class DAO_Veterinario {
         this.cn = new cnx();
     }
 
-    public List BuscarUsuario(String u, String c) throws SQLException {
-        List<Beans_Veterinario> lista = new ArrayList<>();
+    //Metodos
+    
+    public Beans_Veterinario BuscarUsuario(String u, String c) throws SQLException {
+        Beans_Veterinario bVeterinario = new Beans_Veterinario();
         try {
             String sql = "call veterinaria.buscar_usuario(?,?);";
             con = cn.getConexion();
