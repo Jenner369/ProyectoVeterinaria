@@ -98,27 +98,24 @@ public class DAO_Cliente {
     }
 
     //PROCEMDIENTO ALMACENADO
-    public Beans_Cliente BuscarCliente_porUserPass(String nombre, String pass) throws SQLException {
+    public Beans_Cliente BuscarCliente_porUserPass(String user, String pass) throws SQLException {
         Beans_Cliente bCliente = new Beans_Cliente();
         try {
             String sql = "call veterinaria.Cliente_UsuarioPorClave(?, ?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
-            cs.setString(1, nombre);
+            cs.setString(1, user);
             cs.setString(2, pass);
             rs = cs.executeQuery();
             //SOLO SE ESPERA UNO
-
             while (rs.next()) {
-                b = new Beans_Cliente();
-                b.setID(rs.getInt(1));
-                b.setNombre(rs.getString(2));
-                b.setApellidoP(rs.getString(3));
-                b.setApellidoM(rs.getString(4));
-                b.setUsuario(rs.getString(5));
-                b.setPassword(rs.getString(6));
-                b.setImagen(rs.getString(7));
-                break;
+                bCliente.setID(rs.getInt(1));
+                bCliente.setNombre(rs.getString(2));
+                bCliente.setApellidoP(rs.getString(3));
+                bCliente.setApellidoM(rs.getString(4));
+                bCliente.setUsuario(rs.getString(5));
+                bCliente.setPassword(rs.getString(6));
+                bCliente.setImagen(rs.getString(7));
             }
             rs.close();
             cs.close();

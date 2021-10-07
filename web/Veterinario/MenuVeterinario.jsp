@@ -1,4 +1,5 @@
 <!--<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
+<%@include file="/Utiles/Jsp/validationVeterinario.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,6 +10,7 @@
         </head>
     <body>
         <nav>
+            hola
         </nav>
     </body>
     <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js"></script>
