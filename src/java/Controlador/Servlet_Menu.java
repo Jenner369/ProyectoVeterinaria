@@ -62,7 +62,6 @@ public class Servlet_Menu extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String opt = request.getParameter("enlace");
-        System.out.println("XDDD");
         if (opt == null || opt.isEmpty()) {
             RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
             destinos.forward(request, response);

@@ -25,19 +25,20 @@ public class DAO_Cliente {
     //procediminetos almacenados
     public void RegistrarCliente(String nombre1, String apellido_p1, String apellido_m1, String usuario1, String password1, String imagen1) throws SQLException {
         try {
-            String sql = "call veterinaria.Registrar_Cliente(?, ?, ?, ?, ?, ?,?);";
+            String sql = "call veterinaria.Agregar_Cliente(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
-            cs.setString(2, nombre1);
-            cs.setString(3, apellido_p1);
-            cs.setString(4, apellido_m1);
-            cs.setString(5, usuario1);
-            cs.setString(6, password1);
-            cs.setString(7, imagen1);
+            cs.setString(1, nombre1);
+            cs.setString(2, apellido_p1);
+            cs.setString(3, apellido_m1);
+            cs.setString(4, usuario1);
+            cs.setString(5, password1);
+            cs.setString(6, imagen1);
             cs.execute();
             cs.close();
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
             throw e;
         }
     }

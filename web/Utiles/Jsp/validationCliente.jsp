@@ -11,6 +11,8 @@
             if (tipo.equals("veterinario")) {
                 response.sendRedirect("Servlet_Veterinario?enlace=menu");
             }
+        } else {
+            response.sendRedirect("Servlet_Menu?enlace=login");
         }
     } else {
         response.sendRedirect("Servlet_Menu?enlace=login");
