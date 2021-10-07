@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/CICLO%202021%20I%20-%205TO%20CICLO/TALLER%20DE%20PROGRAMACIÓN/Aplicaciones/ProyectoVeterinaria/web/Cliente/Registro.jsp</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/DAO/DAO_Cliente.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/DAO/DAO_Cita.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/Controlador/Servlet_Menu.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/Config/cnx.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/Controlador/Servlet_Ingreso.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/DAO/DAO_DetalleCita.java</file>
         </group>
     </open-files>
 </project-private>
