@@ -21,7 +21,7 @@
                 <div class="row no-gutters">
                     <div class="col-xl-6 col-lg-14 register-bg">
                         <div class="position-absolute nombre p-4">
-                            <h3 class="font-weight-bold text-light display-6">Veterinaria Zeus</h3>
+                            
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 d-flex">
@@ -33,10 +33,6 @@
                                 <div class="form-group">
                                     <label for="inputEmail4" class="form-label">Usuario</label>
                                     <input type="email" class="form-control" id="inputEmail4">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword4" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPassword4">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="form-label">Nombre</label>
@@ -54,15 +50,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Acepto términos y condiciones de la empresa
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-success submit">Registrar</button>
+                                    <button type="submit" class="form-control btn btn-success submit">Guardar cambios</button>
                                 </div>
                             </form>
                         </div>

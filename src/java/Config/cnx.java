@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class cnx {
 
-    private String USERNAME = "root";
-    private String PASSWORD = "root";
-    private String HOST = "localhost";
+    private String USERNAME = "admin";
+    private String PASSWORD = "admin";
+    private String HOST = "157.245.251.183";
     private String PORT = "3306";
-    private String DATABASE = "practica";
+    private String DATABASE = "veterinaria";
     private String CLASSNAME = "com.mysql.cj.jdbc.Driver";
     private String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?serverTimezone=UTC";
 

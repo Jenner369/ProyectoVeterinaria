@@ -1,0 +1,7 @@
+body {
+    scroll-behavior: smooth;
+    background-image: url("../Images/imgcambioclave.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}

@@ -5,8 +5,10 @@
  */
 package Controlador;
 
+import DAO.DAO_Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author jedur
  */
-@WebServlet(name = "Servlet_Menu", urlPatterns = {"/Servlet_Menu"})
-public class Servlet_Menu extends HttpServlet {
+@WebServlet(name = "Servlet_Registro", urlPatterns = {"/Servlet_Registro"})
+public class Servlet_Registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +41,10 @@ public class Servlet_Menu extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Menu</title>");
+            out.println("<title>Servlet Servlet_Registro</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet_Menu at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Servlet_Registro at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,33 +62,6 @@ public class Servlet_Menu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String opt = request.getParameter("enlace");
-        if (opt == null || opt.isEmpty()) {
-            RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("reserva")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Cliente?enlace=reserva");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("login")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("login.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("register")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/Registro.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("salir")) {
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("user", null);
-            sesion.setAttribute("pass", null);
-            sesion.setAttribute("id", null);
-            sesion.setAttribute("tipo", null);
-            RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
-            destinos.forward(request, response);
-        }
     }
 
     /**
@@ -100,6 +75,24 @@ public class Servlet_Menu extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //processRequest(request, response);
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String nombre = request.getParameter("nombre");
+        String paterno = request.getParameter("paterno");
+        String materno = request.getParameter("materno");
+
+        try {
+            DAO_Cliente dCliente = new DAO_Cliente();
+            System.out.println("XDD");
+            dCliente.RegistrarCliente(nombre, paterno, materno, user, pass, null);
+            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Ingreso?tipo=cliente");
+            destinos.forward(request, response);
+        } catch (SQLException e) {
+            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/Registro.jsp");
+            destinos.forward(request, response);
+        }
+
     }
 
     /**

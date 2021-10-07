@@ -1,0 +1,8 @@
+body {
+    scroll-behavior: smooth;
+    background-image: url("../Images/fondoeliminar1.jpg");
+    background-size: cover; 
+    background-position: center center;
+    background-attachment: fixed;
+    color:white;
+}

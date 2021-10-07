@@ -13,14 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jedur
  */
-@WebServlet(name = "Servlet_Menu", urlPatterns = {"/Servlet_Menu"})
-public class Servlet_Menu extends HttpServlet {
+@WebServlet(name = "Servlet_Cliente", urlPatterns = {"/Servlet_Cliente"})
+public class Servlet_Cliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +38,10 @@ public class Servlet_Menu extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Menu</title>");
+            out.println("<title>Servlet Servlet_Cliente</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet_Menu at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Servlet_Cliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,31 +61,35 @@ public class Servlet_Menu extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String opt = request.getParameter("enlace");
+        String url = "";
         if (opt == null || opt.isEmpty()) {
-            RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Menu");
             destinos.forward(request, response);
         }
-        if (opt.equals("reserva")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Cliente?enlace=reserva");
-            destinos.forward(request, response);
+        switch (opt) {
+            case "menu":
+                url = "Cliente/MenuCliente.jsp";
+                break;
+            case "reserva":
+                url = "Cliente/ReservaCita.jsp";
+                System.out.println("Khee");
+                break;
+            case "calendario":
+                url = "Cliente/VerCalendarioCliente.jsp";
+                break;
+            case "mascota":
+                url = "Cliente/VerMascota.jsp";
+                break;
+            case "servicio":
+                url = "Cliente/Servicios.jsp";
+                break;
+            default:
+                url = "Servlet_Menu?enlace=login";
+                break;
         }
-        if (opt.equals("login")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("login.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("register")) {
-            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/Registro.jsp");
-            destinos.forward(request, response);
-        }
-        if (opt.equals("salir")) {
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("user", null);
-            sesion.setAttribute("pass", null);
-            sesion.setAttribute("id", null);
-            sesion.setAttribute("tipo", null);
-            RequestDispatcher destinos = request.getRequestDispatcher("index.jsp");
-            destinos.forward(request, response);
-        }
+
+        RequestDispatcher destinos = request.getRequestDispatcher(url);
+        destinos.forward(request, response);
     }
 
     /**
@@ -100,6 +103,7 @@ public class Servlet_Menu extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

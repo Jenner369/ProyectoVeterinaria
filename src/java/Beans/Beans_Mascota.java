@@ -6,8 +6,8 @@ public class Beans_Mascota {
     String raza;
     String sexo;
     String tipo;
-    int CLIENTE_ID;
     String imagen;
+    int CLIENTE_ID;
 
     public int getID() {
         return ID;

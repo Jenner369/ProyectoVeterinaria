@@ -1,7 +1,6 @@
 package Beans;
 
 public class Beans_Veterinario {
-
     private int id;
     private String nombre;
     private String apellido_p;
