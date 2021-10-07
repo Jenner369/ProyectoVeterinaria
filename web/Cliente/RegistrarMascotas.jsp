@@ -66,6 +66,7 @@
                     <button type="submit" class="form-control btn btn-success submit">Registrar</button>
                 </div>
             </form>
+            <!---->
         </div>
     </body>
     <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
