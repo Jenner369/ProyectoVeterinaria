@@ -1,7 +1,7 @@
 
 package DAO;
 
-import Beans.Beans_veterinario;
+import Beans.Beans_Veterinario;
 import Config.cnx;
 import java.io.IOException;
 import java.sql.CallableStatement;
@@ -16,7 +16,7 @@ public class DAO_Veterinario {
 
     cnx cn;
     Connection con;
-    Beans_veterinario b;
+    Beans_Veterinario b;
     CallableStatement cs;
     private ResultSet rs;
 
@@ -25,7 +25,7 @@ public class DAO_Veterinario {
     }
 
     public List BuscarUsuario(String u, String c) throws SQLException {
-        List<Beans_veterinario> lista = new ArrayList<>();
+        List<Beans_Veterinario> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.buscar_usuario(?,?);";
             con = cn.getConexion();
@@ -34,7 +34,7 @@ public class DAO_Veterinario {
             cs.setString(2, c);
             rs = cs.executeQuery();
             while (rs.next()) {
-                b = new Beans_veterinario();
+                b = new Beans_Veterinario();
                 b.setId(rs.getInt(1));
                 b.setNombre(rs.getString(2));
                 b.setApellido_p(rs.getString(3));
@@ -121,14 +121,14 @@ public class DAO_Veterinario {
     }
 
     public List Seleccionarveterinarios() throws SQLException {
-        List<Beans_veterinario> lista = new ArrayList<>();
+        List<Beans_Veterinario> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.select_veterinarios();";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
             rs = cs.executeQuery();
             while (rs.next()) {
-                b = new Beans_veterinario();
+                b = new Beans_Veterinario();
                 b.setId(rs.getInt(1));
                 b.setNombre(rs.getString(2));
                 b.setApellido_p(rs.getString(3));
