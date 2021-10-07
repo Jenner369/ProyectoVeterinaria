@@ -40,7 +40,7 @@ public class DAO_Mascota {
         }
     }
     
-    public List BuscarMascotaTodos() throws SQLException {
+    public List<Beans_Mascota> BuscarMascotaTodos() throws SQLException {
         List<Beans_Mascota> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.buscar_mascota_todos();";
@@ -67,7 +67,7 @@ public class DAO_Mascota {
         return lista;
     }
     
-    public List BuscarMascota_porID(String nombre1) throws SQLException {
+    public List<Beans_Mascota> BuscarMascota_porID(String nombre1) throws SQLException {
         List<Beans_Mascota> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.buscar_mascota_id(?);";

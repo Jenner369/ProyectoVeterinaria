@@ -120,7 +120,7 @@ public class DAO_Veterinario {
         }
     }
 
-    public List Seleccionarveterinarios() throws SQLException {
+    public List<Beans_Veterinario> Seleccionarveterinarios() throws SQLException {
         List<Beans_Veterinario> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.select_veterinarios();";
