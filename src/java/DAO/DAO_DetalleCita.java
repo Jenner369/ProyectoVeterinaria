@@ -74,7 +74,7 @@ public class DAO_DetalleCita {
         }
     }
 
-    public List Buscar_DetallesCita_Todos() throws SQLException {
+    public List<Beans_DetalleCita> Buscar_DetallesCita_Todos() throws SQLException {
         List<Beans_DetalleCita> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.Seleccionar_DetalleCita_Todos();";
@@ -98,7 +98,7 @@ public class DAO_DetalleCita {
         return lista;
     }
     
-    public List Buscar_DetallesCita_PorIDCita(int Id_cita) throws SQLException {
+    public List<Beans_DetalleCita> Buscar_DetallesCita_PorIDCita(int Id_cita) throws SQLException {
         List<Beans_DetalleCita> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.Seleccionar_DetalleCita_PorIDCita(?);";
