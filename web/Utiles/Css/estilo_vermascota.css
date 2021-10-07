@@ -14,25 +14,26 @@ table tr th{
 }
 #iconos td a:hover {
     color:#000;
-    table{
-        max-width: 70%;
-        padding: 20px 20px;
-        margin-top: 20px;
-        font-size: 17px;
-        background: rgba(255,255,255,0.3);
-        margin-left:210px;
-        border-radius: 2px;
-    }
+}
+table{
+    max-width: 70%;
+    padding: 20px 20px;
+    margin-top: 20px;
+    font-size: 17px;
+    background: rgba(255,255,255,0.3);
+    margin-left:210px;
+    border-radius: 2px;
+}
 
-    .card-body{
-        color:#ffffff;
-    }
-    .enlace i{
-        color:#000;
-    }
-    .enlace i:activate{
-        color:#000;
-    }
-    .form-group{
-        margin-left:1000px;
-    }
+.card-body{
+    color:#ffffff;
+}
+.enlace i{
+    color:#000;
+}
+.enlace i:activate{
+    color:#000;
+}
+.form-group{
+    margin-left:1000px;
+}
