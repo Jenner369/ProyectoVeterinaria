@@ -34,10 +34,18 @@
                     <a class="nav-link" href="Servlet_Cliente?enlace=calendario" id="dropdown03"
                        aria-expanded="false">Calendario</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="Servlet_Cliente?enlace=mascota" id="dropdown04"
+                       aria-expanded="false">Mascotas</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="Servlet_Cliente?enlace=servicio" id="dropdown05"
+                       aria-expanded="false">Servicios</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-table" href="#" id="dropdown04" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle d-table" href="#" id="dropdown06" data-bs-toggle="dropdown">
                         <div class="d-table-cell pe-2" style="padding-right: 0px;">Cuenta</div>
                         <span>
                             <i class="bi bi-person-circle h5"></i>

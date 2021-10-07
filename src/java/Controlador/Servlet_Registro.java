@@ -5,21 +5,24 @@
  */
 package Controlador;
 
+import DAO.DAO_Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jedur
  */
-@WebServlet(name = "Servlet_Cliente", urlPatterns = {"/Servlet_Cliente"})
-public class Servlet_Cliente extends HttpServlet {
+@WebServlet(name = "Servlet_Registro", urlPatterns = {"/Servlet_Registro"})
+public class Servlet_Registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +41,10 @@ public class Servlet_Cliente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Cliente</title>");
+            out.println("<title>Servlet Servlet_Registro</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet_Cliente at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Servlet_Registro at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,37 +62,6 @@ public class Servlet_Cliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String opt = request.getParameter("enlace");
-        String url = "";
-        if (opt == null || opt.isEmpty()) {
-            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Menu");
-            destinos.forward(request, response);
-        }
-        switch (opt) {
-            case "menu":
-                url = "Cliente/MenuCliente.jsp";
-                break;
-            case "reserva":
-                url = "Cliente/ReservaCita.jsp";
-                System.out.println("Khee");
-                break;
-            case "calendario":
-                url = "Cliente/VerCalendarioCliente.jsp";
-                break;
-            case "mascota":
-                url = "Cliente/VerMascota.jsp";
-                break;
-            case "servicio":
-                url = "Cliente/Servicios.jsp";
-                break;
-            default:
-                url = "Servlet_Menu?enlace=login";
-                break;
-        }
-
-        RequestDispatcher destinos = request.getRequestDispatcher(url);
-        destinos.forward(request, response);
     }
 
     /**
@@ -103,7 +75,24 @@ public class Servlet_Cliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String nombre = request.getParameter("nombre");
+        String paterno = request.getParameter("paterno");
+        String materno = request.getParameter("materno");
+
+        try {
+            DAO_Cliente dCliente = new DAO_Cliente();
+            System.out.println("XDD");
+            dCliente.RegistrarCliente(nombre, paterno, materno, user, pass, null);
+            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Ingreso?tipo=cliente");
+            destinos.forward(request, response);
+        } catch (SQLException e) {
+            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/Registro.jsp");
+            destinos.forward(request, response);
+        }
+
     }
 
     /**
