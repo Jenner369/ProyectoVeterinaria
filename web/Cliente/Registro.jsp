@@ -1,17 +1,12 @@
-<%-- 
-    Document   : Registro
-    Created on : 24/09/2021, 12:21:28 AM
-    Author     : USER
---%>
-
+<%@include file="/Utiles/Jsp/validation.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro cliente</title>
-        <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../Utiles/Css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid">
@@ -27,29 +22,26 @@
                             <br>
                             <h3 align="center" class="display-6">Registrate gratis</h3>
                             <br>
-                            <form class="row g-3">
+                            <form action="Servlet_Registro" method="POST" class="row g-3">
                                 <div class="form-group">
-                                    <label for="inputEmail4" class="form-label">Usuario</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Ejm. Clara09">
+                                    <label for="user" class="form-label">Usuario</label>
+                                    <input type="text" class="form-control" id="user" name="user" placeholder="Ejm. Clara09">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword4" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPassword4">
+                                    <input type="password" class="form-control" id="pass" name="pass">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Ejm. Clara Celeste">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ejm. Clara Celeste">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputLastName" class="form-label">Apellidos</label>
-                                    <input type="text" class="form-control" id="inputLastName" placeholder="Ejm. Chavez Cotrina">
+                                    <label for="inputLastName" class="form-label">Apellido Paterno</label>
+                                    <input type="text" class="form-control" id="paterno" name="paterno" placeholder="Ejm. Chavez">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputGenero" class="form-label">Género</label>
-                                    <select id="inputGenero" class="form-select">
-                                        <option selected>Femenino</option>
-                                        <option>Masculino</option>
-                                    </select>
+                                    <label for="inputLastName" class="form-label">Apellido Materno</label>
+                                    <input type="text" class="form-control" id="materno" name="materno" placeholder="Ejm. Cotrina">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
@@ -68,7 +60,7 @@
                 </div>
             </section>
         </div>
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
     </body>
 </html>

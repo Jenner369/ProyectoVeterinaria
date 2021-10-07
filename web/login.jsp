@@ -1,5 +1,4 @@
-<!--%-- Document : LogIn Created on : 24/09/2021, 12:20:19 AM Author : USER --%-->
-<jsp:include page="Utiles/Jsp/validation.jsp"/>
+<%@include file="/Utiles/Jsp/validation.jsp"%>
 <!--<%@page contentType="text/html" pageEncoding="UTF-8" %>-->
 <html lang="en">
 

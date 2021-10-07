@@ -1,5 +1,6 @@
 function loadNavBarMenu() {
-    $('nav').load('../Cliente/navbarMenuCliente.jsp')
+    var CONTEXT_PATH = $('#contextPathHolder').attr('data-contextPath');
+    $('nav').load(CONTEXT_PATH+'/Cliente/navbarMenuCliente.jsp')
 }
 
 $(document).ready( function() {

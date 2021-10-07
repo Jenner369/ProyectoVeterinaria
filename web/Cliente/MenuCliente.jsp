@@ -1,9 +1,4 @@
-<%-- 
-    Document   : MenuCliente
-    Created on : 24/09/2021, 12:21:14 AM
-    Author     : USER
---%>
-
+<%@include file="/Utiles/Jsp/validationCliente.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,13 +8,16 @@
         <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/Utiles/Css/estilo_carousel.css" rel="stylesheet" type="text/css"/>
+        <!-- It's to get context path-->
+        <link id="contextPathHolder" data-contextPath="<%=request.getContextPath()%>"/>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <nav></nav>
+        
     </body>
 
-    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Js/clickServices.js"></script>
 </html>

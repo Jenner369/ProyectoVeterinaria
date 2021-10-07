@@ -1,13 +1,16 @@
+<%@include file="/Utiles/Jsp/validationCliente.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="Utiles/Css/estilo_carousel.css" rel="stylesheet" type="text/css"/>
-        <link href="Utiles/Frameworks/fullcalendar/main.css" rel="stylesheet"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Css/estilo_carousel.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/fullcalendar/main.css" rel="stylesheet"/>
+                <!-- It's to get context path-->
+        <link id="contextPathHolder" data-contextPath="<%=request.getContextPath()%>"/>
     </head>
     <body>
         <nav>
@@ -44,10 +47,10 @@
         </div>
 
     </body>
-    <script src="Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="Utiles/Frameworks/jquery/jquery.js"></script>
-    <script src="Utiles/Js/loadMenu.js"></script>
-    <script src="Utiles/Frameworks/fullcalendar/main.js"></script>
-    <script src="Utiles/Frameworks/fullcalendar/locales/es.js"></script>
-    <script src="Utiles/Js/scriptCalendar.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/fullcalendar/main.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/fullcalendar/locales/es.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/scriptCalendarCliente.js"></script>
 </html>
