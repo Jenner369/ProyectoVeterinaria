@@ -45,7 +45,7 @@ public class DAO_Veterinario {
                 b.setPassword(rs.getString(6));
                 b.setDni(rs.getString(7));
                 b.setImagen(rs.getString(8));
-                break;
+                lista.add(b);
             }
             rs.close();
             cs.close();
@@ -53,7 +53,7 @@ public class DAO_Veterinario {
         } catch (SQLException e) {
             throw e;
         }
-        return bVeterinario;
+        return lista;
     }
 
     public boolean registrar_veterinario(String nombre, String apellido_p, String apellido_m,
@@ -122,7 +122,7 @@ public class DAO_Veterinario {
         }
     }
 
-    public List<Beans_Veterinario> Seleccionarveterinarios() throws SQLException {
+    public List Seleccionarveterinarios() throws SQLException {
         List<Beans_Veterinario> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.select_veterinarios();";

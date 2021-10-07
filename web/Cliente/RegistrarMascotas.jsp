@@ -1,3 +1,5 @@
+  
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,12 +8,11 @@
         <title>REGISTRO MASCOTAS</title>
         <link rel="stylesheet" href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
         <link href="../Utiles/Css/RegistrarMascota.css" rel="stylesheet" type="text/css"/>
-        
     </head>
     <body>
         <nav>
         </nav>
-        <div class="container-fluid -responsive">
+        <div class="container-fluid">
             <form>
                 <div class="titulo">
                     <div class="card-body " align="center">
@@ -65,6 +66,7 @@
                     <button type="submit" class="form-control btn btn-success submit">Registrar</button>
                 </div>
             </form>
+            <!---->
         </div>
     </body>
     <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
