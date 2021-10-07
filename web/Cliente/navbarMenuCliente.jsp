@@ -22,15 +22,6 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#Servicios" id="dropdown02" data-bs-toggle="dropdown"
-                       aria-expanded="false">Servicios</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a class="dropdown-item" onclick="clickService('Lavado')" href="#Servicios">Lavado</a></li>
-                        <li><a class="dropdown-item" onclick="clickService('Pulgas')" href="#Servicios">Pulgas</a></li>
-                        <li><a class="dropdown-item" onclick="clickService('Parasitos')" href="#Servicios">Parasitos</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
                     <a class="nav-link" href="Servlet_Cliente?enlace=calendario" id="dropdown03"
                        aria-expanded="false">Calendario</a>
                 </li>
