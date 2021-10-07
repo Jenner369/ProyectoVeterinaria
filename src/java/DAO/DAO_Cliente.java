@@ -42,7 +42,7 @@ public class DAO_Cliente {
         }
     }
 
-    public List BuscarTodosCliente() throws SQLException {
+    public List<Beans_Cliente> BuscarTodosCliente() throws SQLException {
         List<Beans_Cliente> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.SeleccionarTodos_Clientes();";
@@ -69,7 +69,7 @@ public class DAO_Cliente {
         return lista;
     }
 
-    public List BuscarCliente_porNombre(String nombre1) throws SQLException {
+    public List<Beans_Cliente> BuscarCliente_porNombre(String nombre1) throws SQLException {
         List<Beans_Cliente> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.Seleccionar_NombreCLiente(?);";
