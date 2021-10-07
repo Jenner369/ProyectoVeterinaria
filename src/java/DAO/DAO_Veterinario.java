@@ -24,6 +24,8 @@ public class DAO_Veterinario {
         this.cn = new cnx();
     }
 
+    //Metodos
+    
     public Beans_Veterinario BuscarUsuario(String u, String c) throws SQLException {
         Beans_Veterinario bVeterinario = new Beans_Veterinario();
         try {
