@@ -102,14 +102,13 @@ public class Servlet_Ingreso extends HttpServlet {
                     misession.setAttribute("pass", lCliente.getPassword());
                     misession.setAttribute("id", lCliente.getID());
                     misession.setAttribute("tipo", tipo);
-
-                    RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Cliente?enlace=menu");
-                    destinos.forward(request, response);
+                    response.sendRedirect("Servlet_Cliente?enlace=menu");
+                    //RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
+                    //destinos.forward(request, response);
                 } else {
-                    System.out.println("XD");
+                    //response.sendRedirect("Servlet_Menu?enlace=login");
                     RequestDispatcher destinos = request.getRequestDispatcher("login.jsp");
                     destinos.forward(request, response);
-                    return;
                 }
 
             } catch (SQLException ex) {

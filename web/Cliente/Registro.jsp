@@ -1,17 +1,11 @@
-<%-- 
-    Document   : Registro
-    Created on : 24/09/2021, 12:21:28 AM
-    Author     : USER
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro cliente</title>
-        <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../Utiles/Css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Css/estilosRegistro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="container-fluid">
@@ -68,7 +62,7 @@
                 </div>
             </section>
         </div>
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
     </body>
 </html>

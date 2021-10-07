@@ -72,6 +72,11 @@ public class Servlet_Cliente extends HttpServlet {
                 break;
             case "reserva":
                 url = "Cliente/ReservaCita.jsp";
+                System.out.println("Khee");
+                break;
+            case "calendario":
+                url = "Cliente/VerCalendarioCliente.jsp";
+                break;
             default:
                 url = "Servlet_Menu";
         }
