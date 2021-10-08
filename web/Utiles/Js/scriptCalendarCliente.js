@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             Nuevo: {
                 text: "Agregar",
                 click: function () {
+                    //let url = 'Servlet_Cita?enlace=agregar';
                     let url = 'Cliente/ReservaCita.jsp';
                     $(window).attr('location', url);
                 }
@@ -81,11 +82,12 @@ function formatDate(date) {
 
 function redirect(tipo, idCita) {
     if (tipo === 'modificar') {
+        //let url = 'Servlet_Cita?enlace=modificar';
         let url = 'Cliente/ModificarCita.jsp';
         url = url + '?idCita=' + idCita;
         $(window).attr('location', url);
     } else if (tipo === 'eliminar') {
-        let url = 'Cliente/EliminarCita.jsp';
+        let url = 'Servlet_Cita?enlace=eliminar';
         url = url + '?idCita=' + idCita;
         $(window).attr('location', url);
     }

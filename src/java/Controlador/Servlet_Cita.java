@@ -7,6 +7,7 @@ package Controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,7 @@ public class Servlet_Cita extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Cita</title>");            
+            out.println("<title>Servlet Servlet_Cita</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Servlet_Cita at " + request.getContextPath() + "</h1>");
@@ -59,7 +60,31 @@ public class Servlet_Cita extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+        String opt = request.getParameter("enlace");
+        String url = "";
+        if (opt == null || opt.isEmpty()) {
+            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
+            destinos.forward(request, response);
+        }
+        switch (opt) {
+            case "agregar":
+                url = "Cliente/ReservaCita.jsp";
+                break;
+            case "modificar":
+                url = "Cliente/ModificarCita.jsp";
+                break;
+            case "eliminar":
+                url = "Cliente/EliminarCita.jsp";
+                break;
+            case "calendar":
+                url = "Cliente/VerCalendarioCliente.jsp";
+                break;
+            default:
+                url = "Cliente/MenuCliente.jsp";
+                break;
+        }
+        RequestDispatcher destinos = request.getRequestDispatcher(url);
+        destinos.forward(request, response);
     }
 
     /**
@@ -73,7 +98,8 @@ public class Servlet_Cita extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
     }
 
     /**

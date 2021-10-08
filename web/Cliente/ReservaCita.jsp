@@ -1,5 +1,16 @@
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    Date dDate = new Date();
+    SimpleDateFormat dfDate = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat dfTime = new SimpleDateFormat("HH:mm");
+    String DateEntrada = dfDate.format(dDate);
+    String TimeEntrada = dfTime.format(dDate);
+%>
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,17 +22,17 @@
 </head>
 
 <html>
-    <body style="overflow-x: hidden  ">
+    <body style="overflow-x: hidden" class="bg-light" >
         <div class="container-fluid">
             <section>
                 <div class="row no-gutters">
-                    <div class="col-xl-6 col-lg-14 register-bg">
-                        <div class="position-absolute nombre p-4">
+                    <div class="col-xl-6 col-lg-14 register-bg position-relative">
+                        <div class="card card-body border-0 position-absolute nombre p-3 bg-success bg-gradient">
                             <h3 class=" font-weight-bold text-light display-6">Veterinaria Zeus</h3>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 d-flex">
-                        <div class="container align-self-senter ">
+                        <div class="container mt-2 pt-1 align-self-start">
                             <br>
                             <h3 align="center" class="display-6">Reservar Cita</h3>
                             <br>
@@ -29,42 +40,45 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="form-label"> Fecha de Entrada</label>
-                                        <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" id="datePicker" aria-label="Fecha de Entrada">
+                                        <input type="date" id="fechaEntrada" name="fechaEntrada" value="<%=DateEntrada%>" class="form-control" placeholder="dd/mm/aaaa" id="datePicker" aria-label="Fecha de Entrada">
                                     </div>
                                     <div class="col">
                                         <label class="form-label"> Hora de Entrada</label>
-                                        <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
+                                        <input type="time" id="horaEntrada" name="horaEntrada" value="<%=TimeEntrada%>" class="form-control" aria-label="Hora de Entrada">                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label class="form-label"> Fecha de Salida</label>
-                                        <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                                        <input type="date" readonly="" name ="fechaSalida" id="fechaSalida" value="" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
                                     </div>
                                     <div class="col">
                                         <label class="form-label"> Hora de Salida</label>
-                                        <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida">                         
+                                        <input type="time" readonly="" name="horaSalida" id="horaSalida" value="" class="form-control" aria-label="Hora de Salida">                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">                    
                                         <div class="mb-3"><label class="form-label">  Servicio</label>
                                             <div class="input-group">
-                                                <select class="form-select" id="inputGroupSelect04" aria-label="Seleccione Servicio">
-                                                    <option selected> ...</option>
-                                                    <option value="1">Consulta Medica</option>
-                                                    <option value="2"> Baño & Peluqueria</option>
-                                                    <option value="3">Vacunas & Desparacitación</option>
-                                                    <option value="3">Cirugía</option>
+                                                <select class="form-select" id="servicioMascota" aria-label="Seleccione Servicio">
+                                                    <option value="1" duracion="30" monto="98" selected>Consulta Medica</option>
+                                                    <option value="2" duracion="30" monto="938"> Baño & Peluqueria</option>
+                                                    <option value="3" duracion="30" monto="8">Vacunas & Desparacitación</option>
+                                                    <option value="4" duracion="30" monto="928">Cirugía</option>
                                                 </select>
-                                                <button class="btn btn-outline btn-success" type="submit">Agregar</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label">Mascota</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control"  required="">                               
+                                                <select class="form-select" id="SelectMascota" aria-label="Seleccione Mascota">
+                                                    <option value="1" selected>Doki</option>
+                                                    <option value="2">Otro</option>
+                                                    <option value="3">Zeus</option>
+                                                    <option value="4">Kaiser</option>
+                                                </select>                             
                                             </div>
                                         </div>                        
                                     </div> 
@@ -72,30 +86,9 @@
                                 <div class="mb-3"><label class="form-label">Monto Total</label>
                                     <div class="input-group">
                                         <span class="input-group-text">S/.</span>
-                                        <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
+                                        <input type="text" value="0" readonly="" id="montoTotal" name="montoTotal" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
                                     </div>
                                 </div>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Servicio</th>
-                                            <th scope="col"> Precio</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>                       
-                                    </tbody>
-                                </table>
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -117,6 +110,53 @@
 
         <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../Utiles/Frameworks/jquery/jquery.min.js"></script>
+        <script>
+            $('#servicioMascota').change(function () {
+                var id = $(this).children(":selected");
+                $('#montoTotal').attr('value', id.attr("monto"));
+                //CONVERTIR A TIPO DATE
+                let dateObj = new Date($("#fechaEntrada").attr("value") + "T" + $("#horaEntrada").attr("value"));
+                console.log(dateObj.toDateString());
+                //SUMARLE
+
+                dateObj.setMinutes(dateObj.getMinutes()+parseInt(id.attr('duracion')));
+                var curr_day = dateObj.getDate();
+                var curr_month = dateObj.getMonth()+1;
+                var curr_year = dateObj.getFullYear();
+
+                var curr_hour = dateObj.getHours();
+                var curr_min = dateObj.getMinutes();
+
+                if (curr_day < 10) {
+                    curr_day = "0" + curr_day;
+                }
+                if (curr_month < 10) {
+                    curr_month = "0" + curr_month;
+                }
+                if (curr_hour < 10) {
+                    curr_hour = "0" + curr_hour;
+                }
+                if (curr_min < 10) {
+                    curr_min = "0" + curr_min;
+                }
+
+                let dateReturn = curr_year + "-" + curr_month + "-" + curr_day;
+                let timeReturn = curr_hour + ":" + curr_min;
+                //RETORNAR
+                $("#fechaSalida").attr("value", dateReturn);
+                $("#horaSalida").attr("value", timeReturn);
+            });
+            $("#fechaEntrada").on("change", function () {
+                var selected = $(this).val();
+                console.log(selected);
+                $("#fechaEntrada").attr("value", selected.toString());
+            });
+            $("#horaEntrada").on("change", function () {
+                var selected = $(this).val();
+                console.log(selected);
+                $("#horaEntrada").attr("value", selected.toString());
+            });
+        </script>
         <script src="../Utiles/Js/scripDatePicker.js" type="text/javascript"></script>
     </body>
 </html>
