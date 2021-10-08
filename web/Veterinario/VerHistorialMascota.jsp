@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Historial de Mascotas</title>
         <link rel="stylesheet" href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
+        <link href="../Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="stylesheet" href="../Utiles/Css/HistorialMascota.css">
     </head>
 
@@ -22,7 +23,7 @@
                             <tr class="bg-secondary text-white">
                                 <td>ID</td>
                                 <td>Nombre</td>
-                                <td>Dueño</td>
+                                <td>Due&ntilde;o</td>
                                 <td>Ver Historial</td>
                             </tr>
                             <tr>
@@ -33,7 +34,7 @@
                                     <!%Todos.get(i).getNombre()%>Dooby
                                 </td>
                                 <td>Hector</td>
-                                <td><button class="btn btn-success" data-toggle="modal" data-target="#ModalVer"">Ver
+                                <td><button  class="btn btn-success" data-toggle="modal" data-target="#ModalVer" onclick="$('#ModalVer').modal('show');">Ver
                                         Historial</button></td>
                             </tr>
                         </table>
@@ -41,9 +42,6 @@
                 </div>
             </div>
         </div>
-
-        <button class="btn btn-success" data-toggle="modal" data-target="#ModalVer"">Ver
-        Historial</button>
 
         <!-- Modal -->
         <div class=" modal fade" id="ModalVer" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"

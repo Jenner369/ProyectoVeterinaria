@@ -36,6 +36,7 @@ public class DAO_Veterinario {
             cs.setString(2, c);
             rs = cs.executeQuery();
             while (rs.next()) {
+               
                 bVeterinario.setId(rs.getInt(1));
                 bVeterinario.setNombre(rs.getString(2));
                 bVeterinario.setApellido_p(rs.getString(3));
@@ -44,6 +45,7 @@ public class DAO_Veterinario {
                 bVeterinario.setPassword(rs.getString(6));
                 bVeterinario.setDni(rs.getString(7));
                 bVeterinario.setImagen(rs.getString(8));
+                
             }
             rs.close();
             cs.close();
