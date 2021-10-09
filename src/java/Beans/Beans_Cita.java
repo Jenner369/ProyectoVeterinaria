@@ -7,9 +7,18 @@ public class Beans_Cita {
     private String SALIDA;
     private double MONTO;
     private String DESCRIPCION;
-    private int CLIENTE_ID;
+    private int MASCOTA_ID;
+    private int SERVICIO_ID;
     private int VETERINARIO_ID;
 
+    public int getSERVICIO_ID() {
+        return SERVICIO_ID;
+    }
+
+    public void setSERVICIO_ID(int SERVICIO_ID) {
+        this.SERVICIO_ID = SERVICIO_ID;
+    }
+    
     public String getDESCRIPCION() {
         return DESCRIPCION;
     }
@@ -50,12 +59,12 @@ public class Beans_Cita {
         this.MONTO = MONTO;
     }
 
-    public int getCLIENTE_ID() {
-        return CLIENTE_ID;
+    public int getMASCOTA_ID() {
+        return MASCOTA_ID;
     }
 
-    public void setCLIENTE_ID(int CLIENTE_ID) {
-        this.CLIENTE_ID = CLIENTE_ID;
+    public void setMASCOTA_ID(int MASCOTA_ID) {
+        this.MASCOTA_ID = MASCOTA_ID;
     }
 
     public int getVETERINARIO_ID() {
