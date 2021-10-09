@@ -22,7 +22,7 @@ public class DAO_Cita {
         this.cn = new cnx();
     }
 
-    public void InsertarCita(String ENTRADA, String SALIDA, double MONTO, int CLIENTE_ID, int VETERINARIO_ID) throws SQLException {
+    public void InsertarCita(String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID) throws SQLException {
         try {
             String sql = "call veterinaria.insertar_cita(?, ?, ?, ?, ?);";
             con = cn.getConexion();
@@ -30,7 +30,7 @@ public class DAO_Cita {
             cs.setString(1, ENTRADA);
             cs.setString(2, SALIDA);
             cs.setDouble(3, MONTO);
-            cs.setInt(4, CLIENTE_ID);
+            cs.setInt(4, MASCOTA_ID);
             cs.setInt(5, VETERINARIO_ID);
             cs.execute();
             cs.close();
@@ -40,7 +40,7 @@ public class DAO_Cita {
         }
     }
 
-    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int CLIENTE_ID, int VETERINARIO_ID) throws SQLException {
+    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID) throws SQLException {
         try {
             String sql = "call veterinaria.modificar_cita(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
@@ -49,7 +49,7 @@ public class DAO_Cita {
             cs.setString(2, ENTRADA);
             cs.setString(3, SALIDA);
             cs.setDouble(4, MONTO);
-            cs.setInt(5, CLIENTE_ID);
+            cs.setInt(5, MASCOTA_ID);
             cs.setInt(6, VETERINARIO_ID);
             cs.execute();
             cs.close();
@@ -103,7 +103,7 @@ public class DAO_Cita {
                 b.setSALIDA(rs.getString(3));
                 b.setMONTO(rs.getDouble(4));
                 b.setDESCRIPCION(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
+                b.setMASCOTA_ID(rs.getInt(6));
                 b.setVETERINARIO_ID(rs.getInt(7));
                 lista.add(b);
             }
@@ -131,7 +131,7 @@ public class DAO_Cita {
                 b.setSALIDA(rs.getString(3));
                 b.setMONTO(rs.getDouble(4));
                 b.setDESCRIPCION(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
+                b.setMASCOTA_ID(rs.getInt(6));
                 b.setVETERINARIO_ID(rs.getInt(7));
                 lista.add(b);
             }
@@ -159,7 +159,7 @@ public class DAO_Cita {
                 b.setSALIDA(rs.getString(3));
                 b.setMONTO(rs.getDouble(4));
                 b.setDESCRIPCION(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
+                b.setMASCOTA_ID(rs.getInt(6));
                 b.setVETERINARIO_ID(rs.getInt(7));
                 lista.add(b);
             }
@@ -172,13 +172,13 @@ public class DAO_Cita {
         return lista;
     }
 
-    public List<Beans_Cita> BuscarCitaPorCliente(int CLIENTE_ID) throws SQLException {
+    public List<Beans_Cita> BuscarCitaPorCliente(int MASCOTA_ID) throws SQLException {
         List<Beans_Cita> lista = new ArrayList<>();
         try {
             String sql = "call veterinaria.buscar_cita_por_cliente(?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
-            cs.setInt(1, CLIENTE_ID);
+            cs.setInt(1, MASCOTA_ID);
             rs = cs.executeQuery();
             while (rs.next()) {
                 b = new Beans_Cita();
@@ -187,7 +187,7 @@ public class DAO_Cita {
                 b.setSALIDA(rs.getString(3));
                 b.setMONTO(rs.getDouble(4));
                 b.setDESCRIPCION(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
+                b.setMASCOTA_ID(rs.getInt(6));
                 b.setVETERINARIO_ID(rs.getInt(7));
                 lista.add(b);
             }
@@ -215,7 +215,7 @@ public class DAO_Cita {
                 b.setSALIDA(rs.getString(3));
                 b.setMONTO(rs.getDouble(4));
                 b.setDESCRIPCION(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
+                b.setMASCOTA_ID(rs.getInt(6));
                 b.setVETERINARIO_ID(rs.getInt(7));
                 lista.add(b);
             }
