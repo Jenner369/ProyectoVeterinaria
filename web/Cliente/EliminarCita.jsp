@@ -1,14 +1,10 @@
 
-<%@page import='DAO.DAO_cita' %>
+<%@page import='DAO.DAO_Cita' %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <% 
-    DAO_Cita cita = new DAO_cita();
     int cita =Integer.parseInt(request.getParameter("IdCita"));
-    cita.
-    
-
 %>  
 
 
@@ -33,7 +29,7 @@
                     <div class="col-xl-6 col-lg-12 d-flex">
                         <div class="container align-self-senter ">
                             <br>
-                            <h3 align="center" class="display-6">Información Cita</h3>
+                            <h3 align="center" class="display-6">Información Cita <%out.print(IdCita)%></h3>
                             <br>
                         <form class="g-3" style="width:100%"style="margin-left: 5%">                         
                             <div class="row">
