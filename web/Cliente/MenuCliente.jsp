@@ -13,7 +13,11 @@
     </head>
     <body>
         <nav></nav>
-        
+
+        <%
+            int id = (int) session.getAttribute("id");
+            out.print(id);
+        %>
     </body>
 
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
