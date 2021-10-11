@@ -1,29 +1,37 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+  <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mascotas</title>
-        <link rel="stylesheet" href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
-        <link href="../Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="../Utiles/Css/VerMascota.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/Utiles/Css/VerMascota.css">
     </head>
 
     <body>
+
+        <%
+            int id = (int) session.getAttribute("id");
+        %>
         <nav>
         </nav>
         <div class="container">
             <div class="card my-5">
+                <!--Header de la Tarjeta-->
                 <div class="card-header text-center m-0">
                     <p class="display-6 m-0">Mascotas</p>
                 </div>
+                <!--Body de la Tarjeta-->
                 <div class="card-body py-5">
                     <div class="container" style="height: fit-content">
-                        <div class="form-group pb-3">
+
+                        <div class="form-group pb-3 text-end">
                             <button onclick="$('#ModalAgregar').modal('show');" type="submit"
                                     class=" btn btn-success submit">Agregar</button>
                         </div>
+
                         <table class="table table-hover table-condensed table-bordered text-center">
                             <tr class="bg-secondary text-white">
                                 <th>C&oacute;digo</th>
@@ -57,8 +65,9 @@
                 </div>
             </div>
 
-
         </div>
+
+        <!--Modal de Imagen-->
         <div class=" modal fade" id="ModalImagen" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -71,7 +80,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="action" enctype="multipart/form-data">
-                            
+
                         </form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -80,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
 
         <!-- Modal Modificar-->
         <div class=" modal fade" id="ModalModificar" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
@@ -107,8 +116,8 @@
                                 </div>
                                 <br>
                                 <div class="form-group row">
-                                    <label for="inputraza" class="col-sm-2 col-form-label">Raza</label>              
-                                    <input type="raza" class="form-control" id="inputs" placeholder="Raza">              
+                                    <label for="inputraza" class="col-sm-2 col-form-label">Raza</label>
+                                    <input type="raza" class="form-control" id="inputs" placeholder="Raza">
                                 </div>
                                 <br>
                                 <fieldset class="form-group">
@@ -116,13 +125,15 @@
                                         <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                                         <div class="col-sm-10">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                                <input class="form-check-input" type="radio" name="gridRadios"
+                                                       id="gridRadios1" value="option1" checked>
                                                 <label class="form-check-label" for="gridRadios1">
                                                     Hembra
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                <input class="form-check-input" type="radio" name="gridRadios"
+                                                       id="gridRadios2" value="option2">
                                                 <label class="form-check-label" for="gridRadios2">
                                                     Macho
                                                 </label>
@@ -135,15 +146,15 @@
 
                                 <div class="form-group">
                                     <label for="inputTipo" class="form-label">Tipo</label>
-                                    <select class="form-select" >
+                                    <select class="form-select">
                                         <option value="">Selecciona el tipo</option>
                                         <option value="1">Perro</option>
                                         <option value="2">Gato</option>
                                         <option value="3">Conejo</option>
                                         <option value="4">otro</option>
-                                    </select>            
+                                    </select>
                                 </div>
-                                <br>          
+                                <br>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -155,6 +166,7 @@
             </div>
         </div>
 
+        <!--Modal de Eliminar-->
         <div class=" modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -171,8 +183,8 @@
                                 <h5 class="card-title">Eliminar Mascota</h5>
                             </div>
                         </div>
-                        <div>                      
-                            ¿Esta seguro que desea eliminar a su mascota del registro? 
+                        <div>
+                            ¿Esta seguro que desea eliminar a su mascota del registro?
                             <br>
                             <br>
                         </div>
@@ -183,12 +195,80 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
 
+        <!--Modal de Registrar-->
+        <div class=" modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!--Cabezera-->
+                    <div class="modal-header justify-content-center">
+                        <p class="display-6 m-0">Registrar Mascota</p>
+                    </div>
+
+                    <form action="Servlet_Mascota" method="post">
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="form-group mb-2">
+                                    <label for="InNombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="InNombre" name="Nombre"
+                                           placeholder="Nombre">
+                                </div>
+
+                                <div class="form-group mb-2">
+                                    <label for="InRaza" class="form-label">Raza</label>
+                                    <input type="text" class="form-control" id="InRaza" name="Raza" placeholder="Raza">
+                                </div>
+
+                                <div class="form-group mb-2">
+                                    <label class="form-check-label">Sexo</label>
+                                    <div class="ps-5">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="Sexo" id="RadioHembra"
+                                                   value="H">
+                                            <label class="form-check-label" for="RadioHembra">
+                                                Hembra
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="Sexo" id="RadioMacho"
+                                                   value="M">
+                                            <label class="form-check-label" for="RadioMacho">
+                                                Macho
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="InTipo" class="form-label">Tipo</label>
+                                    <select class="form-select" id="InTipo" name="Tipo">
+                                        <option selected>Selecciona...</option>
+                                        <option value="Perro">Perro</option>
+                                        <option value="Gato">Gato</option>
+                                        <option value="Conejo">Conejo</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <!--Pie del Modal-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success submit">Registrar</button>
+                        </div>
+                        <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </body>
-    <script src="../Utiles/Frameworks/jquery/jquery.min.js" text="text/javascript"></script>
-    <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" text="text/javascript"></script>
-    <script src="../Utiles/Js/loadMenuCliente.js" text="text/javascript"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" text="text/javascript"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" text="text/javascript"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js" text="text/javascript"></script>
 
 </html>
