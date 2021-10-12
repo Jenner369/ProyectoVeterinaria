@@ -5,11 +5,14 @@
  */
 package Controlador;
 
+import Beans.Beans_Cita;
 import Beans.Beans_Mascota;
 import Beans.Beans_Veterinario;
 import DAO.DAO_Cita;
 import DAO.DAO_Mascota;
 import DAO.DAO_Veterinario;
+import com.google.gson.Gson;
+import java.beans.Beans;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -73,7 +76,47 @@ public class Servlet_Cita extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String opt = request.getParameter("enlace");
+        HttpSession session = request.getSession(true);
+        int IDCliente = Integer.parseInt(session.getAttribute("id").toString());
+        String url = "";
+        if (opt == null || opt.isEmpty()) {
+            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
+            destinos.forward(request, response);
+        }
+        switch (opt) {
+            case "getDataCalendar":
+                List<Beans_Cita> listaDatosCita = new ArrayList<Beans_Cita>();
+                Beans_Cita bCita = new Beans_Cita();
+                try {
+                    DAO_Cita dCita = new DAO_Cita();
+                    listaDatosCita = dCita.BuscarCitaPorCliente(IDCliente);
+                    Iterator<Beans_Cita> it = listaDatosCita.iterator();
+                    while (it.hasNext()) {
+                        bCita = it.next();
+                        bCita.setDESCRIPCION("Mascota: "+IDCliente+", atendido por el veterinario: "+bCita.getVETERINARIO_ID());
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+                String json = new Gson().toJson(listaDatosCita);
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(json);
+                return;
+            case "calendario":
+                break;
+            case "agregar":
+                break;
+            case "modificar":
+                break;
+            case "eliminar":
+                break;
+            default:
+                throw new AssertionError();
+        }
+        RequestDispatcher destinos = request.getRequestDispatcher(url);
+        destinos.forward(request, response);
     }
 
     /**
@@ -100,16 +143,14 @@ public class Servlet_Cita extends HttpServlet {
             switch (opt) {
 
                 case "agregar":
-                    url = "Cliente/ReservaCita.jsp";
+                    url = "Cliente/VerCalendarioCliente.jsp";
 
                     String fechayhoraEntrada = request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada");
                     String fechayhoraSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
                     double monto = Double.parseDouble(request.getParameter("montoTotal"));
-                    String mas = request.getParameter("mascota");
+                    int mas = Integer.parseInt(request.getParameter("mascota"));
                     int servicio = Integer.parseInt(request.getParameter("servicioMascota"));
-                   
-                    int id_Veterinario = Integer.parseInt(request.getParameter(""));
-                    
+
                     DAO_Mascota mascota = new DAO_Mascota();
                     List listaRecibe = new ArrayList<>();
                     listaRecibe = mascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
@@ -119,17 +160,17 @@ public class Servlet_Cita extends HttpServlet {
 
                     while (iter.hasNext()) {
                         beansM = iter.next();
-                        if (beansM.getNombre().equals(mas)) {
-                             idMascota = beansM.getID();
+                        if (beansM.getID() == mas) {
+                            idMascota = beansM.getID();
                         }
                     }
-                    DAO_Veterinario objveterinario = new DAO_Veterinario ();
-                    
-                    List<Beans_Veterinario> lista=objveterinario.SeleccionarVeterinario_PorDisponibilidad(fechayhoraEntrada, fechayhoraSalida);
-                     Beans_Veterinario objVe = lista.get(Math.round((float)Math.random()*lista.size()));
+                    DAO_Veterinario objveterinario = new DAO_Veterinario();
+
+                    List<Beans_Veterinario> lista = objveterinario.SeleccionarVeterinario_PorDisponibilidad(fechayhoraEntrada, fechayhoraSalida);
+                    Beans_Veterinario objVe = lista.get(Math.round((float) Math.random() * lista.size()));
 
                     DAO_Cita objeCita = new DAO_Cita();
-                  objeCita.InsertarCita(fechayhoraEntrada, fechayhoraSalida, monto, idMascota, objVe.getId(),servicio );
+                    objeCita.InsertarCita(fechayhoraEntrada, fechayhoraSalida, monto, idMascota, objVe.getId(), servicio);
 
                     break;
                 case "modificar":
