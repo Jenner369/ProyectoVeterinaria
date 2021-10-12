@@ -73,8 +73,8 @@ public class Servlet_Calendar extends HttpServlet {
         
         //EXAMPLES
         a.setID(1);
-        a.setENTRADA("2021-07-07T12:00:00");
-        a.setSALIDA("2021-07-07T16:30:00");
+        a.setENTRADA("2021-07-07 12:00:00");
+        a.setSALIDA("2021-07-07 16:30:00");
         a.setDESCRIPCION("Importante 3");
         listaDatos.add(a);
         a = new Beans_Cita();
