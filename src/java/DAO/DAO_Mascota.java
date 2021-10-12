@@ -129,4 +129,31 @@ public class DAO_Mascota {
             throw e;
         }
     }
+    public List<Beans_Mascota> BuscarMascota_PorIDCliente( int idCliente) throws SQLException {
+        List<Beans_Mascota> lista = new ArrayList<>();
+        try {
+            String sql = "call veterinaria.BUSCAR_MASCOTA_POR_ID_CLIENTE(?);";
+            con = cn.getConexion();
+            cs = con.prepareCall(sql); 
+            cs.setInt(1, idCliente);
+            rs = cs.executeQuery();
+            while (rs.next()) {
+                b = new Beans_Mascota();
+                b.setID(rs.getInt(1));
+                b.setNombre(rs.getString(2));
+                b.setRaza(rs.getString(3));
+                b.setSexo(rs.getString(4));
+                b.setTipo(rs.getString(5));
+                b.setCLIENTE_ID(rs.getInt(6));
+                b.setImagen(rs.getString(7));  
+                lista.add(b);
+            }
+            rs.close();
+            cs.close();
+            con.close();           
+        }catch (SQLException e) {
+            throw e;
+        }
+        return lista;
+    }
 }

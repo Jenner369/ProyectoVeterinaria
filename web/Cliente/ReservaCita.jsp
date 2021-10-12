@@ -61,7 +61,7 @@
                                     <div class="col">                    
                                         <div class="mb-3"><label class="form-label">  Servicio</label>
                                             <div class="input-group">
-                                                <select class="form-select" id="servicioMascota" aria-label="Seleccione Servicio">
+                                                <select class="form-select" id="servicioMascota" aria-label="Seleccione Servicio" name="servicioMascota">
                                                     <option value="1" duracion="30" monto="98" selected>Consulta Medica</option>
                                                     <option value="2" duracion="30" monto="938"> Baño & Peluqueria</option>
                                                     <option value="3" duracion="30" monto="8">Vacunas & Desparacitación</option>
@@ -73,7 +73,7 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label">Mascota</label>
                                             <div class="input-group">
-                                                <select class="form-select" id="SelectMascota" aria-label="Seleccione Mascota">
+                                                <select class="form-select" name="mascota" id="SelectMascota" aria-label="Seleccione Mascota">
                                                     <option value="1" selected>Doki</option>
                                                     <option value="2">Otro</option>
                                                     <option value="3">Zeus</option>
