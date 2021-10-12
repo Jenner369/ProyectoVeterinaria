@@ -4,8 +4,41 @@
     Author     : USER
 --%>
 
+<%@page import="Beans.Beans_Cita"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Beans.Beans_Mascota"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="DAO.DAO_Mascota"%>
+<%@page import="DAO.DAO_Cita"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+    int cita = Integer.parseInt(request.getParameter("idCita"));
+    DAO_Cita daoCita = new DAO_Cita();
+    Beans_Cita bCita =  daoCita.BuscarCitaID(cita);
+    String Entrada = bCita.getENTRADA();
+    String Salida = bCita.getSALIDA();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    LocalDateTime dateTimeEntrada = LocalDateTime.parse(Entrada , formatter);
+    LocalDateTime dateTimeSalida = LocalDateTime.parse( Salida , formatter);
+    String fechaEntrada = dateTimeEntrada.toLocalDate().toString();
+    String horaEntrada = dateTimeEntrada.toLocalTime().toString();
+    String fechaSalida= dateTimeSalida.toLocalDate().toString();
+    String horaSalida = dateTimeSalida.toLocalTime().toString();
+    
+    
+    int ID_Mascota = daoCita.BuscarCitaID(cita).getMASCOTA_ID();
+    int ID_Servicio = daoCita.BuscarCitaID(cita).getSERVICIO_ID();
+    Double monto = daoCita.BuscarCitaID(cita).getMONTO();
+
+    DAO_Mascota daoMascota = new DAO_Mascota();
+    List<Beans_Mascota> lMascota = new ArrayList<>();
+    lMascota = daoMascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
+
+%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Modificar cita</title>
@@ -34,26 +67,26 @@
                                 <div class="row">
                                     <div class="col">
                                         <label class="form-label"> Fecha de Entrada</label>
-                                        <input type="date" name ="fechaEntrada" class="form-control" placeholder="dd/mm/aaaa" id="datePicker" aria-label="Fecha de Entrada">
+                                        <input type="date" name ="fechaEntrada"  values=<%=fechaEntrada%> class="form-control" placeholder="dd/mm/aaaa" id="datePicker" aria-label="Fecha de Entrada">
                                     </div>
                                     <div class="col">
                                         <label class="form-label"> Hora de Entrada</label>
-                                        <input type="time" name="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
+                                        <input type="time" name="horaEntrada" values="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label class="form-label"> Fecha de Salida</label>
-                                        <input type="date" name ="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                                        <input type="date" name ="fechaSalida" value="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
                                     </div>
                                     <div class="col">
                                         <label class="form-label"> Hora de Salida</label>
-                                        <input type="time" name="horaSalida" class="form-control" aria-label="Hora de Salida">                         
+                                        <input type="time" name="horaSalida" values="horaSalida"  class="form-control" aria-label="Hora de Salida">                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">                    
-                                        <div class="mb-3"><label class="form-label">  Servicio</label>
+                                        <div class="mb-3"><label class="form-label">Servicio</label>
                                             <div class="input-group">
                                                 <select class="form-select" id="inputGroupSelect04" aria-label="Seleccione Servicio">
                                                     <option selected> ...</option>
@@ -69,15 +102,24 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label">Mascota</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control"  required="">                               
+                                                <select class="form-select" name="mascota" id="SelectMascota" aria-label="Seleccione Mascota">
+                                                    <% for (int i = 0; i < lMascota.size();i++) {%>
+                                                        <option value="<%=lMascota.get(i).getID()%>" <%
+                                                                    if(lMascota.get(i).getID() == bCita.getMASCOTA_ID()) {
+                                                                        out.print("selected");
+                                                                    }
+                                                                %>><%=lMascota.get(i).getNombre()%></option>
+    
+                                                    <%}%>
+                                                </select>                             
                                             </div>
-                                        </div>                        
+                                        </div>                                                
                                     </div> 
                                 </div>
                                 <div class="mb-3"><label class="form-label">Monto Total</label>
                                     <div class="input-group">
                                         <span class="input-group-text">S/.</span>
-                                        <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required="">
+                                        <input type="text" class="form-control" value="<%=monto%>" aria-label="Dollar amount (with dot and two decimal places)" required="">
                                     </div>
                                 </div>
                                 <div class="form-group">

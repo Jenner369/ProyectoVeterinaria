@@ -67,13 +67,13 @@ public class DAO_Mascota {
         return lista;
     }
     
-    public List<Beans_Mascota> BuscarMascota_porID(String nombre1) throws SQLException {
-        List<Beans_Mascota> lista = new ArrayList<>();
+    public Beans_Mascota BuscarMascota_porID(int MASCOTA_ID) throws SQLException {
+        Beans_Mascota beansMascota = new Beans_Mascota ();
         try {
             String sql = "call veterinaria.buscar_mascota_id(?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql); 
-            cs.setString(1, nombre1);
+            cs.setInt(1, MASCOTA_ID);
             rs = cs.executeQuery();
             while (rs.next()) {
                 b = new Beans_Mascota();
@@ -84,7 +84,6 @@ public class DAO_Mascota {
                 b.setTipo(rs.getString(5));
                 b.setCLIENTE_ID(rs.getInt(6));
                 b.setImagen(rs.getString(7));  
-                lista.add(b);
             }
             rs.close();
             cs.close();
@@ -92,7 +91,7 @@ public class DAO_Mascota {
         }catch (SQLException e) {
             throw e;
         }
-        return lista;
+        return beansMascota;
     }
     
     public void EliminarMascota(int ID1) throws SQLException {

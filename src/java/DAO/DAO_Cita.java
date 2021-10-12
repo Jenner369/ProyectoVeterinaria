@@ -47,7 +47,7 @@ public class DAO_Cita {
         }
     }
 
-    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID) throws SQLException {
+    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID , int SERVICIO) throws SQLException {
         try {
             String sql = "call veterinaria.modificar_cita(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
@@ -58,6 +58,8 @@ public class DAO_Cita {
             cs.setDouble(4, MONTO);
             cs.setInt(5, MASCOTA_ID);
             cs.setInt(6, VETERINARIO_ID);
+            cs.setInt(6,SERVICIO);
+
             cs.execute();
             cs.close();
             con.close();

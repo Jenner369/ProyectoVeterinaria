@@ -176,7 +176,32 @@ public class Servlet_Cita extends HttpServlet {
                     break;
                 case "modificar":
                     url = "Cliente/ModificarCita.jsp";
-                    //Recibimos parametros
+                    int CITA_ID = Integer.parseInt(request.getParameter("idCita"));
+                    String MEntrada = request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada");
+                    String MSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
+                    double Mmonto = Double.parseDouble(request.getParameter("montoTotal"));
+                    int Mmascota = Integer.parseInt(request.getParameter("mascota"));
+                    int MServicio = Integer.parseInt(request.getParameter("servicioMascota"));                                      
+                    DAO_Mascota Mascota = new DAO_Mascota();
+                    List ListaRecibe = new ArrayList<>();
+                    ListaRecibe = Mascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
+                    Iterator<Beans_Mascota> Iterator = ListaRecibe.iterator();
+                    Beans_Mascota BeansM;
+                    int IDMascota = 0;
+
+                    while (Iterator.hasNext()) {
+                        BeansM = Iterator.next();
+                        if (BeansM.getID()== Mmascota) {
+                             IDMascota = BeansM.getID();
+                        }
+                    }
+                    DAO_Veterinario OVeterinario = new DAO_Veterinario ();
+                    
+                    List<Beans_Veterinario> Lista =OVeterinario.SeleccionarVeterinario_PorDisponibilidad(MEntrada, MSalida);
+                    Beans_Veterinario OBeansVeterinario = Lista.get(Math.round((float)Math.random()*Lista.size()));
+
+                    DAO_Cita ObjeCita = new DAO_Cita();
+                    ObjeCita.ModificarCita(CITA_ID,MEntrada, MSalida, Mmonto, IDMascota, OBeansVeterinario.getId(),MServicio );
 
                     break;
                 case "Eliminar":
