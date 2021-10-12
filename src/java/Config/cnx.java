@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class cnx {
 
-    private String USERNAME = "admin";
-    private String PASSWORD = "admin";
-    private String HOST = "157.245.251.183";
+    private String USERNAME = "root";
+    private String PASSWORD = "Sistemas...2020";
+    private String HOST = "localhost";
     private String PORT = "3306";
     private String DATABASE = "veterinaria";
     private String CLASSNAME = "com.mysql.cj.jdbc.Driver";

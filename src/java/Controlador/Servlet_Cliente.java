@@ -65,26 +65,27 @@ public class Servlet_Cliente extends HttpServlet {
         if (opt == null || opt.isEmpty()) {
             RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Menu");
             destinos.forward(request, response);
-        }
-        switch (opt) {
-            case "menu":
-                url = "Cliente/MenuCliente.jsp";
-                break;
-            case "reserva":
-                url = "Cliente/ReservaCita.jsp";
-                break;
-            case "calendario":
-                url = "Cliente/VerCalendarioCliente.jsp";
-                break;
-            case "mascota":
-                url = "Cliente/VerMascota.jsp";
-                break;
-            case "servicio":
-                url = "Cliente/Servicios.jsp";
-                break;
-            default:
-                url = "Servlet_Menu?enlace=login";
-                break;
+        } else {
+            switch (opt) {
+                case "menu":
+                    url = "Cliente/MenuCliente.jsp";
+                    break;
+                case "reserva":
+                    url = "Cliente/ReservaCita.jsp";
+                    break;
+                case "calendario":
+                    url = "Cliente/VerCalendarioCliente.jsp";
+                    break;
+                case "mascota":
+                    url = "Cliente/VerMascota.jsp";
+                    break;
+                case "servicio":
+                    url = "Cliente/Servicios.jsp";
+                    break;
+                default:
+                    url = "Servlet_Menu?enlace=login";
+                    break;
+            }
         }
 
         RequestDispatcher destinos = request.getRequestDispatcher(url);

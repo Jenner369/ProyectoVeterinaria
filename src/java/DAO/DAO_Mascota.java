@@ -21,7 +21,7 @@ public class DAO_Mascota {
         this.cn = new cnx();
     }
     
-    public void RegistrarMascota(String nombre1, String raza1, String sexo1, String tipo1, int CLIENTE_ID1, String imagen1) throws SQLException {
+    public void RegistrarMascota(String nombre1, String raza1, String sexo1, String tipo1, String imagen1, int CLIENTE_ID1) throws SQLException {
         try {
             String sql = "call veterinaria.registrar_mascota(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
@@ -30,8 +30,8 @@ public class DAO_Mascota {
             cs.setString(2, raza1);
             cs.setString(3, sexo1);
             cs.setString(4, tipo1);
-            cs.setInt(5, CLIENTE_ID1);
-            cs.setString(6, imagen1);
+            cs.setString(5, imagen1);
+            cs.setInt(6, CLIENTE_ID1);
             cs.execute();
             cs.close();
             con.close();
