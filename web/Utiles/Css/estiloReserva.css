@@ -1,8 +1,14 @@
+body {
+    scroll-behavior: smooth;
+    background: #818a81;
+}
+
+
 body div h3 #titulo{
      color:black;   
 }
 .register-bg{
-    background-image: url("https://i0.wp.com/www.universidadescr.com/blog/wp-content/uploads/2016/04/shutterstock_183585236-copia.jpg?fit=1100%2C733&ssl=1");
+    background-image: url("../Images/Imagen_Reserva.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -19,6 +25,15 @@ body div h3 #titulo{
     bottom: 20px;
 }
 
+.display-6{
+    margin-top: 5%;
+    color: white;
+}
+
+.g-3{
+    margin-top: 4%;
+}
+ 
 @media (max-width: 1200px){
     .register-bg{
         min-height: 80vh;

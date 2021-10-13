@@ -4,6 +4,8 @@
     Author     : USER
 --%>
 
+<%@page import="Beans.Beans_Servicio"%>
+<%@page import="DAO.DAO_Servicio"%>
 <%@page import="Beans.Beans_Cita"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -37,6 +39,10 @@
     DAO_Mascota daoMascota = new DAO_Mascota();
     List<Beans_Mascota> lMascota = new ArrayList<>();
     lMascota = daoMascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
+    
+    DAO_Servicio daoServicio = new DAO_Servicio();
+    List<Beans_Servicio> lServicio  = new ArrayList<>();
+    lServicio = daoServicio.BuscarTodosServicios();
 
 %>
 <head>
@@ -61,7 +67,7 @@
                     <div class="col-xl-6 col-lg-12 d-flex">
                         <div class="container align-self-senter ">
                             <br>
-                            <h3 align="center" class="display-6"> Modificar Cita</h3>
+                            <h3 align="center" class="display-6"> Modificar Cita <%out.print(cita);%></h3>
                             <br>
                             <form class="g-3" style="width: 100%">
                                 <div class="row">
@@ -71,17 +77,17 @@
                                     </div>
                                     <div class="col">
                                         <label class="form-label"> Hora de Entrada</label>
-                                        <input type="time" name="horaEntrada" values="horaEntrada" class="form-control" aria-label="Hora de Entrada">                         
+                                        <input type="time" name="horaEntrada" values=<%=horaEntrada%> class="form-control" aria-label="Hora de Entrada">                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label class="form-label"> Fecha de Salida</label>
-                                        <input type="date" name ="fechaSalida" value="fechaSalida" class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
+                                        <input type="date" name ="fechaSalida" value=<%=fechaSalida%> class="form-control" placeholder="dd/mm/aaaa" aria-label="Fecha de Entrada">
                                     </div>
                                     <div class="col">
                                         <label class="form-label"> Hora de Salida</label>
-                                        <input type="time" name="horaSalida" values="horaSalida"  class="form-control" aria-label="Hora de Salida">                         
+                                        <input type="time" name="horaSalida" values=<%=horaSalida%> class="form-control" aria-label="Hora de Salida">                         
                                     </div>
                                 </div>
                                 <div class="row">
@@ -89,11 +95,14 @@
                                         <div class="mb-3"><label class="form-label">Servicio</label>
                                             <div class="input-group">
                                                 <select class="form-select" id="inputGroupSelect04" aria-label="Seleccione Servicio">
-                                                    <option selected> ...</option>
-                                                    <option value="1">Consulta Medica</option>
-                                                    <option value="2"> Baño & Peluqueria</option>
-                                                    <option value="3">Vacunas & Desparacitación</option>
-                                                    <option value="3">Cirugía</option>
+                                                    <% for (int i = 0; i < lServicio.size();i++) {%>
+                                                        <option value="<%=lServicio.get(i).getID()%>" <%
+                                                                    if(lServicio.get(i).getID() == ID_Servicio ) {
+                                                                        out.print("selected");
+                                                                    }
+                                                                %>><%=lServicio.get(i).getNombre()%></option>
+    
+                                                    <%}%>
                                                 </select>
                                                 <button class="btn btn-outline btn-success" type="submit">Agregar</button>
                                             </div>

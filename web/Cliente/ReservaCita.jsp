@@ -27,12 +27,12 @@
             <section>
                 <div class="row no-gutters">
                     <div class="col-xl-6 col-lg-14 register-bg position-relative">
-                        <div class="card card-body border-0 position-absolute nombre p-3 bg-success bg-gradient">
+                        <div class=" position-absolute nombre p-3">
                             <h3 class=" font-weight-bold text-light display-6">Veterinaria Zeus</h3>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-12 d-flex">
-                        <div class="container mt-2 pt-1 align-self-start">
+                    <div class="col-xl-6 col-lg-12 d-flex" style="background: #818a81">
+                        <div class="container mt-2 pt-1 align-self-start" >
                             <br>
                             <h3 align="center" class="display-6">Reservar Cita</h3>
                             <br>
@@ -97,8 +97,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-success" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
+                                <div class="form-group"><br/>
+                                    <button class="form-control btn btn-success" cursorshover="true" style="border:none" type="submit">Reservar</button>
                                 </div>
                                 <input type="hidden" id="opcion" name="opcion" value="agregar" style="display: none;">
                             </form>

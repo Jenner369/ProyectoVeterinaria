@@ -12,13 +12,9 @@ import DAO.DAO_Cita;
 import DAO.DAO_Mascota;
 import DAO.DAO_Veterinario;
 import com.google.gson.Gson;
-import java.beans.Beans;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -87,7 +83,7 @@ public class Servlet_Cita extends HttpServlet {
         }
         switch (opt) {
             case "getDataCalendar":
-                List<Beans_Cita> listaDatosCita = new ArrayList<Beans_Cita>();
+                List<Beans_Cita> listaDatosCita = new ArrayList<>();
                 Beans_Cita bCita = new Beans_Cita();
                 try {
                     DAO_Cita dCita = new DAO_Cita();
@@ -151,7 +147,6 @@ public class Servlet_Cita extends HttpServlet {
                     double monto = Double.parseDouble(request.getParameter("montoTotal"));
                     int mas = Integer.parseInt(request.getParameter("mascota"));
                     int servicio = Integer.parseInt(request.getParameter("servicioMascota"));
-
                     DAO_Mascota mascota = new DAO_Mascota();
                     List listaRecibe = new ArrayList<>();
                     listaRecibe = mascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
