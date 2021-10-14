@@ -7,14 +7,18 @@ package Controlador;
 
 import Beans.Beans_Cita;
 import Beans.Beans_Mascota;
+import Beans.Beans_Servicio;
 import Beans.Beans_Veterinario;
 import DAO.DAO_Cita;
 import DAO.DAO_Mascota;
+import DAO.DAO_Servicio;
 import DAO.DAO_Veterinario;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -89,9 +93,15 @@ public class Servlet_Cita extends HttpServlet {
                     DAO_Cita dCita = new DAO_Cita();
                     listaDatosCita = dCita.BuscarCitaPorCliente(IDCliente);
                     Iterator<Beans_Cita> it = listaDatosCita.iterator();
+                    DAO_Servicio dServicio = new DAO_Servicio();
+                    
                     while (it.hasNext()) {
                         bCita = it.next();
-                        bCita.setDESCRIPCION("Mascota: "+IDCliente+", atendido por el veterinario: "+bCita.getVETERINARIO_ID());
+                        Beans_Servicio bserv = dServicio.BuscarServicios_ID(bCita.getSERVICIO_ID());
+                        bCita.setDESCRIPCION("Mascota: "+IDCliente+", atendido por el veterinario: "+bCita.getVETERINARIO_ID()+"\n"+"Servicio"+"\n"
+                                +"Nombre"+bserv.getNombre()+"\n"
+                                +"Costo"+bserv.getCosto()+"\n"
+                                +"Duracion"+bserv.getDuracion());
                     }
                 } catch (SQLException e) {
                     System.out.println(e);
@@ -143,10 +153,13 @@ public class Servlet_Cita extends HttpServlet {
                     url = "Cliente/VerCalendarioCliente.jsp";
 
                     String fechayhoraEntrada = request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada");
-                    String fechayhoraSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
+                    int servicio = Integer.parseInt(request.getParameter("servicioMascota"));
+                    DAO_Servicio dServ = new DAO_Servicio();
+                    Beans_Servicio bServ = dServ.BuscarServicios_ID(servicio);            
+                    //String fechayhoraSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
+                    String fechayhoraSalida = LocalDateTime.parse(fechayhoraEntrada).plusMinutes(bServ.getDuracion()).toString();
                     double monto = Double.parseDouble(request.getParameter("montoTotal"));
                     int mas = Integer.parseInt(request.getParameter("mascota"));
-                    int servicio = Integer.parseInt(request.getParameter("servicioMascota"));
                     DAO_Mascota mascota = new DAO_Mascota();
                     List listaRecibe = new ArrayList<>();
                     listaRecibe = mascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
@@ -173,10 +186,14 @@ public class Servlet_Cita extends HttpServlet {
                     url = "Cliente/ModificarCita.jsp";
                     int CITA_ID = Integer.parseInt(request.getParameter("idCita"));
                     String MEntrada = request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada");
-                    String MSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
+                    int MServicio = Integer.parseInt(request.getParameter("servicioMascota"));
+                    DAO_Servicio dMServ = new DAO_Servicio();
+                    Beans_Servicio bMServ = dMServ.BuscarServicios_ID(MServicio); 
+                    
+                    //String MSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
+                    String MSalida = LocalDateTime.parse(MEntrada).plusMinutes(bMServ.getDuracion()).toString();
                     double Mmonto = Double.parseDouble(request.getParameter("montoTotal"));
                     int Mmascota = Integer.parseInt(request.getParameter("mascota"));
-                    int MServicio = Integer.parseInt(request.getParameter("servicioMascota"));                                      
                     DAO_Mascota Mascota = new DAO_Mascota();
                     List ListaRecibe = new ArrayList<>();
                     ListaRecibe = Mascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
