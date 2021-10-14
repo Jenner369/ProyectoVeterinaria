@@ -54,8 +54,8 @@ public class DAO_Mascota {
                 b.setRaza(rs.getString(3));
                 b.setSexo(rs.getString(4));
                 b.setTipo(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
-                b.setImagen(rs.getString(7));
+                b.setImagen(rs.getString(6));
+                b.setCLIENTE_ID(rs.getInt(7));
                 lista.add(b);
             }
             rs.close();
@@ -76,14 +76,14 @@ public class DAO_Mascota {
             cs.setInt(1, MASCOTA_ID);
             rs = cs.executeQuery();
             while (rs.next()) {
-                b = new Beans_Mascota();
-                b.setID(rs.getInt(1));
-                b.setNombre(rs.getString(2));
-                b.setRaza(rs.getString(3));
-                b.setSexo(rs.getString(4));
-                b.setTipo(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
-                b.setImagen(rs.getString(7));  
+                beansMascota = new Beans_Mascota();
+                beansMascota.setID(rs.getInt(1));
+                beansMascota.setNombre(rs.getString(2));
+                beansMascota.setRaza(rs.getString(3));
+                beansMascota.setSexo(rs.getString(4));
+                beansMascota.setTipo(rs.getString(5));
+                beansMascota.setImagen(rs.getString(6));  
+                beansMascota.setCLIENTE_ID(rs.getInt(7));
             }
             rs.close();
             cs.close();

@@ -1,4 +1,7 @@
-  <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="Beans.Beans_Mascota"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.DAO_Mascota"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +32,7 @@
 
                         <div class="form-group pb-3 text-end">
                             <button onclick="$('#ModalAgregar').modal('show');" type="submit"
-                                    class=" btn btn-success submit">Agregar</button>
+                                    class=" btn btn-success bi bi-plus-lg submit"> Agregar</button>
                         </div>
 
                         <table class="table table-hover table-condensed table-bordered text-center">
@@ -41,24 +44,35 @@
                                 <th>Tipo</th>
                                 <th colspan="3">Acciones</th>
                             </tr>
+                            <%
+                                DAO_Mascota Mascotas = new DAO_Mascota();
+                                List<Beans_Mascota> ListaMascotas = Mascotas.BuscarMascotaTodos();
+                                for (int i = 0; i < ListaMascotas.size(); i++) {
+                            %>
                             <tr id="iconos">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><% out.print(ListaMascotas.get(i).getID()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getNombre()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getRaza()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getSexo()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getTipo()); %></td>
                                 <td>
-                                    <a onclick="$('#ModalImagen').modal('show');"><i
-                                            class="bi bi-image h4 text-secondary"></i></a>
+                                    <button onclick="$('#ModalImagen').modal('show');" type ="button" 
+                                            class="btn btn-secondary bi bi-image-alt"></button>
                                 </td>
                                 <td>
-                                    <a onclick="$('#ModalModificar').modal('show');"><i
-                                            class="bi bi-pencil-square h4 text-warning"></i></a>
+                                    <button onclick="$('#ModalModificar').modal('show');" type ="button" 
+                                            class="btn btn-warning bi bi-pencil-fill text-white"></button>
                                 </td>
                                 <td>
-                                    <a onclick="$('#ModalEliminar').modal('show');"><i
-                                            class="bi bi-trash h4 text-danger"></i></a>
+                                    <button onclick="$('#ModalEliminar').modal('show');" type ="button" 
+                                            class="btn btn-danger bi bi-trash-fill"></button>
+                                    <input type="hidden" id="IdCliente<%out.print(ListaMascotas.get(i).getID());%>"
+                                           name="IdCliente<%out.print(ListaMascotas.get(i).getID());%>" 
+                                           value="<%out.print(ListaMascotas.get(i).getID());%>">
                                 </td>
+                                <%
+                                    }
+                                %>
                             </tr>
                         </table>
                     </div>
@@ -92,6 +106,10 @@
         </div>
 
         <!-- Modal Modificar-->
+        <%
+            DAO_Mascota ModificarMascota = new DAO_Mascota();
+            Beans_Mascota NuevaMascota = ModificarMascota.BuscarMascota_porID(60);
+        %>
         <div class=" modal fade" id="ModalModificar" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -104,62 +122,61 @@
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
-                            <form>
-                                <div class="titulo">
-                                    <div class="card-body " align="center">
-                                        <h5 class="card-title">Modificar Mascota</h5>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputnombre" class="col-sm-2 col-form-label">Nombre</label>
-                                    <input type="nombre" class="form-control" id="inputs" placeholder="nombre">
-                                </div>
-                                <br>
-                                <div class="form-group row">
-                                    <label for="inputraza" class="col-sm-2 col-form-label">Raza</label>
-                                    <input type="raza" class="form-control" id="inputs" placeholder="Raza">
-                                </div>
-                                <br>
-                                <fieldset class="form-group">
-                                    <div class="row">
-                                        <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios"
-                                                       id="gridRadios1" value="option1" checked>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Hembra
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios"
-                                                       id="gridRadios2" value="option2">
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Macho
-                                                </label>
-                                            </div>
-
+                            <form id="ModificarMascota" action="Servlet_Mascota?accion=modificar" method="post">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="form-group mb-2">
+                                            <label for="InMNombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="InMNombre" name="NombreM"
+                                                   value="<% out.print(NuevaMascota.getNombre()); %>" required>
                                         </div>
-                                    </div>
-                                </fieldset>
-                                <br>
 
-                                <div class="form-group">
-                                    <label for="inputTipo" class="form-label">Tipo</label>
-                                    <select class="form-select">
-                                        <option value="">Selecciona el tipo</option>
-                                        <option value="1">Perro</option>
-                                        <option value="2">Gato</option>
-                                        <option value="3">Conejo</option>
-                                        <option value="4">otro</option>
-                                    </select>
+                                        <div class="form-group mb-2">
+                                            <label for="InMRaza" class="form-label">Raza</label>
+                                            <input type="text" class="form-control" id="InMRaza" name="RazaM"
+                                                   value="<% out.print(NuevaMascota.getRaza()); %>" required>
+                                        </div>
+                                        
+                                        <div class="form-group mb-2">
+                                            <label class="form-check-label">Sexo</label>
+                                            <div class="ps-5">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="SexoM" id="RadioHembraM"
+                                                           value="H">
+                                                    <label class="form-check-label" for="RadioHembraM">
+                                                        Hembra
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="SexoM" id="RadioMachoM"
+                                                           value="M">
+                                                    <label class="form-check-label" for="RadioMachoM">
+                                                        Macho
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InMTipo" class="form-label">Tipo</label>
+                                            <select class="form-select" id="InMTipo" name="TipoM">
+                                                <option value="Perro">Perro</option>
+                                                <option value="Gato">Gato</option>
+                                                <option value="Conejo">Conejo</option>
+                                                <option value="Otro">Otro</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                    </div>
                                 </div>
-                                <br>
+                                <!--Pie del Modal-->
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-success submit">Guardar Cambios</button>
+                                </div>
+                                <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
                         </div>
                     </div>
                 </div>
@@ -171,11 +188,8 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalVerLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="modal-header justify-content-center">
+                        <p class="display-6 m-0">Eliminar Mascota</p>
                     </div>
                     <div class="modal-body" align="center">
                         <div class="titulo">
@@ -207,19 +221,19 @@
                         <p class="display-6 m-0">Registrar Mascota</p>
                     </div>
 
-                    <form action="Servlet_Mascota" method="post">
+                    <form id="RegistrarMascota" action="Servlet_Mascota?accion=registrar" method="post">
                         <!--Body-->
                         <div class="modal-body">
                             <div class="container-fluid">
                                 <div class="form-group mb-2">
                                     <label for="InNombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="InNombre" name="Nombre"
-                                           placeholder="Nombre">
+                                           placeholder="Nombre" required>
                                 </div>
 
                                 <div class="form-group mb-2">
                                     <label for="InRaza" class="form-label">Raza</label>
-                                    <input type="text" class="form-control" id="InRaza" name="Raza" placeholder="Raza">
+                                    <input type="text" class="form-control" id="InRaza" name="Raza" placeholder="Raza" required>
                                 </div>
 
                                 <div class="form-group mb-2">
@@ -257,7 +271,7 @@
                         </div>
                         <!--Pie del Modal-->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success submit">Registrar</button>
                         </div>
                         <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
@@ -270,5 +284,4 @@
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" text="text/javascript"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" text="text/javascript"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js" text="text/javascript"></script>
-
 </html>

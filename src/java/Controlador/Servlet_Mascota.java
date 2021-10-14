@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +34,7 @@ public class Servlet_Mascota extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Mascota</title>");            
+            out.println("<title>Servlet Servlet_Mascota</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Servlet_Mascota at " + request.getContextPath() + "</h1>");
@@ -54,7 +55,7 @@ public class Servlet_Mascota extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -73,15 +74,17 @@ public class Servlet_Mascota extends HttpServlet {
         String Sexo = request.getParameter("Sexo");
         String Tipo = request.getParameter("Tipo");
         int ID = Integer.parseInt(request.getParameter("ID"));
-        
+
         try {
             DAO_Mascota OperacionMascota = new DAO_Mascota();
             OperacionMascota.RegistrarMascota(Nombre, Raza, Sexo, Tipo, "a", ID);
-            
+            response.sendRedirect("Servlet_Cliente?enlace=mascota");
         } catch (SQLException ex) {
             Logger.getLogger(Servlet_Mascota.class.getName()).log(Level.SEVERE, null, ex);
+            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/VerMascota.jsp");
+            destinos.forward(request, response);
         }
-        
+
     }
 
     /**
