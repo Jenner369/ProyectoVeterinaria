@@ -102,7 +102,7 @@ public class DAO_Cliente {
     public Beans_Cliente BuscarCliente_porUserPass(String user, String pass) throws SQLException {
         Beans_Cliente bCliente = new Beans_Cliente();
         try {
-            String sql = "call veterinaria.Cliente_UsuarioPorClave(?, ?);";
+            String sql = "call VETERINARIA.CLIENTE_USUARIOPORCLAVE(?, ?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
             cs.setString(1, user);

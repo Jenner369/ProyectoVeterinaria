@@ -7,6 +7,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,16 +25,20 @@ public class DAO_Cita {
         this.cn = new cnx();
     }
 
-    public void InsertarCita(String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID) throws SQLException {
+    public void InsertarCita(String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID, int SERVICIO_ID) throws SQLException {
         try {
             String sql = "call veterinaria.insertar_cita(?, ?, ?, ?, ?);";
+            LocalDateTime EntradaTime = LocalDateTime.parse(ENTRADA);
+            LocalDateTime SalidaTime = LocalDateTime.parse(SALIDA);
+
             con = cn.getConexion();
             cs = con.prepareCall(sql);
-            cs.setString(1, ENTRADA);
-            cs.setString(2, SALIDA);
+            cs.setTimestamp(1, Timestamp.valueOf(EntradaTime));
+            cs.setTimestamp(2, Timestamp.valueOf(SalidaTime));
             cs.setDouble(3, MONTO);
             cs.setInt(4, MASCOTA_ID);
             cs.setInt(5, VETERINARIO_ID);
+            cs.setInt(6, SERVICIO_ID);
             cs.execute();
             cs.close();
             con.close();
@@ -40,7 +47,7 @@ public class DAO_Cita {
         }
     }
 
-    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID) throws SQLException {
+    public void ModificarCita(int ID, String ENTRADA, String SALIDA, double MONTO, int MASCOTA_ID, int VETERINARIO_ID , int SERVICIO) throws SQLException {
         try {
             String sql = "call veterinaria.modificar_cita(?, ?, ?, ?, ?, ?);";
             con = cn.getConexion();
@@ -51,6 +58,8 @@ public class DAO_Cita {
             cs.setDouble(4, MONTO);
             cs.setInt(5, MASCOTA_ID);
             cs.setInt(6, VETERINARIO_ID);
+            cs.setInt(6,SERVICIO);
+
             cs.execute();
             cs.close();
             con.close();
@@ -113,6 +122,32 @@ public class DAO_Cita {
             throw e;
         }
         return lista;
+    }
+
+    public Beans_Cita BuscarCitaID(int ID) throws SQLException {
+        Beans_Cita oCita = new Beans_Cita();
+        try {
+            String sql = "call veterinaria.buscar_cita_por_ID;";
+            con = cn.getConexion();
+            cs = con.prepareCall(sql);
+            cs.setInt(1, ID);
+            rs = cs.executeQuery();
+            while (rs.next()) {
+                oCita.setID(rs.getInt(1));
+                oCita.setENTRADA(rs.getString(2));
+                oCita.setSALIDA(rs.getString(3));
+                oCita.setMONTO(rs.getDouble(4));
+                oCita.setDESCRIPCION(rs.getString(5));
+                oCita.setMASCOTA_ID(rs.getInt(6));
+                oCita.setVETERINARIO_ID(rs.getInt(7));
+            }
+            rs.close();
+            cs.close();
+            con.close();
+        } catch (SQLException e) {
+            throw e;
+        }
+        return oCita;
     }
 
     public List<Beans_Cita> BuscarCitaPorDia(String ENTRADA) throws SQLException {

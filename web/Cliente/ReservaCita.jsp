@@ -27,12 +27,12 @@
             <section>
                 <div class="row no-gutters">
                     <div class="col-xl-6 col-lg-14 register-bg position-relative">
-                        <div class="card card-body border-0 position-absolute nombre p-3 bg-success bg-gradient">
+                        <div class=" position-absolute nombre p-3">
                             <h3 class=" font-weight-bold text-light display-6">Veterinaria Zeus</h3>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-12 d-flex">
-                        <div class="container mt-2 pt-1 align-self-start">
+                    <div class="col-xl-6 col-lg-12 d-flex" style="background: #818a81">
+                        <div class="container mt-2 pt-1 align-self-start" >
                             <br>
                             <h3 align="center" class="display-6">Reservar Cita</h3>
                             <br>
@@ -61,7 +61,7 @@
                                     <div class="col">                    
                                         <div class="mb-3"><label class="form-label">  Servicio</label>
                                             <div class="input-group">
-                                                <select class="form-select" id="servicioMascota" aria-label="Seleccione Servicio">
+                                                <select class="form-select" id="servicioMascota" aria-label="Seleccione Servicio" name="servicioMascota">
                                                     <option value="1" duracion="30" monto="98" selected>Consulta Medica</option>
                                                     <option value="2" duracion="30" monto="938"> Baño & Peluqueria</option>
                                                     <option value="3" duracion="30" monto="8">Vacunas & Desparacitación</option>
@@ -73,7 +73,7 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label">Mascota</label>
                                             <div class="input-group">
-                                                <select class="form-select" id="SelectMascota" aria-label="Seleccione Mascota">
+                                                <select class="form-select" name="mascota" id="SelectMascota" aria-label="Seleccione Mascota">
                                                     <option value="1" selected>Doki</option>
                                                     <option value="2">Otro</option>
                                                     <option value="3">Zeus</option>
@@ -97,8 +97,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-success" style="width: 25% ;margin:1% 70% 1% 70%;border:none" type="submit">Enviar</button>
+                                <div class="form-group"><br/>
+                                    <button class="form-control btn btn-success" cursorshover="true" style="border:none" type="submit">Reservar</button>
                                 </div>
                                 <input type="hidden" id="opcion" name="opcion" value="agregar" style="display: none;">
                             </form>

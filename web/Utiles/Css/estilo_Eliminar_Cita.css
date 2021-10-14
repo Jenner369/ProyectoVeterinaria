@@ -2,13 +2,14 @@ body {
     scroll-behavior: smooth;
     background: #818a81;
 }
-
-
+body div h3{
+    color:#ffffff;
+}
 body div h3 #titulo{
-     color:black;   
+    color:black;   
 }
 .register-bg{
-    background-image: url("../Images/Imagen_Reserva.jpg");
+    background-image: url("../Images/Imagen_Eliminar.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -22,18 +23,9 @@ body div h3 #titulo{
 }
 
 .nombre{
-    bottom: 20px;
+    bottom: 10px;
 }
 
-.display-6{
-    margin-top: 5%;
-    color: white;
-}
-
-.g-3{
-    margin-top: 4%;
-}
- 
 @media (max-width: 1200px){
     .register-bg{
         min-height: 80vh;
