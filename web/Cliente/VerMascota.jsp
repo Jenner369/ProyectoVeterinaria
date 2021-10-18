@@ -93,14 +93,17 @@
                     </div>
                     <form action="action" enctype="multipart/form-data">
                         <div class="modal-body">
+                            <div class="text-center">
+                                <img src="<%=request.getContextPath()%>/Utiles/Images/PerfilMascota.png" class="border border-secondary border-3 rounded-circle" style="height: 15rem" alt="">
+                            </div>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Foto de perfil</label>
-                                <input class="form-control" type="file" id="formFile" lang="es">
+                                <input class="form-control" type="file" id="FileImage" name="FileImage" lang="es">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                            <button type="button" class="btn btn-success">Guardar Cambios</button>
                         </div>
                     </form>
                 </div>
