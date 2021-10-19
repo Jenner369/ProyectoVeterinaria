@@ -1,7 +1,13 @@
 <%@page import="Beans.Beans_Mascota"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.DAO_Mascota"%>
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="UTF-8"
+         import="java.util.*"
+         import="org.apache.commons.fileupload.*"
+         import="org.apache.commons.fileupload.servlet.*"
+         import="org.apache.commons.fileupload.disk.*"
+         import="java.io.*"%>
 <!DOCTYPE html>
 <html>
 
@@ -56,12 +62,7 @@
                                 <td><% out.print(ListaMascotas.get(i).getSexo()); %></td>
                                 <td><% out.print(ListaMascotas.get(i).getTipo()); %></td>
                                 <td>
-                                    <button onclick="$('#ModalImagen').modal('show');" type ="button" id="btnImagen"
-                                            data-ID="<%out.print(ListaMascotas.get(i).getID());%>" 
-                                            data-Nombre="<%out.print(ListaMascotas.get(i).getNombre());%>"
-                                            data-Raza="<%out.print(ListaMascotas.get(i).getRaza());%>"
-                                            data-Sexo="<%out.print(ListaMascotas.get(i).getSexo());%>"
-                                            data-Tipo="<%out.print(ListaMascotas.get(i).getTipo());%>"
+                                    <button onclick="ImagenMascota('<%out.print(ListaMascotas.get(i).getID());%>,<%out.print(ListaMascotas.get(i).getImagen());%>')" type ="button" id="btnImagen"
                                             class="btn btn-secondary bi bi-image-alt"></button>
                                 </td>
                                 <td>
@@ -91,20 +92,22 @@
                     <div class="modal-header justify-content-center">
                         <p class="display-6 m-0">Imagen de Mascota</p>
                     </div>
-                    <form action="action" enctype="multipart/form-data">
+                    <form action="Servlet_Mascota?accion=imagen" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="text-center">
-                                <img src="<%=request.getContextPath()%>/Utiles/Images/PerfilMascota.png" class="border border-secondary border-3 rounded-circle" style="height: 15rem" alt="">
+                                <img src = "" id="ImagenMascota" class = "border border-secondary border-3 rounded-circle img-responsive" width="50%" height="100%"/>
                             </div>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Foto de perfil</label>
                                 <input class="form-control" type="file" id="FileImage" name="FileImage" lang="es">
                             </div>
                         </div>
+                        <input type="hidden" id="CodigoMascotaI" name="CodigoMascotaI" value="">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-success">Guardar Cambios</button>
+                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
                         </div>
+                        <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
                     </form>
                 </div>
             </div>

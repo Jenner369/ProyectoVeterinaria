@@ -136,6 +136,21 @@ public class DAO_Mascota {
         }
     }
     
+    public void AgregarImagenMascota(int ID1, String Imagen) throws SQLException {
+        try {
+            String sql = "call veterinaria.AgregarImagenMascota(?, ?);";
+            con = cn.getConexion();
+            cs = con.prepareCall(sql);
+            cs.setInt(1, ID1);
+            cs.setString(2, Imagen);
+            cs.execute();
+            cs.close();
+            con.close();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
     public void ActualizarMascota(int CodigoMascota, String Nombre, String Raza, String Sexo, String Tipo) throws SQLException {
         try {
             String sql = "call veterinaria.actualizar_mascota(?, ?, ?, ?, ?);";
@@ -154,6 +169,7 @@ public class DAO_Mascota {
             throw e;
         }
     }
+    
     public List<Beans_Mascota> BuscarMascota_PorIDCliente( int idCliente) throws SQLException {
         List<Beans_Mascota> lista = new ArrayList<>();
         try {

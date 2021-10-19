@@ -25,3 +25,11 @@ function EliminarMascota(EliminarDatos) {
     }
     $("#InETipo").val(Data[4]);
 }
+
+function ImagenMascota(ImagenMascota) {
+    $('#ModalImagen').modal('show');
+    DataImagen = ImagenMascota.split(',');
+    $("#CodigoMascotaI").val(DataImagen[0]);
+    console.log(DataImagen[1]);
+    document.getElementById('ImagenMascota').src = "/Veterinaria/Utiles/Images/" + DataImagen[1];
+}
