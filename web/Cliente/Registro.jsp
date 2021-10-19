@@ -22,7 +22,7 @@
                             <br>
                             <h3 align="center" class="display-6">Registrate gratis</h3>
                             <br>
-                            <form action="Servlet_Registro" method="POST" class="row g-3">
+                            <form action="Servlet_Registro" method="post" class="row g-3">
                                 <div class="form-group">
                                     <label for="user" class="form-label">Usuario</label>
                                     <input type="text" class="form-control" id="user" name="user" placeholder="Ejm. Clara09">

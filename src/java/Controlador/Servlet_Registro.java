@@ -84,10 +84,10 @@ public class Servlet_Registro extends HttpServlet {
 
         try {
             DAO_Cliente dCliente = new DAO_Cliente();
-            System.out.println("XDD");
+//            System.out.println("XDD");
             dCliente.RegistrarCliente(nombre, paterno, materno, user, pass, null);
-            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Ingreso?tipo=cliente");
-            destinos.forward(request, response);
+//            RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Ingreso?tipo=cliente");
+//            destinos.forward(request, response);
         } catch (SQLException e) {
             RequestDispatcher destinos = request.getRequestDispatcher("Cliente/Registro.jsp");
             destinos.forward(request, response);
