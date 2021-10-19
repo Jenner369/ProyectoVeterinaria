@@ -1,4 +1,13 @@
-  <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="Beans.Beans_Mascota"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.DAO_Mascota"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="UTF-8"
+         import="java.util.*"
+         import="org.apache.commons.fileupload.*"
+         import="org.apache.commons.fileupload.servlet.*"
+         import="org.apache.commons.fileupload.disk.*"
+         import="java.io.*"%>
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +38,7 @@
 
                         <div class="form-group pb-3 text-end">
                             <button onclick="$('#ModalAgregar').modal('show');" type="submit"
-                                    class=" btn btn-success submit">Agregar</button>
+                                    class=" btn btn-success bi bi-plus-lg submit"> Agregar</button>
                         </div>
 
                         <table class="table table-hover table-condensed table-bordered text-center">
@@ -41,24 +50,32 @@
                                 <th>Tipo</th>
                                 <th colspan="3">Acciones</th>
                             </tr>
+                            <%
+                                DAO_Mascota Mascotas = new DAO_Mascota();
+                                List<Beans_Mascota> ListaMascotas = Mascotas.BuscarMascotaPorID_CLIENTE(id);
+                                for (int i = 0; i < ListaMascotas.size(); i++) {
+                            %>
                             <tr id="iconos">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><% out.print(ListaMascotas.get(i).getID()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getNombre()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getRaza()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getSexo()); %></td>
+                                <td><% out.print(ListaMascotas.get(i).getTipo()); %></td>
                                 <td>
-                                    <a onclick="$('#ModalImagen').modal('show');"><i
-                                            class="bi bi-image h4 text-secondary"></i></a>
+                                    <button onclick="ImagenMascota('<%out.print(ListaMascotas.get(i).getID());%>,<%out.print(ListaMascotas.get(i).getImagen());%>')" type ="button" id="btnImagen"
+                                            class="btn btn-secondary bi bi-image-alt"></button>
                                 </td>
                                 <td>
-                                    <a onclick="$('#ModalModificar').modal('show');"><i
-                                            class="bi bi-pencil-square h4 text-warning"></i></a>
+                                    <button onclick="ModificarDatos('<%out.print(ListaMascotas.get(i).getID());%>,<%out.print(ListaMascotas.get(i).getNombre());%>,<%out.print(ListaMascotas.get(i).getRaza());%>,<%out.print(ListaMascotas.get(i).getSexo());%>,<%out.print(ListaMascotas.get(i).getTipo());%>')" type ="button" id="btnModificar"
+                                            class="btn btn-warning bi bi-pencil-fill text-white"></button>
                                 </td>
                                 <td>
-                                    <a onclick="$('#ModalEliminar').modal('show');"><i
-                                            class="bi bi-trash h4 text-danger"></i></a>
+                                    <button onclick="EliminarMascota('<%out.print(ListaMascotas.get(i).getID());%>,<%out.print(ListaMascotas.get(i).getNombre());%>,<%out.print(ListaMascotas.get(i).getRaza());%>,<%out.print(ListaMascotas.get(i).getSexo());%>,<%out.print(ListaMascotas.get(i).getTipo());%>')" type ="button" id="btnEliminar"
+                                            class="btn btn-danger bi bi-trash-fill text-white"></button>
                                 </td>
+                                <%
+                                    }
+                                %>
                             </tr>
                         </table>
                     </div>
@@ -72,21 +89,26 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalVerLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="modal-header justify-content-center">
+                        <p class="display-6 m-0">Imagen de Mascota</p>
                     </div>
-                    <div class="modal-body">
-                        <form action="action" enctype="multipart/form-data">
-
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    <form action="Servlet_Mascota?accion=imagen" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <img src = "" id="ImagenMascota" class = "border border-secondary border-3 rounded-circle img-responsive" width="50%" height="100%"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Foto de perfil</label>
+                                <input class="form-control" type="file" id="FileImage" name="FileImage" lang="es">
+                            </div>
                         </div>
-                    </div>
+                        <input type="hidden" id="CodigoMascotaI" name="CodigoMascotaI" value="">
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                        </div>
+                        <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
+                    </form>
                 </div>
             </div>
         </div>
@@ -96,70 +118,64 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalVerLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="modal-header justify-content-center">
+                        <p class="display-6 m-0">Modificar Mascota</p>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
-                            <form>
-                                <div class="titulo">
-                                    <div class="card-body " align="center">
-                                        <h5 class="card-title">Modificar Mascota</h5>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputnombre" class="col-sm-2 col-form-label">Nombre</label>
-                                    <input type="nombre" class="form-control" id="inputs" placeholder="nombre">
-                                </div>
-                                <br>
-                                <div class="form-group row">
-                                    <label for="inputraza" class="col-sm-2 col-form-label">Raza</label>
-                                    <input type="raza" class="form-control" id="inputs" placeholder="Raza">
-                                </div>
-                                <br>
-                                <fieldset class="form-group">
-                                    <div class="row">
-                                        <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios"
-                                                       id="gridRadios1" value="option1" checked>
-                                                <label class="form-check-label" for="gridRadios1">
-                                                    Hembra
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gridRadios"
-                                                       id="gridRadios2" value="option2">
-                                                <label class="form-check-label" for="gridRadios2">
-                                                    Macho
-                                                </label>
-                                            </div>
-
+                            <form id="ModificarMascota" action="Servlet_Mascota?accion=modificar" method="post">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="form-group mb-2">
+                                            <label for="InMNombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="InMNombre" name="NombreM" required>
                                         </div>
-                                    </div>
-                                </fieldset>
-                                <br>
 
-                                <div class="form-group">
-                                    <label for="inputTipo" class="form-label">Tipo</label>
-                                    <select class="form-select">
-                                        <option value="">Selecciona el tipo</option>
-                                        <option value="1">Perro</option>
-                                        <option value="2">Gato</option>
-                                        <option value="3">Conejo</option>
-                                        <option value="4">otro</option>
-                                    </select>
+                                        <div class="form-group mb-2">
+                                            <label for="InMRaza" class="form-label">Raza</label>
+                                            <input type="text" class="form-control" id="InMRaza" name="RazaM" required>
+                                        </div>
+
+                                        <div class="form-group mb-2">
+                                            <label class="form-check-label">Sexo</label>
+                                            <div class="ps-5">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="SexoM" id="RadioHembraM"
+                                                           value="H">
+                                                    <label class="form-check-label" for="RadioHembraM">
+                                                        Hembra
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="SexoM" id="RadioMachoM"
+                                                           value="M">
+                                                    <label class="form-check-label" for="RadioMachoM">
+                                                        Macho
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InMTipo" class="form-label">Tipo</label>
+                                            <select class="form-select" id="InMTipo" name="TipoM">
+                                                <option value="PERRO">Perro</option>
+                                                <option value="GATO">Gato</option>
+                                                <option value="CONEJO">Conejo</option>
+                                                <option value="OTRO">Otro</option>
+                                            </select>
+                                        </div>
+                                        <input type="hidden" id="codigoMascotaM" name="codigoMascotaM" value="">
+                                    </div>
                                 </div>
-                                <br>
+                                <!--Pie del Modal-->
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-success submit">Guardar Cambios</button>
+                                </div>
+                                <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar Cambios</button>
                         </div>
                     </div>
                 </div>
@@ -167,30 +183,73 @@
         </div>
 
         <!--Modal de Eliminar-->
-        <div class=" modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
+        <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="ModalVerLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalVerLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="modal-header justify-content-center">
+                        <p class="display-6 m-0">Eliminar Mascota</p>
                     </div>
-                    <div class="modal-body" align="center">
-                        <div class="titulo">
-                            <div class="card-body " align="center">
-                                <h5 class="card-title">Eliminar Mascota</h5>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div>
+                                <p class="text-center fs-5">¿Esta seguro que desea eliminar a su mascota del registro?</p>
                             </div>
-                        </div>
-                        <div>
-                            ¿Esta seguro que desea eliminar a su mascota del registro?
-                            <br>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Confirmar</button>
+                            <form id="EliminarMascota" action="Servlet_Mascota?accion=eliminar" method="post">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <fildset disabled>
+                                        <div class="container-fluid">
+                                            <div class="form-group mb-2">
+                                                <label for="InENombre" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="InENombre" name="NombreE" disabled>
+                                            </div>
+
+                                            <div class="form-group mb-2">
+                                                <label for="InERaza" class="form-label">Raza</label>
+                                                <input type="text" class="form-control" id="InERaza" name="RazaE" disabled>
+                                            </div>
+
+                                            <div class="form-group mb-2">
+                                                <label class="form-check-label">Sexo</label>
+                                                <div class="ps-5">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="SexoE" id="RadioHembraE"
+                                                               value="H" disabled>
+                                                        <label class="form-check-label" for="RadioHembraE">
+                                                            Hembra
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="SexoE" id="RadioMachoE"
+                                                               value="M" disabled>
+                                                        <label class="form-check-label" for="RadioMachoE">
+                                                            Macho
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="InETipo" class="form-label">Tipo</label>
+                                                <select class="form-select" id="InETipo" name="TipoE" disabled>
+                                                    <option value="PERRO">Perro</option>
+                                                    <option value="GATO">Gato</option>
+                                                    <option value="CONEJO">Conejo</option>
+                                                    <option value="OTRO">Otro</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" id="codigoMascotaE" name="codigoMascotaE" value="">
+                                        </div>
+                                    </fildset>
+                                </div>
+                                <!--Pie del Modal-->
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-danger submit">Eliminar</button>
+                                </div>
+                                <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -207,33 +266,33 @@
                         <p class="display-6 m-0">Registrar Mascota</p>
                     </div>
 
-                    <form action="Servlet_Mascota" method="post">
+                    <form id="RegistrarMascota" action="Servlet_Mascota?accion=registrar" method="post">
                         <!--Body-->
                         <div class="modal-body">
                             <div class="container-fluid">
                                 <div class="form-group mb-2">
                                     <label for="InNombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="InNombre" name="Nombre"
-                                           placeholder="Nombre">
+                                    <input type="text" class="form-control" id="InNombre" name="NombreR"
+                                           placeholder="Nombre" required>
                                 </div>
 
                                 <div class="form-group mb-2">
                                     <label for="InRaza" class="form-label">Raza</label>
-                                    <input type="text" class="form-control" id="InRaza" name="Raza" placeholder="Raza">
+                                    <input type="text" class="form-control" id="InRaza" name="RazaR" placeholder="Raza" required>
                                 </div>
 
                                 <div class="form-group mb-2">
                                     <label class="form-check-label">Sexo</label>
                                     <div class="ps-5">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="Sexo" id="RadioHembra"
+                                            <input class="form-check-input" type="radio" name="SexoR" id="RadioHembra"
                                                    value="H">
                                             <label class="form-check-label" for="RadioHembra">
                                                 Hembra
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="Sexo" id="RadioMacho"
+                                            <input class="form-check-input" type="radio" name="SexoR" id="RadioMacho"
                                                    value="M">
                                             <label class="form-check-label" for="RadioMacho">
                                                 Macho
@@ -244,12 +303,12 @@
 
                                 <div class="form-group">
                                     <label for="InTipo" class="form-label">Tipo</label>
-                                    <select class="form-select" id="InTipo" name="Tipo">
+                                    <select class="form-select" id="InTipo" name="TipoR">
                                         <option selected>Selecciona...</option>
-                                        <option value="Perro">Perro</option>
-                                        <option value="Gato">Gato</option>
-                                        <option value="Conejo">Conejo</option>
-                                        <option value="Otro">Otro</option>
+                                        <option value="PERRO">Perro</option>
+                                        <option value="GATO">Gato</option>
+                                        <option value="CONEJO">Conejo</option>
+                                        <option value="OTRO">Otro</option>
                                     </select>
                                 </div>
                                 <br>
@@ -257,7 +316,7 @@
                         </div>
                         <!--Pie del Modal-->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success submit">Registrar</button>
                         </div>
                         <input type="hidden" id="ID" name="ID" value="<%out.print(id);%>" style="display: none;">
@@ -270,5 +329,5 @@
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" text="text/javascript"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" text="text/javascript"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js" text="text/javascript"></script>
-
+    <script src="<%=request.getContextPath()%>/Utiles/Js/scriptMascota.js" text="text/javascript"></script>
 </html>

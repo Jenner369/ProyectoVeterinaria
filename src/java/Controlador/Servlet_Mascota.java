@@ -1,20 +1,36 @@
 package Controlador;
 
 import DAO.DAO_Mascota;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+@MultipartConfig
 @WebServlet(name = "Servlet_Mascota", urlPatterns = {"/Servlet_Mascota"})
 public class Servlet_Mascota extends HttpServlet {
+
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +49,7 @@ public class Servlet_Mascota extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet_Mascota</title>");            
+            out.println("<title>Servlet Servlet_Mascota</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Servlet_Mascota at " + request.getContextPath() + "</h1>");
@@ -54,7 +70,7 @@ public class Servlet_Mascota extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -68,20 +84,70 @@ public class Servlet_Mascota extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String Nombre = request.getParameter("Nombre");
-        String Raza = request.getParameter("Raza");
-        String Sexo = request.getParameter("Sexo");
-        String Tipo = request.getParameter("Tipo");
+        //ID del dueño y accion a realizar
         int ID = Integer.parseInt(request.getParameter("ID"));
-        
+        String accion = request.getParameter("accion");
+
+        //Para Registrar
+        String Nombre = request.getParameter("NombreR");
+        String Raza = request.getParameter("RazaR");
+        String Sexo = request.getParameter("SexoR");
+        String Tipo = request.getParameter("TipoR");
+
+        //Para Modificar
+        String NombreM = request.getParameter("NombreM");
+        String RazaM = request.getParameter("RazaM");
+        String SexoM = request.getParameter("SexoM");
+        String TipoM = request.getParameter("TipoM");
+        String CodigoM = request.getParameter("codigoMascotaM");
+
+        //Para Eliminar
+        String CodigoE = request.getParameter("codigoMascotaE");
+
+        int CodigoMascota;
         try {
             DAO_Mascota OperacionMascota = new DAO_Mascota();
-            OperacionMascota.RegistrarMascota(Nombre, Raza, Sexo, Tipo, "a", ID);
-            
+            switch (accion) {
+                case "registrar":
+                    OperacionMascota.RegistrarMascota(Nombre, Raza, Sexo, Tipo, "PerfilMascota.png", ID);
+                    response.sendRedirect("Servlet_Cliente?enlace=mascota");
+                    break;
+                case "modificar":
+                    CodigoMascota = Integer.parseInt(CodigoM);
+                    OperacionMascota.ActualizarMascota(CodigoMascota, NombreM, RazaM, SexoM, TipoM);
+                    response.sendRedirect("Servlet_Cliente?enlace=mascota");
+                    break;
+                case "eliminar":
+                    CodigoMascota = Integer.parseInt(CodigoE);
+                    OperacionMascota.EliminarMascota(CodigoMascota);
+                    response.sendRedirect("Servlet_Cliente?enlace=mascota");
+                    break;
+                case "imagen":
+                    //Agregar Imagen
+                    String CodigoI = request.getParameter("CodigoMascotaI");
+                    String Imagen = "";
+                    File destino = new File("D:\\Universidad\\5 Ciclo\\Proyectos\\ProyectoVeterinaria\\web\\Utiles\\Images");
+                    int i = 0;
+                    for (Part parte : request.getParts()) {
+                        if (i == 0) {
+                            Imagen = extractFileName(parte);
+                            parte.write(destino.getPath() + "\\" + Imagen);
+                        }
+                        i++;
+                    }
+                    CodigoMascota = Integer.parseInt(CodigoI);
+                    OperacionMascota.AgregarImagenMascota(CodigoMascota, Imagen);
+                    response.sendRedirect("Servlet_Cliente?enlace=mascota");
+                    break;
+                default:
+                    break;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Servlet_Mascota.class.getName()).log(Level.SEVERE, null, ex);
+            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/VerMascota.jsp");
+            destinos.forward(request, response);
         }
-        
+
     }
 
     /**
