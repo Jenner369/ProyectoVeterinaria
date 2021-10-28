@@ -22,15 +22,7 @@
                             <br>
                             <h3 align="center" class="display-6">Registrate gratis</h3>
                             <br>
-                            <form action="Servlet_Registro" method="POST" class="row g-3">
-                                <div class="form-group">
-                                    <label for="user" class="form-label">Usuario</label>
-                                    <input type="text" class="form-control" id="user" name="user" placeholder="Ejm. Clara09">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword4" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="pass" name="pass">
-                                </div>
+                            <form action="Servlet_Registro?modo=registrar" method="post" class="row g-3">
                                 <div class="form-group">
                                     <label for="inputName" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ejm. Clara Celeste">
@@ -42,6 +34,14 @@
                                 <div class="form-group">
                                     <label for="inputLastName" class="form-label">Apellido Materno</label>
                                     <input type="text" class="form-control" id="materno" name="materno" placeholder="Ejm. Cotrina">
+                                </div>
+                                <div class="form-group">
+                                    <label for="user" class="form-label">Usuario</label>
+                                    <input type="text" class="form-control" id="user" name="user" placeholder="Ejm. Clara09">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword4" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="pass" name="pass">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
