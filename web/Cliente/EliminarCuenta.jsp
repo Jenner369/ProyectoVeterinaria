@@ -26,7 +26,7 @@
                             <br>
                             <p>Hola, </p>
                             <p>Lamentamos que quiera eliminar tu cuenta, esperamos volver a verte pronto.</p>
-                            <form class="row g-3">
+                            <form action="Servlet_Registro?modo=eliminar" class="row g-3">
                                 <div class="form-group">
                                     <label for="inputRazon" class="form-label">¿Por qué quiere eliminar tu cuenta?</label>
                                     <select id="inputRazon" class="form-select">
