@@ -28,13 +28,8 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Inicio</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                               aria-expanded="false">Reserva</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                                <li><a class="dropdown-item" href="Servlet_Menu?enlace=reserva">Reservar Cita</a></li>
-                                <li><a class="dropdown-item" href="VerCalendario.jsp">Ver Horarios</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Servlet_Cliente?enlace=servicio">Reserva</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#Servicios" id="dropdown02" data-bs-toggle="dropdown"

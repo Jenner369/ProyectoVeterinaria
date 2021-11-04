@@ -20,42 +20,47 @@
 <%
     int cita = Integer.parseInt(request.getParameter("idCita"));
     DAO_Cita daoCita = new DAO_Cita();
-    Beans_Cita bCita =  daoCita.BuscarCitaID(cita);
+    Beans_Cita bCita = daoCita.BuscarCitaID(cita);
     String Entrada = bCita.getENTRADA();
     String Salida = bCita.getSALIDA();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    LocalDateTime dateTimeEntrada = LocalDateTime.parse(Entrada , formatter);
-    LocalDateTime dateTimeSalida = LocalDateTime.parse( Salida , formatter);
+    LocalDateTime dateTimeEntrada = LocalDateTime.parse(Entrada, formatter);
+    LocalDateTime dateTimeSalida = LocalDateTime.parse(Salida, formatter);
     String fechaEntrada = dateTimeEntrada.toLocalDate().toString();
     String horaEntrada = dateTimeEntrada.toLocalTime().toString();
-    String fechaSalida= dateTimeSalida.toLocalDate().toString();
+    String fechaSalida = dateTimeSalida.toLocalDate().toString();
     String horaSalida = dateTimeSalida.toLocalTime().toString();
-    
-    
-    int ID_Mascota = daoCita.BuscarCitaID(cita).getMASCOTA_ID();
-    int ID_Servicio = daoCita.BuscarCitaID(cita).getSERVICIO_ID();
-    Double monto = daoCita.BuscarCitaID(cita).getMONTO();
+
+    //int ID_Mascota = daoCita.BuscarCitaID(cita).getMASCOTA_ID();
+    DAO_Cita daoCita2 = new DAO_Cita();
+    int ID_Servicio = daoCita2.BuscarCitaID(cita).getSERVICIO_ID();
+
+    DAO_Cita daoCita3 = new DAO_Cita();
+    Double monto = daoCita3.BuscarCitaID(cita).getMONTO();
 
     DAO_Mascota daoMascota = new DAO_Mascota();
     List<Beans_Mascota> lMascota = new ArrayList<>();
     lMascota = daoMascota.BuscarMascota_PorIDCliente(Integer.parseInt(session.getAttribute("id").toString()));
-    
-    DAO_Servicio daoServicio = new DAO_Servicio();
-    List<Beans_Servicio> lServicio  = new ArrayList<>();
-    lServicio = daoServicio.BuscarTodosServicios();
 
+    DAO_Servicio daoServicio = new DAO_Servicio();
+    List<Beans_Servicio> lServicio = new ArrayList<>();
+    lServicio = daoServicio.BuscarTodosServicios();
+    
+    out.print(fechaEntrada + horaEntrada);
 %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Modificar cita</title>
-    <script src="../Utiles/Frameworks/bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../Utiles/Css/estiloReserva.css" rel="stylesheet" type="text/css"/>
-    <link href="../Utiles/Frameworks/bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/Utiles/Css/estiloReserva.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <html>
-    <body style="overflow-x: hidden  ">
+    <nav>
+    </nav>
+    <body style="overflow-x: hidden">
         <div class="container-fluid">
             <section>
                 <div class="row no-gutters">
@@ -95,13 +100,13 @@
                                         <div class="mb-3"><label class="form-label">Servicio</label>
                                             <div class="input-group">
                                                 <select class="form-select" id="inputGroupSelect04" aria-label="Seleccione Servicio">
-                                                    <% for (int i = 0; i < lServicio.size();i++) {%>
-                                                        <option value="<%=lServicio.get(i).getID()%>" <%
-                                                                    if(lServicio.get(i).getID() == ID_Servicio ) {
-                                                                        out.print("selected");
-                                                                    }
-                                                                %>><%=lServicio.get(i).getNombre()%></option>
-    
+                                                    <% for (int i = 0; i < lServicio.size(); i++) {%>
+                                                    <option value="<%=lServicio.get(i).getID()%>" monto="<%lServicio.get(i).getCosto();%>" duracion="<%lServicio.get(i).getDuracion();%>" <%
+                                                        if (lServicio.get(i).getID() == ID_Servicio) {
+                                                            out.print("selected");
+                                                        }
+                                                            %>><%=lServicio.get(i).getNombre()%></option>
+
                                                     <%}%>
                                                 </select>
                                                 <button class="btn btn-outline btn-success" type="submit">Agregar</button>
@@ -112,18 +117,18 @@
                                         <div class="mb-3"><label class="form-label">Mascota</label>
                                             <div class="input-group">
                                                 <select class="form-select" name="mascota" id="SelectMascota" aria-label="Seleccione Mascota">
-                                                    <% for (int i = 0; i < lMascota.size();i++) {%>
-                                                        <option value="<%=lMascota.get(i).getID()%>" <%
-                                                                    if(lMascota.get(i).getID() == bCita.getMASCOTA_ID()) {
-                                                                        out.print("selected");
-                                                                    }
-                                                                %>><%=lMascota.get(i).getNombre()%></option>
-    
+                                                    <% for (int i = 0; i < lMascota.size(); i++) {%>
+                                                    <option value="<%=lMascota.get(i).getID()%>" <%
+                                                        if (lMascota.get(i).getID() == bCita.getMASCOTA_ID()) {
+                                                            out.print("selected");
+                                                        }
+                                                            %>><%=lMascota.get(i).getNombre()%></option>
+
                                                     <%}%>
-                                                </select>                             
+                                                </select>                          
                                             </div>
                                         </div>                                                
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="mb-3"><label class="form-label">Monto Total</label>
                                     <div class="input-group">
@@ -149,9 +154,10 @@
             </section>
         </div>
 
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../Utiles/Frameworks/jquery/jquery.min.js"></script>
-        <script src="../Utiles/Js/scripDatePicker.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Js/scripDatePicker.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js"></script>
     </body>
 </html>
 

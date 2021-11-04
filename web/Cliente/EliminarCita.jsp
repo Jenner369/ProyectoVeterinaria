@@ -42,8 +42,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../Utiles/Css/estilo_Eliminar_Cita.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Css/estilo_Eliminar_Cita.css" rel="stylesheet" type="text/css"/>
         <title> Eliminar Cita </title>
     </head>
     <body style="overflow-x: hidden  ">

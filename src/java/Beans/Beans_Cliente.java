@@ -1,4 +1,3 @@
-
 package Beans;
 
 /**
@@ -6,13 +5,14 @@ package Beans;
  * @author jedur
  */
 public class Beans_Cliente {
+
     int ID;
-    String nombre ;
-    String apellidoP; 
-    String apellidoM;  
-    String usuario ;
-    String password ; 
-    String imagen ;
+    String nombre;
+    String apellidoP;
+    String apellidoM;
+    String usuario;
+    String password;
+    String imagen;
 
     public int getID() {
         return ID;
@@ -46,8 +46,6 @@ public class Beans_Cliente {
         this.apellidoM = apellidoM;
     }
 
-    
-
     public String getUsuario() {
         return usuario;
     }
@@ -71,5 +69,11 @@ public class Beans_Cliente {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    @Override
+    public String toString() {
+        return nombre + " " + apellidoP + " " + apellidoM;
+    }
+
     
 }

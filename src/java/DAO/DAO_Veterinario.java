@@ -29,7 +29,7 @@ public class DAO_Veterinario {
     public Beans_Veterinario BuscarUsuario(String u, String c) throws SQLException {
         Beans_Veterinario bVeterinario = new Beans_Veterinario();
         try {
-            String sql = "call veterinaria.buscar_usuario(?,?);";
+            String sql = "call veterinaria.Veterinario_UsuarioPorClave(?,?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
             cs.setString(1, u);
@@ -38,12 +38,12 @@ public class DAO_Veterinario {
             while (rs.next()) {
 
                 bVeterinario.setId(rs.getInt(1));
-                bVeterinario.setNombre(rs.getString(2));
-                bVeterinario.setApellido_p(rs.getString(3));
-                bVeterinario.setApellido_m(rs.getString(4));
-                bVeterinario.setUsuario(rs.getString(5));
-                bVeterinario.setPassword(rs.getString(6));
-                bVeterinario.setDni(rs.getString(7));
+                bVeterinario.setDni(rs.getString(2));
+                bVeterinario.setNombre(rs.getString(3));
+                bVeterinario.setApellido_p(rs.getString(4));
+                bVeterinario.setApellido_m(rs.getString(5));
+                bVeterinario.setUsuario(rs.getString(6));
+                bVeterinario.setPassword(rs.getString(7));
 
             }
             rs.close();
@@ -192,12 +192,12 @@ public class DAO_Veterinario {
 
                 b = new Beans_Veterinario();
                 b.setId(rs.getInt(1));
-                b.setNombre(rs.getString(2));
-                b.setApellido_p(rs.getString(3));
-                b.setApellido_m(rs.getString(4));
-                b.setUsuario(rs.getString(5));
-                b.setPassword(rs.getString(6));
-                b.setDni(rs.getString(7));
+                b.setDni(rs.getString(2));
+                b.setNombre(rs.getString(3));
+                b.setApellido_p(rs.getString(4));
+                b.setApellido_m(rs.getString(5));
+                b.setUsuario(rs.getString(6));
+                b.setPassword(rs.getString(7));
                 lista.add(b);
 
             }

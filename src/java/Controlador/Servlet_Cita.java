@@ -91,17 +91,23 @@ public class Servlet_Cita extends HttpServlet {
                 Beans_Cita bCita = new Beans_Cita();
                 try {
                     DAO_Cita dCita = new DAO_Cita();
-                    listaDatosCita = dCita.BuscarCitaPorCliente(IDCliente);
+                    DAO_Mascota Mascota = new DAO_Mascota();
+                    List<Beans_Mascota> listaMascotas_Cliente = Mascota.BuscarMascotaPorID_CLIENTE(IDCliente);
+                    for (int i = 0; i < listaMascotas_Cliente.size(); i++) {
+                        List<Beans_Cita> aux = dCita.BuscarCitaPorMascota(listaMascotas_Cliente.get(i).getID());
+                        (listaDatosCita = new ArrayList<>(listaDatosCita)).addAll(aux);
+                    }
+
                     Iterator<Beans_Cita> it = listaDatosCita.iterator();
                     DAO_Servicio dServicio = new DAO_Servicio();
-                    
+
                     while (it.hasNext()) {
                         bCita = it.next();
                         Beans_Servicio bserv = dServicio.BuscarServicios_ID(bCita.getSERVICIO_ID());
-                        bCita.setDESCRIPCION("Mascota: "+IDCliente+", atendido por el veterinario: "+bCita.getVETERINARIO_ID()+"\n"+"Servicio"+"\n"
-                                +"Nombre"+bserv.getNombre()+"\n"
-                                +"Costo"+bserv.getCosto()+"\n"
-                                +"Duracion"+bserv.getDuracion());
+                        bCita.setDESCRIPCION("Mascota: " + IDCliente + ", atendido por el veterinario: " + bCita.getVETERINARIO_ID() + "\n" + "Servicio" + "\n"
+                                + "Nombre" + bserv.getNombre() + "\n"
+                                + "Costo" + bserv.getCosto() + "\n"
+                                + "Duracion" + bserv.getDuracion());
                     }
                 } catch (SQLException e) {
                     System.out.println(e);
@@ -114,10 +120,13 @@ public class Servlet_Cita extends HttpServlet {
             case "calendario":
                 break;
             case "agregar":
+                url = "Cliente/ReservaCita.jsp";
                 break;
             case "modificar":
+                url = "Cliente/ModificarCita.jsp";
                 break;
             case "eliminar":
+                url = "Cliente/EliminarCita.jsp";
                 break;
             default:
                 throw new AssertionError();
@@ -152,10 +161,12 @@ public class Servlet_Cita extends HttpServlet {
                 case "agregar":
                     url = "Cliente/VerCalendarioCliente.jsp";
 
-                    String fechayhoraEntrada = request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada");
+                    LocalDateTime Entrada = LocalDateTime.parse(request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada"));
+                    Entrada.minusHours(5);
+                    String fechayhoraEntrada = Entrada.toString();
                     int servicio = Integer.parseInt(request.getParameter("servicioMascota"));
                     DAO_Servicio dServ = new DAO_Servicio();
-                    Beans_Servicio bServ = dServ.BuscarServicios_ID(servicio);            
+                    Beans_Servicio bServ = dServ.BuscarServicios_ID(servicio);
                     //String fechayhoraSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
                     String fechayhoraSalida = LocalDateTime.parse(fechayhoraEntrada).plusMinutes(bServ.getDuracion()).toString();
                     double monto = Double.parseDouble(request.getParameter("montoTotal"));
@@ -176,7 +187,7 @@ public class Servlet_Cita extends HttpServlet {
                     DAO_Veterinario objveterinario = new DAO_Veterinario();
 
                     List<Beans_Veterinario> lista = objveterinario.SeleccionarVeterinario_PorDisponibilidad(fechayhoraEntrada, fechayhoraSalida);
-                    Beans_Veterinario objVe = lista.get(Math.round((float) Math.random() * lista.size()));
+                    Beans_Veterinario objVe = lista.get(Math.round((float) Math.random() * (lista.size() - 1)));
 
                     DAO_Cita objeCita = new DAO_Cita();
                     objeCita.InsertarCita(fechayhoraEntrada, fechayhoraSalida, monto, idMascota, objVe.getId(), servicio);
@@ -188,8 +199,8 @@ public class Servlet_Cita extends HttpServlet {
                     String MEntrada = request.getParameter("fechaEntrada") + "T" + request.getParameter("horaEntrada");
                     int MServicio = Integer.parseInt(request.getParameter("servicioMascota"));
                     DAO_Servicio dMServ = new DAO_Servicio();
-                    Beans_Servicio bMServ = dMServ.BuscarServicios_ID(MServicio); 
-                    
+                    Beans_Servicio bMServ = dMServ.BuscarServicios_ID(MServicio);
+
                     //String MSalida = request.getParameter("fechaSalida") + "T" + request.getParameter("horaSalida");
                     String MSalida = LocalDateTime.parse(MEntrada).plusMinutes(bMServ.getDuracion()).toString();
                     double Mmonto = Double.parseDouble(request.getParameter("montoTotal"));
@@ -203,17 +214,17 @@ public class Servlet_Cita extends HttpServlet {
 
                     while (Iterator.hasNext()) {
                         BeansM = Iterator.next();
-                        if (BeansM.getID()== Mmascota) {
-                             IDMascota = BeansM.getID();
+                        if (BeansM.getID() == Mmascota) {
+                            IDMascota = BeansM.getID();
                         }
                     }
-                    DAO_Veterinario OVeterinario = new DAO_Veterinario ();
-                    
-                    List<Beans_Veterinario> Lista =OVeterinario.SeleccionarVeterinario_PorDisponibilidad(MEntrada, MSalida);
-                    Beans_Veterinario OBeansVeterinario = Lista.get(Math.round((float)Math.random()*Lista.size()));
+                    DAO_Veterinario OVeterinario = new DAO_Veterinario();
+
+                    List<Beans_Veterinario> Lista = OVeterinario.SeleccionarVeterinario_PorDisponibilidad(MEntrada, MSalida);
+                    Beans_Veterinario OBeansVeterinario = Lista.get(Math.round((float) Math.random() * Lista.size()));
 
                     DAO_Cita ObjeCita = new DAO_Cita();
-                    ObjeCita.ModificarCita(CITA_ID,MEntrada, MSalida, Mmonto, IDMascota, OBeansVeterinario.getId(),MServicio );
+                    ObjeCita.ModificarCita(CITA_ID, MEntrada, MSalida, Mmonto, IDMascota, OBeansVeterinario.getId(), MServicio);
 
                     break;
                 case "Eliminar":

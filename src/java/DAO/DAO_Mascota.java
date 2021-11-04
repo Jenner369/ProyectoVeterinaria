@@ -173,7 +173,7 @@ public class DAO_Mascota {
     public List<Beans_Mascota> BuscarMascota_PorIDCliente( int idCliente) throws SQLException {
         List<Beans_Mascota> lista = new ArrayList<>();
         try {
-            String sql = "call veterinaria.BUSCAR_MASCOTA_POR_ID_CLIENTE(?);";
+            String sql = "call veterinaria.BuscarMascotaPor_IDCliente(?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql); 
             cs.setInt(1, idCliente);
@@ -185,8 +185,8 @@ public class DAO_Mascota {
                 b.setRaza(rs.getString(3));
                 b.setSexo(rs.getString(4));
                 b.setTipo(rs.getString(5));
-                b.setCLIENTE_ID(rs.getInt(6));
-                b.setImagen(rs.getString(7));  
+                b.setImagen(rs.getString(6)); 
+                b.setCLIENTE_ID(rs.getInt(7)); 
                 lista.add(b);
             }
             rs.close();

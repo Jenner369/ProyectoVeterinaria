@@ -5,8 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cambiar contraseña</title>
-        <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../Utiles/Css/estiloCambioClave.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Css/estiloCambioClave.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body class="text-white">
@@ -49,9 +49,9 @@
             </section>
         </div>
 
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="../Utiles/Js/loadMenuCliente.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js" type="text/javascript"></script>
     </body>
 
 </html>

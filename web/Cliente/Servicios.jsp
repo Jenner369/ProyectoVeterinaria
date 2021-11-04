@@ -1,26 +1,17 @@
-<%-- 
-    Document   : Servicios
-    Created on : 24/09/2021, 12:22:35 AM
-    Author     : USER
---%> 
-
+<%@include file="/Utiles/Jsp/validationCliente.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="../Utiles/Css/estilo_Servicio.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="<%=request.getContextPath()%>/Utiles/Css/estilo_Servicio.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <h3 class="navbar-brand">Veterinaria Zeus </h3>
-                </div>
-            </div>
+        <nav>
+            
         </nav>
         <div class="text-dark text-center" id="firstSection"> 
             <div class="container py-5">
@@ -142,10 +133,8 @@
             </div>
         </section> 
     </body>
-    <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../Utiles/Frameworks/jquery/jquery.min.js"></script>
-    <script src="../Utiles/Js/clickServices.js"></script>
-
-
-
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/clickServices.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js" type="text/javascript"></script>
 </html>

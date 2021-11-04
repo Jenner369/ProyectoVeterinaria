@@ -126,8 +126,7 @@ public class Servlet_Ingreso extends HttpServlet {
                 misession.setAttribute("id", lVeterinario.getId());
                 misession.setAttribute("tipo", tipo);
 
-                RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Veterinario?enlace=menu");
-                destinos.forward(request, response);
+                response.sendRedirect("Servlet_Veterinario?enlace=menu");
 
             } catch (SQLException ex) {
                 Logger.getLogger(Servlet_Ingreso.class.getName()).log(Level.SEVERE, null, ex);

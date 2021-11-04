@@ -6,8 +6,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>REGISTRO MASCOTAS</title>
-        <link rel="stylesheet" href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
-        <link href="../Utiles/Css/RegistrarMascota.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css">
+        <link href="<%=request.getContextPath()%>/Utiles/Css/RegistrarMascota.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <nav>
@@ -69,8 +69,8 @@
             <!---->
         </div>
     </body>
-    <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../Utiles/Frameworks/jquery/jquery.min.js"></script>
-    <script src="../Utiles/Js/loadMenuCliente.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js"></script>
 
 </html>

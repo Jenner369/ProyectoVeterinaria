@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAO_Servicio {
-
+    
     cnx cn;
     Connection con;
     Beans_Servicio b;
     CallableStatement cs;
     private ResultSet rs;
-
+    
     public DAO_Servicio() throws SQLException, IOException {
         this.cn = new cnx();
     }
-
+    
     public void RegistrarServicio(String ID, String nombre, String costo, String duracion) throws SQLException {
         try {
             String sql = "call veterinaria.registrar_mascota(?, ?, ?, ?);";
@@ -38,7 +38,7 @@ public class DAO_Servicio {
             throw e;
         }
     }
-
+    
     public void ModificarServicio(int ID, String nombre, Double costo, int duracion) throws SQLException {
         try {
             String sql = "call veterinaria.modificar_servicio(?, ?, ?, ?);";
@@ -55,7 +55,7 @@ public class DAO_Servicio {
             throw e;
         }
     }
-
+    
     public List<Beans_Servicio> BuscarTodosServicios() throws SQLException {
         List<Beans_Servicio> lista = new ArrayList<Beans_Servicio>();
         try {
@@ -69,6 +69,7 @@ public class DAO_Servicio {
                 b.setNombre(rs.getString(2));
                 b.setCosto(rs.getDouble(3));
                 b.setDuracion(rs.getInt(4));
+                lista.add(b);
             }
             cs.close();
             con.close();
@@ -77,22 +78,21 @@ public class DAO_Servicio {
         }
         return lista;
     }
-
+    
     public Beans_Servicio BuscarServicios_ID(int SERVICIO_ID) throws SQLException {
         Beans_Servicio beans_Servicio = new Beans_Servicio();
-
+        
         try {
-            String sql = "call veterinaria.buscar_Servicio_ID();";
+            String sql = "call veterinaria.buscar_Servicio_ID(?);";
             con = cn.getConexion();
             cs = con.prepareCall(sql);
+            cs.setInt(1, SERVICIO_ID);
             rs = cs.executeQuery();
-            cs.setInt(1,SERVICIO_ID);
-
             while (rs.next()) {
-                b = new Beans_Servicio();
-                b.setNombre(rs.getString(2));
-                b.setCosto(rs.getDouble(3));
-                b.setDuracion(rs.getInt(4));
+                beans_Servicio.setID(rs.getInt(1));
+                beans_Servicio.setNombre(rs.getString(2));
+                beans_Servicio.setCosto(rs.getDouble(3));
+                beans_Servicio.setDuracion(rs.getInt(4));
             }
             cs.close();
             con.close();
@@ -101,7 +101,7 @@ public class DAO_Servicio {
         }
         return beans_Servicio;
     }
-
+    
     public void EliminarServicio(int ID) throws SQLException {
         try {
             String sql = "call veterinaria.eliminar_servicio(?);";

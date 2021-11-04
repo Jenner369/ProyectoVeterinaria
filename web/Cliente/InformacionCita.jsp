@@ -9,8 +9,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Información Cita</title>
-    <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../Utiles/Css/estiloReserva.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/Utiles/Css/estiloReserva.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <html>
@@ -95,8 +95,8 @@
             </section>
         </div>
 
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../Utiles/Frameworks/jquery/jquery.min.js"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js"></script>
     </body>
 </html>
 

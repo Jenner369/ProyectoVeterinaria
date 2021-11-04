@@ -1,24 +1,38 @@
-
+<%@include file="/Utiles/Jsp/validationCliente.jsp"%>
+<%@page import="Beans.Beans_Servicio"%>
+<%@page import="DAO.DAO_Servicio"%>
+<%@page import="java.util.List"%>
+<%@page import="Beans.Beans_Mascota"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.DAO_Mascota"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    Date dDate = new Date();
+<%    Date dDate = new Date();
     SimpleDateFormat dfDate = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat dfTime = new SimpleDateFormat("HH:mm");
     String DateEntrada = dfDate.format(dDate);
     String TimeEntrada = dfTime.format(dDate);
+
+    DAO_Mascota daoMascota = new DAO_Mascota();
+    List<Beans_Mascota> lMascota = new ArrayList<>();
+    lMascota = daoMascota.BuscarMascotaPorID_CLIENTE(Integer.parseInt(session.getAttribute("id").toString()));
+
+    DAO_Servicio daoServicio = new DAO_Servicio();
+    List<Beans_Servicio> lServicio = new ArrayList<>();
+    lServicio = daoServicio.BuscarTodosServicios();
+    
 %>
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Reserva Cita</title>
-    <script src="../Utiles/Frameworks/bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <link href="../Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../Utiles/Css/estiloReserva.css" rel="stylesheet" type="text/css"/>
-    <link href="../Utiles/Frameworks/bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/Utiles/Css/estiloReserva.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <html>
@@ -59,13 +73,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">                    
-                                        <div class="mb-3"><label class="form-label">  Servicio</label>
+                                        <div class="mb-3"><label class="form-label">Servicio</label>
                                             <div class="input-group">
                                                 <select class="form-select" id="servicioMascota" aria-label="Seleccione Servicio" name="servicioMascota">
-                                                    <option value="1" duracion="30" monto="98" selected>Consulta Medica</option>
-                                                    <option value="2" duracion="30" monto="938"> Baño & Peluqueria</option>
-                                                    <option value="3" duracion="30" monto="8">Vacunas & Desparacitación</option>
-                                                    <option value="4" duracion="30" monto="928">Cirugía</option>
+                                                    <% for (int i = 0; i < lServicio.size(); i++) {%>
+                                                    <option value="<%=lServicio.get(i).getID()%>" monto="<%=lServicio.get(i).getCosto()%>" duracion="<%=lServicio.get(i).getDuracion()%>"><%=lServicio.get(i).getNombre()%></option>
+                                                    <%}%>
                                                 </select>
                                             </div>
                                         </div>
@@ -74,11 +87,10 @@
                                         <div class="mb-3"><label class="form-label">Mascota</label>
                                             <div class="input-group">
                                                 <select class="form-select" name="mascota" id="SelectMascota" aria-label="Seleccione Mascota">
-                                                    <option value="1" selected>Doki</option>
-                                                    <option value="2">Otro</option>
-                                                    <option value="3">Zeus</option>
-                                                    <option value="4">Kaiser</option>
-                                                </select>                             
+                                                    <% for (int i = 0; i < lMascota.size(); i++) {%>
+                                                    <option value="<%=lMascota.get(i).getID()%>"><%=lMascota.get(i).getNombre()%></option>
+                                                    <%}%>  
+                                                </select>>
                                             </div>
                                         </div>                        
                                     </div> 
@@ -100,7 +112,7 @@
                                 <div class="form-group"><br/>
                                     <button class="form-control btn btn-success" cursorshover="true" style="border:none" type="submit">Reservar</button>
                                 </div>
-                                <input type="hidden" id="opcion" name="opcion" value="agregar" style="display: none;">
+                                <input type="hidden" id="enlace" name="enlace" value="agregar" style="display: none;">
                             </form>
                         </div>
                     </div>
@@ -108,8 +120,8 @@
             </section>
         </div>
 
-        <script src="../Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../Utiles/Frameworks/jquery/jquery.min.js"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js"></script>
         <script>
             $('#servicioMascota').change(function () {
                 var id = $(this).children(":selected");
@@ -119,9 +131,9 @@
                 console.log(dateObj.toDateString());
                 //SUMARLE
 
-                dateObj.setMinutes(dateObj.getMinutes()+parseInt(id.attr('duracion')));
+                dateObj.setMinutes(dateObj.getMinutes() + parseInt(id.attr('duracion')));
                 var curr_day = dateObj.getDate();
-                var curr_month = dateObj.getMonth()+1;
+                var curr_month = dateObj.getMonth() + 1;
                 var curr_year = dateObj.getFullYear();
 
                 var curr_hour = dateObj.getHours();
@@ -157,7 +169,9 @@
                 $("#horaEntrada").attr("value", selected.toString());
             });
         </script>
-        <script src="../Utiles/Js/scripDatePicker.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Js/scripDatePicker.js" type="text/javascript"></script>
+        <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuCliente.js"></script>
     </body>
 </html>
 

@@ -70,6 +70,9 @@ public class Servlet_Veterinario extends HttpServlet {
             case "menu":
                 url = "Veterinario/MenuVeterinario.jsp";
                 break;
+            case "historial":
+                url = "Veterinario/VerHistorialMascota.jsp";
+                break;
             default:
                 url = "Servlet_Menu";
         }

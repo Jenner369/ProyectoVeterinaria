@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             Nuevo: {
                 text: "Agregar",
                 click: function () {
-                    //let url = 'Servlet_Cita?enlace=agregar';
-                    let url = 'Cliente/ReservaCita.jsp';
+                    let url = 'Servlet_Cita?enlace=agregar';
+                    //let url = 'Cliente/ReservaCita.jsp';
                     $(window).attr('location', url);
                 }
             }
@@ -53,7 +53,7 @@ function getDataCalendar() {
     return new Promise(resolve => {
         let listData = [];
         $.getJSON(
-                'Servlet_Calendar',
+                'Servlet_Cita?enlace=getDataCalendar',
                 function (events) {
                     $.each(events, function (index, event) {
                         var title = event.ID;

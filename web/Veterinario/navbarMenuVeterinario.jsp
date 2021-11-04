@@ -31,6 +31,9 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
+                    <a class="nav-link" href="Servlet_Veterinario?enlace=historial">Historiales</a>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#QuienesSomos" id="dropdown02" data-bs-toggle="dropdown"
                        aria-expanded="false">Quienes Somos</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
