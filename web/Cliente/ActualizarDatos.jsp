@@ -29,25 +29,26 @@
                             <br>
                             <h3 align="center" class="display-6">Actualice sus datos</h3>
                             <br>
-                            <form class="row g-3">
-                                <div class="form-group">
-                                    <label for="inputEmail4" class="form-label">Usuario</label>
-                                    <input type="email" class="form-control" id="inputEmail4">
-                                </div>
+                            <form action="Servlet_Registro?modo=modificar" class="row g-3">
                                 <div class="form-group">
                                     <label for="inputName" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="inputName">
+                                    <input type="text" class="form-control" id="nombre" name="nombre">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputLastName" class="form-label">Apellidos</label>
-                                    <input type="text" class="form-control" id="inputLastName">
+                                    <label for="inputLastName" class="form-label">Apellido Paterno</label>
+                                    <input type="text" class="form-control" id="paterno" name="paterno">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputGenero" class="form-label">Género</label>
-                                    <select id="inputGenero" class="form-select">
-                                        <option selected>Femenino</option>
-                                        <option>Masculino</option>
-                                    </select>
+                                    <label for="inputLastName" class="form-label">Apellido Materno</label>
+                                    <input type="text" class="form-control" id="materno" name="materno">
+                                </div>
+                                <div class="form-group">
+                                    <label for="user" class="form-label">Usuario</label>
+                                    <input type="email" class="form-control" id="user" name="user">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword4" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="pass" name="pass">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="form-control btn btn-success submit">Guardar cambios</button>
