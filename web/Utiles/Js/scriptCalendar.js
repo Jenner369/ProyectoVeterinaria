@@ -18,7 +18,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         eventClick: function (info) {
             $("#modalEjemplo").modal('show');
             $("#ModalTitle").text(info.event.title);
-            $("#ModalDescription").text(info.event.description);
+
+            for (const key in listData) {
+                if (key["id"] == info.event.id) {
+                    $("#ModalDescription").text(key["description"]);
+                }
+            }
             $("#ModalStart").text("Inicio: " + formatDate(info.event.start));
             $("#ModalEnd").text("Fin: " + formatDate(info.event.end));
             $("#updateButton").attr('onclick', "redirect('modificar'," + info.event.id + ")");
@@ -27,13 +32,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         eventMouseEnter: function (info) {
             $(info.el).addClass("bg-danger");
             $(info.el).addClass("border border-danger");
-            $(info.el).css('cursor','pointer');
-            
+            $(info.el).css('cursor', 'pointer');
+
         },
         eventMouseLeave: function (info) {
             $(info.el).removeClass("bg-danger");
             $(info.el).removeClass("border border-danger");
-            $(info.el).css('cursor','none');
+            $(info.el).css('cursor', 'none');
         },
         customButtons: {
             Nuevo: {

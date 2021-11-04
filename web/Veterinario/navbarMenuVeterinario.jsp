@@ -11,36 +11,14 @@
             <ul class="navbar-nav ms-auto me-auto mb-2 mb-md-0">
                 <!-- SUBMENU -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active" href="Servlet_Veterinario?enlace=menu">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                       aria-expanded="false">Reserva</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                        <li><a class="dropdown-item" href="">Reservar Cita</a></li>
-                        <li><a class="dropdown-item" href="">Ver Horarios</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#Servicios" id="dropdown02" data-bs-toggle="dropdown"
-                       aria-expanded="false">Servicios</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a class="dropdown-item" onclick="clickService('Lavado')" href="#Servicios">Lavado</a></li>
-                        <li><a class="dropdown-item" onclick="clickService('Pulgas')" href="#Servicios">Pulgas</a></li>
-                        <li><a class="dropdown-item" onclick="clickService('Parasitos')" href="#Servicios">Parasitos</a></li>
-                    </ul>
+                    <a class="nav-link" href="Servlet_Veterinario?enlace=calendario" id="dropdown03"
+                       aria-expanded="false">Ver Calendario</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="Servlet_Veterinario?enlace=historial">Historiales</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#QuienesSomos" id="dropdown02" data-bs-toggle="dropdown"
-                       aria-expanded="false">Quienes Somos</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a class="dropdown-item" href="#QuienesSomos">Mision</a></li>
-                        <li><a class="dropdown-item" href="#QuienesSomos">Vision</a></li>
-                        <li><a class="dropdown-item" href="#QuienesSomos">Contactanos</a></li>
-                    </ul>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -52,8 +30,7 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a class="dropdown-item" href="#">Ingresar</a></li>
-                        <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                        <li><a class="dropdown-item" href="Servlet_Menu?enlace=salir">Salir</a></li>
                     </ul>
                 </li>
             </ul>

@@ -79,7 +79,8 @@ public class Servlet_Cita extends HttpServlet {
             throws ServletException, IOException {
         String opt = request.getParameter("enlace");
         HttpSession session = request.getSession(true);
-        int IDCliente = Integer.parseInt(session.getAttribute("id").toString());
+        int IDUsuario = Integer.parseInt(session.getAttribute("id").toString());
+        String Tipo = session.getAttribute("tipo").toString();
         String url = "";
         if (opt == null || opt.isEmpty()) {
             RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
@@ -90,12 +91,20 @@ public class Servlet_Cita extends HttpServlet {
                 List<Beans_Cita> listaDatosCita = new ArrayList<>();
                 Beans_Cita bCita = new Beans_Cita();
                 try {
-                    DAO_Cita dCita = new DAO_Cita();
+                    DAO_Cita dCita;
                     DAO_Mascota Mascota = new DAO_Mascota();
-                    List<Beans_Mascota> listaMascotas_Cliente = Mascota.BuscarMascotaPorID_CLIENTE(IDCliente);
-                    for (int i = 0; i < listaMascotas_Cliente.size(); i++) {
-                        List<Beans_Cita> aux = dCita.BuscarCitaPorMascota(listaMascotas_Cliente.get(i).getID());
-                        (listaDatosCita = new ArrayList<>(listaDatosCita)).addAll(aux);
+                    if (Tipo.equals("cliente")) {
+                        
+                        List<Beans_Mascota> listaMascotas_Cliente = Mascota.BuscarMascotaPorID_CLIENTE(IDUsuario);
+                        for (int i = 0; i < listaMascotas_Cliente.size(); i++) {
+                            dCita = new DAO_Cita();
+                            List<Beans_Cita> aux = dCita.BuscarCitaPorMascota(listaMascotas_Cliente.get(i).getID());
+                            (listaDatosCita = new ArrayList<>(listaDatosCita)).addAll(aux);
+                        }
+                    
+                    }else{
+                        dCita = new DAO_Cita();
+                        listaDatosCita = dCita.BuscarCitaPorVeterinario(IDUsuario);
                     }
 
                     Iterator<Beans_Cita> it = listaDatosCita.iterator();
@@ -104,7 +113,7 @@ public class Servlet_Cita extends HttpServlet {
                     while (it.hasNext()) {
                         bCita = it.next();
                         Beans_Servicio bserv = dServicio.BuscarServicios_ID(bCita.getSERVICIO_ID());
-                        bCita.setDESCRIPCION("Mascota: " + IDCliente + ", atendido por el veterinario: " + bCita.getVETERINARIO_ID() + "\n" + "Servicio" + "\n"
+                        bCita.setDESCRIPCION("Mascota: " + IDUsuario + ", atendido por el veterinario: " + bCita.getVETERINARIO_ID() + "\n" + "Servicio" + "\n"
                                 + "Nombre" + bserv.getNombre() + "\n"
                                 + "Costo" + bserv.getCosto() + "\n"
                                 + "Duracion" + bserv.getDuracion());

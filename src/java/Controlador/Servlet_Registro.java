@@ -78,14 +78,14 @@ public class Servlet_Registro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String modo = request.getParameter("modo");
-        
+
         //Registro Cliente
         String nombre = request.getParameter("nombre");
         String paterno = request.getParameter("paterno");
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         String materno = request.getParameter("materno");
-                
+
         //Modificar Cliente
         String nombreM = request.getParameter("nombreM");
         String paternoM = request.getParameter("paternM");
@@ -93,18 +93,20 @@ public class Servlet_Registro extends HttpServlet {
         String userM = request.getParameter("userM");
         String passM = request.getParameter("passM");
         String CodClienteM = request.getParameter("codigoClienteM");
-        
+
         //Eliminar Cliente
         String CodClienteE = request.getParameter("codigoClienteE");
-        
+
         int CodigoCliente;
-        
+
         try {
             DAO_Cliente ModoCliente = new DAO_Cliente();
             switch (modo) {
                 case "registrar":
                     ModoCliente.RegistrarCliente(nombre, paterno, materno, user, pass, null);
-                    response.sendRedirect("Servlet_Ingreso?tipo=cliente");
+                    //response.sendRedirect("Servlet_Ingreso?tipo=cliente&user=" + user + "&pass=" + pass);
+                    RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Ingreso?tipo=cliente&user=" + user + "&pass=" + pass);
+                    destinos.forward(request, response);
                     break;
                 case "modificar":
                     CodigoCliente = Integer.parseInt(CodClienteM);
@@ -121,8 +123,8 @@ public class Servlet_Registro extends HttpServlet {
             }
         } catch (SQLException e) {
             Logger.getLogger(Servlet_Registro.class.getName()).log(Level.SEVERE, null, e);
-            RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
-            destinos.forward(request, response);
+            //RequestDispatcher destinos = request.getRequestDispatcher("Cliente/MenuCliente.jsp");
+            //destinos.forward(request, response);
         }
     }
 

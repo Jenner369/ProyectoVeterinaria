@@ -56,7 +56,7 @@
                                 <td>
                                     <!--button  class="btn btn-success" data-toggle="modal" data-target="#ModalVer" onclick="$('#ModalVer').modal('show');">Ver
                                         Historial</button-->
-                                    <a class="btn btn-success" href="Cliente/ReportesDeHistorial.jsp?codigo=<%=Mascotas.get(i).getID()%>" target="_blanck">Ver Historial</a>
+                                    <a class="btn btn-success" href="Cliente/ReportesDeHistorial.jsp?codigo=<%=Mascotas.get(i).getID()%>" target="_black">Ver Historial</a>
                                 </td>
                             </tr>
                             <%}%>

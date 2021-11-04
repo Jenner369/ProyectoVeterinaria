@@ -40,7 +40,6 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="button" id="updateButton" class="btn btn-warning">Modificar</button>
                         <button type="button" id="deleteButton" class="btn btn-danger">Eliminar</button>
-                        <button type="button" class="btn btn-primary">Ver Informacion</button>
                     </div>
                 </div>
             </div>

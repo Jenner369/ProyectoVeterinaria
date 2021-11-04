@@ -65,18 +65,24 @@ public class Servlet_Veterinario extends HttpServlet {
         if (opt == null || opt.isEmpty()) {
             RequestDispatcher destinos = request.getRequestDispatcher("Servlet_Menu");
             destinos.forward(request, response);
+        } else {
+            switch (opt) {
+                case "menu":
+                    url = "Veterinario/MenuVeterinario.jsp";
+                    break;
+                case "historial":
+                    url = "Veterinario/VerHistorialMascota.jsp";
+                    break;
+                case "calendario":
+                    url = "Veterinario/VerCalendarioVeterinario.jsp";
+                    break;
+                case "lavado":
+                    url = "Veterinario/VerCalendarioVeterinario.jsp";
+                    break;
+                default:
+                    url = "Servlet_Menu";
+            }
         }
-        switch (opt) {
-            case "menu":
-                url = "Veterinario/MenuVeterinario.jsp";
-                break;
-            case "historial":
-                url = "Veterinario/VerHistorialMascota.jsp";
-                break;
-            default:
-                url = "Servlet_Menu";
-        }
-
         RequestDispatcher destinos = request.getRequestDispatcher(url);
         destinos.forward(request, response);
     }

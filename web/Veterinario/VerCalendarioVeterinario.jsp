@@ -1,4 +1,4 @@
-<%@include file="/Utiles/Jsp/validationCliente.jsp"%>
+<a href="../Utiles/Jsp/validationVeterinario.jsp"></a>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,6 +9,8 @@
         <link href="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/font/bootstrap-icons.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/Utiles/Css/estilo_carousel.css" rel="stylesheet" type="text/css"/>
         <link href="<%=request.getContextPath()%>/Utiles/Frameworks/fullcalendar/main.css" rel="stylesheet"/>
+        <!-- It's to get context path-->
+        <link id="contextPathHolder" data-contextPath="<%=request.getContextPath()%>"/>
     </head>
     <body>
         <nav>
@@ -38,7 +40,6 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="button" id="updateButton" class="btn btn-warning">Modificar</button>
                         <button type="button" id="deleteButton" class="btn btn-danger">Eliminar</button>
-                        <button type="button" class="btn btn-primary">Ver Informacion</button>
                     </div>
                 </div>
             </div>
@@ -47,8 +48,8 @@
     </body>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/jquery/jquery.js"></script>
-    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenu.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/loadMenuVeterinario.js"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/fullcalendar/main.js"></script>
     <script src="<%=request.getContextPath()%>/Utiles/Frameworks/fullcalendar/locales/es.js"></script>
-    <script src="<%=request.getContextPath()%>/Utiles/Js/scriptCalendar.js"></script>
+    <script src="<%=request.getContextPath()%>/Utiles/Js/scriptCalendarCliente.js"></script>
 </html>

@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/web/Veterinario/VerHistorialMascota.jsp</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/Controlador/Servlet_Registro.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/src/java/Controlador/Servlet_Ingreso.java</file>
+            <file>file:/D:/Universidad/5%20Ciclo/Proyectos/ProyectoVeterinaria/web/Veterinario/VerCalendarioVeterinario.jsp</file>
         </group>
     </open-files>
 </project-private>

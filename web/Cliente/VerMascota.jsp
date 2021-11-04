@@ -80,6 +80,10 @@
                         </table>
                     </div>
                 </div>
+                <!--Footer de la Tarjeta-->            
+                <div class="card-footer text-end m-0">
+                    <a class="btn btn-success" href="Utiles/Jsp/ReporteMascotasCliente.jsp?DNI=<%=id%>" target="_black">Reporte de Mascotas</a>
+                </div>
             </div>
 
         </div>

@@ -14,14 +14,6 @@
                     <a class="nav-link" href="Servlet_Cliente?enlace=menu">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                       aria-expanded="false">Reserva</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                        <li><a class="dropdown-item" href="">Reservar Cita</a></li>
-                        <li><a class="dropdown-item" href="">Ver Horarios</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
                     <a class="nav-link" href="Servlet_Cliente?enlace=calendario" id="dropdown03"
                        aria-expanded="false">Calendario</a>
                 </li>
@@ -43,7 +35,6 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                        <li><a class="dropdown-item" href="#">Cuenta</a></li>
                         <li><a class="dropdown-item" href="Servlet_Menu?enlace=salir">Salir</a></li>
                     </ul>
                 </li>

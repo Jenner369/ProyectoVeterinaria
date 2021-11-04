@@ -33,7 +33,7 @@ public class DAO_Cliente {
             cs.setString(3, apellido_m1);
             cs.setString(4, usuario1);
             cs.setString(5, password1);
-            cs.setString(6, imagen1);
+            cs.setString(6, "a.png");
             cs.execute();
             cs.close();
             con.close();
